@@ -1,0 +1,28 @@
+# --- Keamanan & Rahasia (JANGAN DI-UPLOAD) ---
+.env
+.env.local
+.env.production
+*.key
+*.pem
+secrets.json
+config.json
+
+# --- Folder Dependencies (File Instalasi) ---
+node_modules/
+vendor/
+__pycache__/
+*.pyc
+
+# --- File Sistem & Editor ---
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# --- Build & Log ---
+dist/
+build/
+*.log
+npm-debug.log*
