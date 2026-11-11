@@ -1,0 +1,2785 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes" />
+  <meta name="theme-color" content="#2C221E" />
+  <meta name="format-detection" content="telephone=no" />
+
+  <link id="dynamic-favicon" rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%232C221E'/></svg>" />
+
+  <title>Memuat…</title>
+  <meta name="description" content="Portal resmi unit usaha & katalog produk." />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <link rel="canonical" href="./" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Portal Unit Usaha" />
+  <meta property="og:description" content="Portal resmi unit usaha & katalog produk." />
+  <meta property="og:image" content="https://picsum.photos/seed/portal-og/1200/630" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="id_ID" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://docs.google.com" />
+  <link rel="preconnect" href="https://lh3.googleusercontent.com" />
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
+  <link rel="preconnect" href="https://www.youtube-nocookie.com" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            beige: '#F5F2EB', beige_dark: '#EBE5D9',
+            brown: '#2C221E', brown_light: '#3D2F28',
+            gold: '#D4A373', gold_dark: '#B8885A',
+            wa: '#25D366', wa_dark: '#1DAF54'
+          },
+          fontFamily: {
+            serif: ['"Playfair Display"', 'Georgia', 'serif'],
+            sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif']
+          },
+          boxShadow: {
+            card: '0 10px 30px -12px rgba(44, 34, 30, 0.15)',
+            soft: '0 4px 16px -6px rgba(44, 34, 30, 0.10)'
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    html { -webkit-tap-highlight-color: transparent; scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      background-color: #F5F2EB;
+      color: #2C221E;
+    }
+    ::selection { background-color: #D4A373; color: #FFFFFF; }
+    .font-serif-display { font-family: 'Playfair Display', Georgia, serif; }
+
+    @keyframes waPulse {
+      0%   { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.6); }
+      70%  { box-shadow: 0 0 0 18px rgba(37, 211, 102, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+    }
+    .animate-wa-pulse { animation: waPulse 2.4s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+
+    @keyframes promoPulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.65), 0 4px 12px rgba(239, 68, 68, 0.35); transform: scale(1); }
+      50%      { box-shadow: 0 0 0 10px rgba(239, 68, 68, 0), 0 4px 14px rgba(239, 68, 68, 0.45); transform: scale(1.05); }
+    }
+    .promo-badge-pulse { animation: promoPulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+
+    @keyframes cardFadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    .card-fade-in { animation: cardFadeIn 0.4s ease-out; }
+
+    @keyframes statFadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+    .stat-fade-in { animation: statFadeIn 0.55s ease-out both; }
+
+    @keyframes modalSlideUp { from { opacity: 0; transform: translateY(20px) scale(0.98); } to { opacity: 1; transform: translateY(0) scale(1); } }
+    .modal-slide-up { animation: modalSlideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1); }
+
+    @keyframes lightboxZoomIn { from { opacity: 0; transform: scale(0.92); } to { opacity: 1; transform: scale(1); } }
+    .lightbox-zoom-in { animation: lightboxZoomIn 0.32s cubic-bezier(0.16, 1, 0.3, 1); }
+
+    @keyframes denahPopIn { from { opacity: 0; transform: scale(0.94) translateY(10px); } to { opacity: 1; transform: scale(1) translateY(0); } }
+    .denah-pop-in { animation: denahPopIn 0.32s cubic-bezier(0.16, 1, 0.3, 1); }
+
+    @keyframes skeletonShimmer { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
+    .skeleton-shimmer {
+      background: linear-gradient(90deg, #EBE5D9 0%, #F5F2EB 50%, #EBE5D9 100%);
+      background-size: 200% 100%;
+      animation: skeletonShimmer 1.4s ease-in-out infinite;
+    }
+
+    .stage-transition { transition: opacity 0.3s ease, transform 0.3s ease; }
+    .stage-hidden { display: none !important; }
+
+    .marquee-container { overflow: hidden; white-space: nowrap; }
+    @keyframes marqueeScroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+    .marquee-content { display: inline-block; animation: marqueeScroll 30s linear infinite; padding-left: 100%; }
+    .marquee-content:hover { animation-play-state: paused; }
+
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+    body.modal-open { overflow: hidden; }
+    .modal-content-safe { overscroll-behavior: contain; }
+
+    .dp-quick-btn {
+      flex: 1; padding: 0.5rem 0.75rem; border-radius: 0.75rem;
+      border: 1.5px solid #D4C9B8; background: #FFFFFF;
+      font-size: 12px; font-weight: 700; color: #6B5D52;
+      transition: all 0.2s ease; cursor: pointer;
+    }
+    .dp-quick-btn:hover { border-color: #D4A373; color: #B8885A; }
+    .dp-quick-btn.active { background: #D4A373; color: #FFFFFF; border-color: #D4A373; }
+
+    .tenor-card {
+      border-radius: 1rem; border: 2px solid #E8E0D3; background: #FFFFFF;
+      padding: 1rem; text-align: center; transition: all 0.25s ease;
+    }
+    .tenor-card:hover {
+      border-color: #D4A373;
+      box-shadow: 0 4px 20px -8px rgba(212, 163, 115, 0.4);
+      transform: translateY(-2px);
+    }
+
+    input[type="text"]#kpr-dp-input { font-variant-numeric: tabular-nums; }
+
+    #lightbox-img {
+      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease;
+      will-change: transform, opacity; user-select: none; -webkit-user-drag: none; touch-action: none;
+    }
+    #lightbox-img.lightbox-zoomed { cursor: zoom-out; }
+    #lightbox-img:not(.lightbox-zoomed) { cursor: zoom-in; }
+
+    .lightbox-nav { transition: all 0.2s ease; opacity: 0.7; }
+    .lightbox-nav:hover { opacity: 1; background: rgba(245, 242, 235, 0.25); }
+
+    .expandable-text {
+      position: relative; overflow: hidden;
+      transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .expand-toggle-btn {
+      display: inline-flex; align-items: center; gap: 0.25rem;
+      margin-top: 0.5rem; font-size: 11px; font-weight: 700;
+      color: #B8885A; cursor: pointer; transition: color 0.2s ease; user-select: none;
+    }
+    .expand-toggle-btn:hover { color: #2C221E; }
+    .expand-toggle-btn i { transition: transform 0.25s ease; font-size: 9px; }
+    .expand-toggle-btn.expanded i { transform: rotate(180deg); }
+
+    .denah-banner { cursor: pointer; transition: transform 0.3s ease, box-shadow 0.3s ease; }
+    .denah-banner:hover { transform: translateY(-2px); box-shadow: 0 15px 40px -15px rgba(44, 34, 30, 0.3); }
+
+    .status-tab {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      white-space: nowrap; border-radius: 9999px;
+      border: 1.5px solid #D4C9B8; background: #FFFFFF;
+      padding: 0.55rem 1rem; font-size: 12px; font-weight: 700;
+      color: #6B5D52; transition: all 0.2s ease; cursor: pointer;
+    }
+    .status-tab:hover { border-color: #D4A373; color: #B8885A; }
+    .status-tab.active {
+      background: #2C221E; color: #F5F2EB; border-color: #2C221E;
+      box-shadow: 0 6px 16px -8px rgba(44, 34, 30, 0.5);
+    }
+    .status-tab .tab-count {
+      display: inline-block; min-width: 20px; padding: 0 5px;
+      border-radius: 9999px; background: rgba(44, 34, 30, 0.1);
+      font-size: 10px; font-weight: 800; line-height: 1.6; text-align: center;
+    }
+    .status-tab.active .tab-count { background: rgba(245, 242, 235, 0.25); color: #F5F2EB; }
+
+    .video-embed-wrapper {
+      position: relative; width: 100%; padding-bottom: 56.25%;
+      border-radius: 1.5rem; overflow: hidden; background: #2C221E;
+      box-shadow: 0 20px 40px -20px rgba(44, 34, 30, 0.35);
+    }
+    .video-embed-wrapper iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+    .video-embed-frame {
+      border: 6px solid #FFFFFF; border-radius: 1.75rem; overflow: hidden;
+      box-shadow: 0 20px 50px -20px rgba(44, 34, 30, 0.35);
+    }
+
+    .division-card { transition: all 0.3s ease; }
+    .division-card:hover { transform: translateY(-4px); box-shadow: 0 20px 40px -15px rgba(44, 34, 30, 0.25); }
+
+    .logo-initial {
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Playfair Display', Georgia, serif; font-weight: 700;
+      color: #D4A373; line-height: 1;
+    }
+    .logo-crown-mark {
+      position: absolute; color: #D4A373;
+      filter: drop-shadow(0 1px 1px rgba(0,0,0,0.35));
+      pointer-events: none; z-index: 5;
+    }
+
+    #hero-logo-wrap { margin-top: 1.5rem; margin-bottom: 1rem; }
+    #hero-logo-wrap.has-banner { margin-top: -4rem; margin-bottom: 1rem; }
+    @media (min-width: 640px) {
+      #hero-logo-wrap.has-banner { margin-top: -5rem; }
+    }
+
+    .facility-item {
+      display: flex; align-items: center; gap: 0.6rem;
+      background: #F5F2EB; padding: 0.6rem 0.7rem;
+      border-radius: 0.75rem; border: 1px solid rgba(44, 34, 30, 0.08);
+      transition: all 0.2s ease;
+    }
+    .facility-item:hover {
+      background: #FFFFFF; border-color: rgba(212, 163, 115, 0.35);
+      box-shadow: 0 2px 8px -3px rgba(44, 34, 30, 0.12);
+    }
+    .facility-icon {
+      display: flex; align-items: center; justify-content: center;
+      width: 2.2rem; height: 2.2rem; border-radius: 0.5rem;
+      background: #FFFFFF; flex-shrink: 0;
+      border: 1px solid rgba(44, 34, 30, 0.06);
+      font-size: 0.9rem;
+    }
+    .facility-text { min-width: 0; flex: 1; }
+    .facility-name {
+      font-size: 10px; color: #7A6B60; font-weight: 600;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .facility-distance {
+      font-size: 12px; font-weight: 800; color: #2C221E;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+
+    #denah-modal-img {
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease;
+      user-select: none; -webkit-user-drag: none;
+    }
+  </style>
+</head>
+
+<body class="bg-beige text-brown antialiased">
+
+  <!-- ERROR BANNER -->
+  <div id="error-banner" class="hidden fixed inset-x-0 top-0 z-[90] p-3">
+    <div class="mx-auto flex max-w-3xl items-start gap-3 rounded-2xl border border-rose-200 bg-rose-50 p-4 shadow-lg">
+      <i class="fa-solid fa-triangle-exclamation mt-0.5 text-lg text-rose-600"></i>
+      <div class="flex-1">
+        <p class="text-sm font-bold text-rose-800">Gagal memuat data</p>
+        <p id="error-message" class="mt-0.5 text-xs leading-relaxed text-rose-700"></p>
+        <button id="retry-btn" type="button" class="mt-2 inline-flex items-center gap-1.5 rounded-lg bg-rose-600 px-3 py-1.5 text-xs font-bold text-white transition hover:bg-rose-700">
+          <i class="fa-solid fa-rotate-right"></i> Coba Lagi
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- HEADER -->
+  <header class="sticky top-0 z-40 border-b border-white/5 bg-brown/95 backdrop-blur-lg">
+    <div class="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 sm:px-6">
+      <a href="#" id="header-brand-link" class="flex items-center gap-2.5">
+        <div id="header-logo-wrap" class="relative grid h-10 w-10 place-items-center rounded-xl bg-gold/15 text-base ring-1 ring-gold/30">
+          <span id="header-logo-initial" class="logo-initial text-base">U</span>
+          <img id="header-logo-img" src="" alt="" class="hidden absolute inset-0 h-full w-full rounded-xl object-cover" onerror="__imgFail(this)" />
+          <i id="header-logo-crown" class="logo-crown-mark fa-solid fa-crown bottom-0 right-0 text-[7px]"></i>
+        </div>
+        <div class="leading-tight">
+          <span data-brand-name class="block text-sm font-bold text-beige font-serif-display tracking-wide">Memuat…</span>
+          <span data-brand-official class="block text-[10px] font-medium uppercase tracking-[0.18em] text-gold/80">Official Website</span>
+        </div>
+      </a>
+
+      <a id="navbar-wa" href="#" data-wa-trigger
+         class="inline-flex items-center gap-2 rounded-full bg-wa px-4 py-2 text-xs font-bold text-white shadow-lg shadow-wa/25 transition hover:bg-wa_dark active:scale-95 sm:text-sm">
+        <i class="fa-brands fa-whatsapp text-base"></i>
+        <span class="hidden sm:inline">Hubungi Marketing</span>
+        <span class="sm:hidden">Chat</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- SCROLL TEXT -->
+  <div id="scroll-text-bar" class="hidden border-b border-gold/20 bg-gradient-to-r from-gold/15 via-gold/25 to-gold/15 py-2 text-xs font-semibold text-brown">
+    <div class="marquee-container mx-auto max-w-6xl">
+      <div id="scroll-text-content" class="marquee-content"></div>
+    </div>
+  </div>
+
+  <!-- STAGE 1 -->
+  <div id="stage-1" class="stage-transition">
+    <section id="hub-hero" class="relative overflow-hidden bg-beige">
+      <div class="pointer-events-none absolute inset-0 opacity-[0.35]"
+           style="background-image: radial-gradient(#D4A373 1px, transparent 1px); background-size: 32px 32px;"></div>
+
+      <div class="relative mx-auto max-w-6xl px-4 pb-14 pt-6 sm:px-6 sm:pb-20 sm:pt-10">
+        <div id="banner-hero-wrap" class="mb-0 hidden overflow-hidden rounded-3xl border-4 border-white bg-beige_dark shadow-card">
+          <div class="relative aspect-[16/9] w-full sm:aspect-[21/9]">
+            <img id="banner-hero" src="" alt="" fetchpriority="high" decoding="async" onerror="__imgFail(this)" class="h-full w-full object-cover" />
+            <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-brown/40 via-transparent to-transparent"></div>
+          </div>
+        </div>
+
+        <div class="mx-auto max-w-2xl text-center">
+          <div id="hero-logo-wrap" class="relative mx-auto h-24 w-24 rounded-full border-4 border-beige bg-white shadow-card ring-2 ring-gold/40 sm:h-28 sm:w-28">
+            <span id="hero-logo-initial" class="logo-initial flex h-full w-full items-center justify-center text-4xl">U</span>
+            <img id="hero-logo-img" src="" alt="" class="hidden absolute inset-0 h-full w-full rounded-full object-cover" onerror="__imgFail(this)" />
+            <i id="hero-logo-crown" class="logo-crown-mark fa-solid fa-crown -right-1 top-0 text-[14px]"></i>
+          </div>
+
+          <div id="hero-badge-wrap" class="mb-4 mt-4 hidden items-center gap-1.5 rounded-full border border-gold/40 bg-gold/10 px-3.5 py-1.5 text-[11px] font-bold uppercase tracking-wider text-gold_dark">
+            <i class="fa-solid fa-crown text-xs text-gold"></i>
+            <span id="hero-badge">Badge</span>
+          </div>
+
+          <h1 id="hero-title" class="font-serif-display text-4xl font-bold leading-tight tracking-tight text-brown sm:text-5xl md:text-6xl"></h1>
+          <p id="hero-subtitle" class="mt-3 text-base font-medium text-brown_light sm:text-lg"></p>
+          <p id="hero-deskripsi" class="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-brown/70 sm:text-base"></p>
+
+          <div class="mx-auto mt-8 flex max-w-md flex-col gap-3 sm:flex-row">
+            <a id="wa-utama-btn" href="#" data-wa-trigger
+               class="group flex flex-1 items-center justify-center gap-2 rounded-full bg-wa px-5 py-3.5 text-sm font-bold text-white shadow-lg shadow-wa/30 transition hover:-translate-y-0.5 hover:bg-wa_dark active:translate-y-0">
+              <i class="fa-brands fa-whatsapp text-lg"></i>
+              <span>Chat Marketing</span>
+            </a>
+            <a id="gmaps-btn" href="#" target="_blank" rel="noopener"
+               class="flex flex-1 items-center justify-center gap-2 rounded-full border-2 border-brown bg-transparent px-5 py-3.5 text-sm font-bold text-brown transition hover:-translate-y-0.5 hover:bg-brown hover:text-beige active:translate-y-0">
+              <i class="fa-solid fa-location-dot text-base"></i>
+              <span>Lihat Lokasi</span>
+            </a>
+          </div>
+
+          <div id="sosmed-wrapper" class="mt-8 flex justify-center gap-3">
+            <a id="sosmed-instagram" href="#" target="_blank" rel="noopener" aria-label="Instagram"
+               class="hidden h-10 w-10 place-items-center rounded-full border border-brown/15 bg-white text-brown transition hover:-translate-y-0.5 hover:border-gold hover:bg-gold hover:text-white">
+              <i class="fa-brands fa-instagram text-sm"></i>
+            </a>
+            <a id="sosmed-tiktok" href="#" target="_blank" rel="noopener" aria-label="TikTok"
+               class="hidden h-10 w-10 place-items-center rounded-full border border-brown/15 bg-white text-brown transition hover:-translate-y-0.5 hover:border-gold hover:bg-gold hover:text-white">
+              <i class="fa-brands fa-tiktok text-sm"></i>
+            </a>
+            <a id="sosmed-facebook" href="#" target="_blank" rel="noopener" aria-label="Facebook"
+               class="hidden h-10 w-10 place-items-center rounded-full border border-brown/15 bg-white text-brown transition hover:-translate-y-0.5 hover:border-gold hover:bg-gold hover:text-white">
+              <i class="fa-brands fa-facebook-f text-sm"></i>
+            </a>
+          </div>
+        </div>
+
+        <div id="stats-wrapper" class="mx-auto mt-10 hidden max-w-3xl sm:mt-12">
+          <div id="stats-grid" class="grid gap-3"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="video-section" class="hidden border-t border-brown/10 bg-beige py-12 sm:py-16">
+      <div class="mx-auto max-w-4xl px-4 sm:px-6">
+        <div class="text-center">
+          <span class="inline-flex items-center gap-1.5 text-[10px] font-extrabold uppercase tracking-[0.28em] text-gold_dark">
+            <span class="h-px w-6 bg-gold"></span>
+            Video Promo
+            <span class="h-px w-6 bg-gold"></span>
+          </span>
+          <h2 class="font-serif-display mt-3 text-2xl font-bold tracking-tight text-brown sm:text-3xl md:text-4xl">
+            Kenali Kami Lebih Dekat
+          </h2>
+        </div>
+        <div class="mt-8 sm:mt-10">
+          <div class="video-embed-frame">
+            <div class="video-embed-wrapper">
+              <iframe id="video-iframe" src="" title="Video Promo" loading="lazy"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                      referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="promo-banners" class="hidden border-t border-brown/10 bg-beige py-10 sm:py-12">
+      <div class="mx-auto max-w-6xl px-4 sm:px-6">
+        <div id="promo-banner-grid" class="grid grid-cols-1 gap-4 sm:grid-cols-3"></div>
+      </div>
+    </section>
+
+    <section id="divisions-section" class="border-t border-brown/10 bg-beige py-12 sm:py-16">
+      <div class="mx-auto max-w-6xl px-4 sm:px-6">
+        <div class="text-center">
+          <span id="divisions-badge" class="hidden inline-flex items-center gap-1.5 text-[10px] font-extrabold uppercase tracking-[0.28em] text-gold_dark">
+            <span class="h-px w-6 bg-gold"></span>
+            <span id="divisions-badge-text">Katalog</span>
+            <span class="h-px w-6 bg-gold"></span>
+          </span>
+          <h2 id="divisions-title" class="font-serif-display mt-3 text-3xl font-bold tracking-tight text-brown sm:text-4xl"></h2>
+          <p id="divisions-subtitle" class="mx-auto mt-3 max-w-xl text-sm leading-relaxed text-brown/70"></p>
+        </div>
+
+        <div id="divisions-grid" class="mt-8 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <div class="overflow-hidden rounded-2xl border border-brown/10 bg-white shadow-card">
+            <div class="aspect-[4/3] w-full skeleton-shimmer"></div>
+            <div class="p-5">
+              <div class="h-4 w-2/3 rounded skeleton-shimmer"></div>
+              <div class="mt-2 h-3 w-1/3 rounded skeleton-shimmer"></div>
+              <div class="mt-4 h-10 w-full rounded-xl skeleton-shimmer"></div>
+            </div>
+          </div>
+          <div class="overflow-hidden rounded-2xl border border-brown/10 bg-white shadow-card">
+            <div class="aspect-[4/3] w-full skeleton-shimmer"></div>
+            <div class="p-5">
+              <div class="h-4 w-2/3 rounded skeleton-shimmer"></div>
+              <div class="mt-2 h-3 w-1/3 rounded skeleton-shimmer"></div>
+              <div class="mt-4 h-10 w-full rounded-xl skeleton-shimmer"></div>
+            </div>
+          </div>
+          <div class="overflow-hidden rounded-2xl border border-brown/10 bg-white shadow-card">
+            <div class="aspect-[4/3] w-full skeleton-shimmer"></div>
+            <div class="p-5">
+              <div class="h-4 w-2/3 rounded skeleton-shimmer"></div>
+              <div class="mt-2 h-3 w-1/3 rounded skeleton-shimmer"></div>
+              <div class="mt-4 h-10 w-full rounded-xl skeleton-shimmer"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- STAGE 2 -->
+  <div id="stage-2" class="stage-hidden stage-transition">
+    <section class="border-t border-brown/10 bg-beige py-8 sm:py-10">
+      <div class="mx-auto max-w-6xl px-4 sm:px-6">
+        <div class="mb-6">
+          <button id="back-to-hub-btn" type="button"
+                  class="inline-flex items-center gap-2 rounded-full border border-brown/20 bg-white px-4 py-2 text-xs font-bold text-brown shadow-soft transition hover:border-gold hover:bg-gold/10 active:scale-95">
+            <i class="fa-solid fa-arrow-left text-xs"></i>
+            <span>Kembali ke Menu Usaha</span>
+          </button>
+        </div>
+
+        <div class="text-center">
+          <span class="inline-flex items-center gap-1.5 text-[10px] font-extrabold uppercase tracking-[0.28em] text-gold_dark">
+            <span class="h-px w-6 bg-gold"></span>
+            Katalog Divisi
+            <span class="h-px w-6 bg-gold"></span>
+          </span>
+          <h1 id="catalog-division-title" class="font-serif-display mt-3 text-3xl font-bold tracking-tight text-brown sm:text-4xl"></h1>
+          <p id="catalog-division-tagline" class="mt-2 text-base font-medium text-brown_light sm:text-lg"></p>
+          <p id="catalog-division-deskripsi" class="mx-auto mt-3 max-w-xl text-sm leading-relaxed text-brown/70"></p>
+        </div>
+
+        <div id="catalog-stats-wrapper" class="mx-auto mt-8 hidden max-w-3xl">
+          <div id="catalog-stats-grid" class="grid gap-3"></div>
+        </div>
+
+        <div id="denah-banner-wrap" class="mt-8 hidden">
+          <div class="mb-3 flex items-center justify-between">
+            <span class="inline-flex items-center gap-1.5 text-[10px] font-extrabold uppercase tracking-[0.24em] text-gold_dark">
+              <i class="fa-solid fa-map text-[9px]"></i>
+              Master Plan / Denah Kawasan
+            </span>
+            <button type="button" id="denah-zoom-btn"
+                    class="inline-flex items-center gap-1.5 rounded-full border border-brown/20 bg-white px-3 py-1.5 text-[10px] font-bold text-brown transition hover:border-gold hover:bg-gold/10">
+              <i class="fa-solid fa-expand text-[9px]"></i>
+              <span>Perbesar</span>
+            </button>
+          </div>
+          <div id="denah-banner" class="denah-banner overflow-hidden rounded-2xl border-4 border-white bg-beige_dark shadow-card">
+            <div class="relative aspect-[16/9] w-full overflow-hidden">
+              <img id="denah-img" src="" alt="Denah Kawasan" loading="lazy" decoding="async" onerror="__imgFail(this)" class="h-full w-full object-cover" />
+              <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-brown/60 via-transparent to-transparent"></div>
+              <div class="pointer-events-none absolute bottom-3 right-3 inline-flex items-center gap-1.5 rounded-full bg-white/95 px-3 py-1.5 text-[10px] font-bold text-brown shadow">
+                <i class="fa-solid fa-arrow-down text-[9px]"></i>
+                <span>Klik untuk lihat produk</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="filter-status-wrap" class="mt-8 -mx-4 px-4 sm:mx-0 sm:px-0">
+          <div class="mb-3 flex items-center gap-2">
+            <span class="inline-flex items-center gap-1.5 text-[10px] font-extrabold uppercase tracking-[0.24em] text-gold_dark">
+              <i class="fa-solid fa-filter text-[9px]"></i>
+              Filter Status
+            </span>
+            <span class="h-px flex-1 bg-brown/10"></span>
+          </div>
+          <div id="filter-status-tabs" class="no-scrollbar flex gap-2 overflow-x-auto pb-2 sm:flex-wrap"></div>
+        </div>
+
+        <div id="catalog-grid" class="mt-8 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3"></div>
+
+        <div class="mt-10 flex justify-center">
+          <button id="back-to-hub-btn-bottom" type="button"
+                  class="inline-flex items-center gap-2 rounded-full border border-brown/20 bg-white px-6 py-3 text-sm font-bold text-brown shadow-soft transition hover:border-gold hover:bg-gold/10 active:scale-95">
+            <i class="fa-solid fa-arrow-left text-xs"></i>
+            <span>Kembali ke Menu Usaha</span>
+          </button>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="bg-brown text-beige/70">
+    <div class="mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-14">
+      <div class="flex flex-col items-center gap-6 text-center">
+        <div class="flex items-center gap-3">
+          <div id="footer-logo-wrap" class="relative grid h-11 w-11 place-items-center rounded-xl bg-gold/15 ring-1 ring-gold/30">
+            <span id="footer-logo-initial" class="logo-initial text-base">U</span>
+            <img id="footer-logo-img" src="" alt="" class="hidden absolute inset-0 h-full w-full rounded-xl object-cover" onerror="__imgFail(this)" />
+            <i id="footer-logo-crown" class="logo-crown-mark fa-solid fa-crown bottom-0 right-0 text-[8px]"></i>
+          </div>
+          <div class="text-left">
+            <p data-brand-name class="text-base font-bold text-beige font-serif-display tracking-wide">Memuat…</p>
+            <p data-brand-official class="text-[10px] font-medium uppercase tracking-[0.18em] text-gold/80">Official Website</p>
+          </div>
+        </div>
+
+        <div class="flex items-center justify-center gap-3">
+          <a id="footer-sosmed-instagram" href="#" target="_blank" rel="noopener" aria-label="Instagram"
+             class="hidden h-9 w-9 place-items-center rounded-full border border-beige/10 bg-beige/5 text-beige/60 transition hover:bg-gold hover:text-white">
+            <i class="fa-brands fa-instagram text-sm"></i>
+          </a>
+          <a id="footer-sosmed-tiktok" href="#" target="_blank" rel="noopener" aria-label="TikTok"
+             class="hidden h-9 w-9 place-items-center rounded-full border border-beige/10 bg-beige/5 text-beige/60 transition hover:bg-gold hover:text-white">
+            <i class="fa-brands fa-tiktok text-sm"></i>
+          </a>
+          <a id="footer-sosmed-facebook" href="#" target="_blank" rel="noopener" aria-label="Facebook"
+             class="hidden h-9 w-9 place-items-center rounded-full border border-beige/10 bg-beige/5 text-beige/60 transition hover:bg-gold hover:text-white">
+            <i class="fa-brands fa-facebook-f text-sm"></i>
+          </a>
+        </div>
+
+        <p id="footer-disclaimer" class="hidden max-w-xl text-[11px] leading-relaxed text-beige/50">
+          <span class="font-semibold text-beige/70">Disclaimer:</span>
+          <span id="footer-disclaimer-text"></span>
+        </p>
+
+        <div class="w-full border-t border-beige/10 pt-5">
+          <p class="text-[11px] text-beige/50">
+            &copy; <span id="footer-year">2026</span> <span data-brand-name>Ummahat Estate</span>. Seluruh hak cipta dilindungi undang-undang.
+          </p>
+          <p class="mt-2 text-[10px] text-beige/40">
+            Designed &amp; Developed by
+            <a href="https://linktr.ee/basithhahahaha" target="_blank" rel="noopener noreferrer"
+               class="font-semibold text-beige/60 underline-offset-2 hover:text-gold hover:underline">
+              basithhahahaha
+            </a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- FLOATING WA -->
+  <a id="floating-wa" href="#" data-wa-trigger aria-label="Chat WhatsApp Marketing"
+     class="animate-wa-pulse fixed bottom-5 right-5 z-50 grid h-14 w-14 place-items-center rounded-full bg-wa text-white shadow-2xl shadow-wa/40 transition duration-200 hover:scale-110 hover:bg-wa_dark active:scale-95 sm:bottom-7 sm:right-7 sm:h-16 sm:w-16">
+    <i class="fa-brands fa-whatsapp text-2xl sm:text-3xl"></i>
+  </a>
+
+  <!-- MODAL: SALES -->
+  <div id="sales-modal" class="hidden fixed inset-0 z-[70] flex items-end justify-center bg-brown/70 p-0 backdrop-blur-sm sm:items-center sm:p-4">
+    <div class="modal-content-safe modal-slide-up w-full max-w-md overflow-hidden rounded-t-3xl bg-beige shadow-2xl sm:rounded-2xl">
+      <div class="flex items-center justify-between border-b border-brown/10 bg-white p-4">
+        <div>
+          <p class="text-[10px] font-bold uppercase tracking-[0.18em] text-gold_dark">Pilih Sales</p>
+          <h3 class="mt-0.5 text-lg font-bold text-brown font-serif-display">Mau chat ke siapa?</h3>
+        </div>
+        <button id="sales-modal-close" type="button" aria-label="Tutup"
+                class="grid h-9 w-9 place-items-center rounded-full bg-brown/5 text-brown transition hover:bg-brown/10">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <div id="sales-list" class="max-h-[60vh] space-y-2 overflow-y-auto bg-white p-4"></div>
+      <div class="border-t border-brown/10 bg-beige px-4 py-2.5 text-center">
+        <p class="text-[10px] text-brown/50">Pilih sales favorit Anda untuk respon tercepat.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: KPR -->
+  <div id="kpr-modal" class="hidden fixed inset-0 z-[75] flex items-end justify-center bg-brown/70 p-0 backdrop-blur-sm sm:items-center sm:p-4">
+    <div class="modal-content-safe modal-slide-up flex max-h-[95vh] w-full max-w-lg flex-col overflow-hidden rounded-t-3xl bg-beige shadow-2xl sm:rounded-2xl">
+      <div class="flex items-start justify-between border-b border-brown/10 bg-white p-4 sm:p-5">
+        <div class="flex-1 pr-3">
+          <p class="text-[10px] font-bold uppercase tracking-[0.18em] text-gold_dark">
+            <i class="fa-solid fa-calculator mr-1"></i> Simulasi Angsuran
+          </p>
+          <h3 id="kpr-unit-name" class="mt-1 text-lg font-bold leading-tight text-brown font-serif-display sm:text-xl">Nama Unit</h3>
+          <p id="kpr-unit-price" class="mt-1 text-sm font-semibold text-brown/70">Rp 0</p>
+        </div>
+        <button id="kpr-modal-close" type="button" aria-label="Tutup"
+                class="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-brown/5 text-brown transition hover:bg-brown/10">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <div class="modal-content-safe flex-1 overflow-y-auto">
+        <div class="border-b border-brown/10 bg-white p-4 sm:p-5">
+          <label for="kpr-dp-input" class="text-[11px] font-bold uppercase tracking-wider text-brown/60">Uang Muka (DP)</label>
+          <div class="mt-2 flex gap-2">
+            <button type="button" class="dp-quick-btn" data-dp-percent="20">DP 20%</button>
+            <button type="button" class="dp-quick-btn" data-dp-percent="30">DP 30%</button>
+            <button type="button" class="dp-quick-btn" data-dp-percent="40">DP 40%</button>
+          </div>
+          <div class="mt-3 flex items-center gap-2 rounded-xl border-2 border-brown/15 bg-beige px-3 py-2.5 transition focus-within:border-gold">
+            <span class="text-sm font-bold text-brown/60">Rp</span>
+            <input type="text" id="kpr-dp-input" inputmode="numeric" value="10.000.000" autocomplete="off" class="w-full bg-transparent text-base font-bold text-brown outline-none" />
+          </div>
+          <div class="mt-2 flex items-center justify-between text-[11px]">
+            <span class="text-brown/50">Minimal DP Rp 10.000.000</span>
+            <span id="kpr-dp-percent" class="font-bold text-gold_dark">0% dari harga</span>
+          </div>
+        </div>
+
+        <div class="border-b border-brown/10 bg-beige px-4 sm:px-5 py-3">
+          <div class="flex items-center justify-between text-xs">
+            <span class="font-semibold text-brown/60">
+              <i class="fa-solid fa-coins mr-1 text-gold_dark"></i>
+              Pokok Hutang (Setelah DP)
+            </span>
+            <span id="kpr-pokok-hutang" class="font-bold text-brown text-sm">Rp 0</span>
+          </div>
+        </div>
+
+        <div class="p-4 sm:p-5">
+          <div class="mb-3 flex items-center justify-between">
+            <p class="text-[11px] font-bold uppercase tracking-wider text-brown/60">Simulasi Cicilan</p>
+            <span class="rounded-full bg-gold/15 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wide text-gold_dark">Bunga Flat 5%/tahun</span>
+          </div>
+          <div id="kpr-results" class="grid grid-cols-1 gap-2.5 sm:grid-cols-3"></div>
+          <p class="mt-3 rounded-lg bg-brown/5 p-2.5 text-[10px] leading-relaxed text-brown/60">
+            <i class="fa-solid fa-circle-info mr-1 text-gold"></i>
+            Simulasi ini menggunakan metode bunga flat. Angka bersifat estimasi dan dapat berbeda dengan penawaran resmi.
+          </p>
+        </div>
+      </div>
+
+      <div class="border-t border-brown/10 bg-white p-4 sm:p-5">
+        <button type="button" id="kpr-wa-btn"
+                class="flex w-full items-center justify-center gap-2 rounded-xl bg-wa px-4 py-3.5 text-sm font-bold text-white shadow-lg shadow-wa/25 transition hover:bg-wa_dark active:scale-[0.99]">
+          <i class="fa-brands fa-whatsapp text-lg"></i>
+          <span>Konsultasi Cicilan via WA</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: LIGHTBOX -->
+  <div id="lightbox" class="hidden fixed inset-0 z-[80] items-center justify-center bg-brown/95 p-0 backdrop-blur-sm">
+    <div class="absolute inset-x-0 top-0 z-10 flex items-center justify-between bg-gradient-to-b from-brown/80 to-transparent p-4">
+      <div class="flex-1 min-w-0 pr-3">
+        <p id="lightbox-title" class="truncate text-sm font-bold text-beige font-serif-display">Foto</p>
+        <p id="lightbox-counter" class="mt-0.5 text-[11px] font-medium text-beige/60">1 / 1</p>
+      </div>
+      <div class="flex items-center gap-2">
+        <button id="lightbox-zoom-toggle" type="button" aria-label="Zoom"
+                class="grid h-10 w-10 place-items-center rounded-full bg-beige/10 text-beige transition hover:bg-beige/20">
+          <i class="fa-solid fa-magnifying-glass-plus text-sm"></i>
+        </button>
+        <button id="lightbox-close" type="button" aria-label="Tutup"
+                class="grid h-10 w-10 place-items-center rounded-full bg-beige/10 text-beige transition hover:bg-beige/20">
+          <i class="fa-solid fa-xmark text-lg"></i>
+        </button>
+      </div>
+    </div>
+
+    <button id="lightbox-prev" type="button" aria-label="Sebelumnya"
+            class="lightbox-nav absolute left-3 top-1/2 z-10 hidden h-12 w-12 -translate-y-1/2 place-items-center rounded-full bg-beige/10 text-beige backdrop-blur sm:left-5">
+      <i class="fa-solid fa-chevron-left text-lg"></i>
+    </button>
+    <button id="lightbox-next" type="button" aria-label="Berikutnya"
+            class="lightbox-nav absolute right-3 top-1/2 z-10 hidden h-12 w-12 -translate-y-1/2 place-items-center rounded-full bg-beige/10 text-beige backdrop-blur sm:right-5">
+      <i class="fa-solid fa-chevron-right text-lg"></i>
+    </button>
+
+    <div id="lightbox-img-wrap" class="relative flex h-full w-full items-center justify-center overflow-hidden p-4">
+      <img id="lightbox-img" src="" alt="" draggable="false" class="max-h-[85vh] max-w-[92vw] rounded-lg object-contain shadow-2xl lightbox-zoom-in" />
+    </div>
+
+    <div class="absolute inset-x-0 bottom-0 z-10 bg-gradient-to-t from-brown/80 to-transparent p-4 text-center">
+      <p class="text-[10px] text-beige/50">
+        <i class="fa-solid fa-circle-info mr-1"></i>
+        Ketuk gambar 2x untuk zoom · Geser ke bawah untuk menutup
+      </p>
+    </div>
+  </div>
+
+  <!-- MODAL: DENAH KAWASAN -->
+  <div id="denah-modal" class="hidden fixed inset-0 z-[85] flex-col items-center justify-center bg-brown/95 p-0 backdrop-blur-md">
+
+    <div class="absolute inset-x-0 top-0 z-10 flex items-center justify-between bg-gradient-to-b from-brown/90 to-transparent p-4">
+      <div class="flex-1 min-w-0 pr-3">
+        <p class="text-[10px] font-bold uppercase tracking-[0.18em] text-gold/90">
+          <i class="fa-solid fa-map-location-dot mr-1"></i> Master Plan
+        </p>
+        <p id="denah-modal-title" class="truncate text-sm font-bold text-beige font-serif-display">Denah Kawasan</p>
+        <p id="denah-modal-subtitle" class="mt-0.5 truncate text-[11px] font-medium text-beige/60">—</p>
+      </div>
+      <button id="denah-modal-close" type="button" aria-label="Tutup"
+              class="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-beige/10 text-beige transition hover:bg-beige/20">
+        <i class="fa-solid fa-xmark text-lg"></i>
+      </button>
+    </div>
+
+    <div id="denah-modal-img-wrap" class="relative flex h-full w-full items-center justify-center overflow-hidden p-4 pt-20 pb-20">
+      <img id="denah-modal-img" src="" alt="Denah Kawasan"
+           draggable="false"
+           onerror="__imgFail(this)"
+           class="max-h-[80vh] max-w-[92vw] rounded-xl object-contain shadow-2xl denah-pop-in" />
+    </div>
+
+    <div class="absolute inset-x-0 bottom-0 z-10 bg-gradient-to-t from-brown/90 to-transparent p-4 text-center">
+      <p class="text-[10px] text-beige/60">
+        <i class="fa-solid fa-circle-info mr-1"></i>
+        Master Plan bersifat ilustrasi · Geser ke bawah atau klik area luar untuk menutup
+      </p>
+    </div>
+
+  </div>
+
+  <script>
+  (function () {
+    'use strict';
+
+    /* ================================================================
+       KONFIGURASI
+    ================================================================ */
+    const GOOGLE_SHEETS_CONFIG_URL =
+      'https://docs.google.com/spreadsheets/d/e/2PACX-1vTXK_fROtEV0CvgC0aVzztpXIOry-mUEOVn-883bUOkhhH1uofWKtPiEPjjSOXJkKGaTgDZynZDhIWN/pub?gid=66398211&single=true&output=csv';
+
+    const GOOGLE_SHEETS_UNIT_URL =
+      'https://docs.google.com/spreadsheets/d/e/2PACX-1vTXK_fROtEV0CvgC0aVzztpXIOry-mUEOVn-883bUOkhhH1uofWKtPiEPjjSOXJkKGaTgDZynZDhIWN/pub?gid=0&single=true&output=csv';
+
+    const MIN_DP = 10000000;
+    const BUNGA_FLAT = 0.05;
+    const TENORS = [12, 24, 36];
+    const PROPERTY_REGEX = /kavling|properti|tanah|rumah/i;
+
+    const FALLBACK_IMG = 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(
+      '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300"><rect width="400" height="300" fill="#EBE5D9"/><g fill="#B8A99A"><rect x="150" y="105" width="100" height="75" rx="6" stroke="#B8A99A" stroke-width="3" fill="none"/><circle cx="175" cy="130" r="8"/><path d="M150 170 L185 140 L210 160 L225 150 L250 170 Z"/></g><text x="200" y="225" font-size="15" font-family="Georgia,serif" fill="#B8A99A" text-anchor="middle">Foto tidak tersedia</text></svg>'
+    );
+
+    window.__imgFail = function (el) {
+      if (!el || el.dataset.fallbackApplied) return;
+      el.dataset.fallbackApplied = '1';
+      el.onerror = null;
+      el.src = FALLBACK_IMG;
+    };
+
+    /* ================================================================
+       STATE
+    ================================================================ */
+    let CONFIG = {};
+    let UNITS = [];
+    let HOLDING_SALES = [];
+    let ROTATION_INDEX = 0;
+    let ACTIVE_KPR_UNIT = null;
+    let ACTIVE_DP = 0;
+    let CURRENT_STAGE = 1;
+    let CURRENT_DIVISION = null;
+    let CURRENT_DIVISION_NAME = '';
+    let CURRENT_WA_OVERRIDE = null;
+    let MODAL_HISTORY_PUSHED = false;
+    let LB_IMAGES = [];
+    let LB_INDEX = 0;
+    let LB_ZOOMED = false;
+    let ACTIVE_STATUS_FILTER = 'all';
+    let CURRENT_DIVISION_UNITS = [];
+    let CURRENT_DIVISION_DENAH = '';
+
+    /* ================================================================
+       HELPERS
+    ================================================================ */
+    function parseCSV(text) {
+      const rows = [];
+      let row = [];
+      let field = '';
+      let inQuotes = false;
+      text = text.replace(/^\uFEFF/, '');
+      for (let i = 0; i < text.length; i++) {
+        const ch = text[i];
+        if (inQuotes) {
+          if (ch === '"') {
+            if (text[i + 1] === '"') { field += '"'; i++; }
+            else { inQuotes = false; }
+          } else field += ch;
+        } else {
+          if (ch === '"') inQuotes = true;
+          else if (ch === ',') { row.push(field); field = ''; }
+          else if (ch === '\n') { row.push(field); rows.push(row); row = []; field = ''; }
+          else if (ch === '\r') {}
+          else field += ch;
+        }
+      }
+      if (field !== '' || row.length > 0) { row.push(field); rows.push(row); }
+      return rows.filter(r => r.some(c => c.trim() !== ''));
+    }
+
+    function parseDriveUrl(url) {
+      if (!url) return '';
+      const u = String(url).trim();
+      if (!u) return '';
+      if (/^https?:\/\/lh3\.googleusercontent\.com\//i.test(u)) return u;
+      if (/^https?:\/\/drive\.google\.com\/uc\?/i.test(u)) return u;
+      const patterns = [
+        /\/file\/d\/([a-zA-Z0-9_-]+)/,
+        /[?&]id=([a-zA-Z0-9_-]+)/,
+        /\/d\/([a-zA-Z0-9_-]+)/,
+        /lh3\.googleusercontent\.com\/d\/([a-zA-Z0-9_-]+)/,
+        /drive\.google\.com\/open\?id=([a-zA-Z0-9_-]+)/
+      ];
+      for (const p of patterns) {
+        const m = u.match(p);
+        if (m && m[1]) return `https://lh3.googleusercontent.com/d/${m[1]}`;
+      }
+      return u;
+    }
+
+    function getYouTubeEmbed(url) {
+      if (!url) return '';
+      const u = String(url).trim();
+      if (!u) return '';
+      if (/^[a-zA-Z0-9_-]{11}$/.test(u)) return `https://www.youtube-nocookie.com/embed/${u}?rel=0`;
+      const patterns = [
+        /(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/|youtube\.com\/shorts\/|youtube\.com\/live\/|youtube-nocookie\.com\/embed\/)([a-zA-Z0-9_-]{11})/,
+        /[?&]v=([a-zA-Z0-9_-]{11})/
+      ];
+      for (const p of patterns) {
+        const m = u.match(p);
+        if (m && m[1]) return `https://www.youtube-nocookie.com/embed/${m[1]}?rel=0`;
+      }
+      return '';
+    }
+
+    function escapeHtml(str) {
+      return String(str == null ? '' : str).replace(/[&<>"']/g, s => ({
+        '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+      }[s]));
+    }
+
+    function normalizePhone(phone) {
+      if (!phone) return '';
+      let p = String(phone).replace(/[^\d]/g, '');
+      if (p.startsWith('0')) p = '62' + p.slice(1);
+      return p;
+    }
+
+    function formatRupiah(num) {
+      const n = Math.round(Number(num) || 0);
+      return 'Rp ' + n.toLocaleString('id-ID');
+    }
+
+    function parseNumber(val) {
+      if (val === null || val === undefined || val === '') return 0;
+      if (typeof val === 'number') return isFinite(val) ? Math.round(val) : 0;
+      let str = String(val).trim();
+      if (!str) return 0;
+      str = str.replace(/^rp\.?\s*/i, '').replace(/\s+/g, '');
+      const hasComma = str.includes(',');
+      const hasDot = str.includes('.');
+      if (hasComma && hasDot) {
+        if (str.lastIndexOf(',') > str.lastIndexOf('.')) {
+          str = str.replace(/\./g, '').replace(',', '.');
+        } else {
+          str = str.replace(/,/g, '');
+        }
+      } else if (hasComma) {
+        const parts = str.split(',');
+        if (parts.length > 2 || (parts.length === 2 && parts[1].length === 3)) str = str.replace(/,/g, '');
+        else str = str.replace(',', '.');
+      } else if (hasDot) {
+        const parts = str.split('.');
+        if (parts.length > 2 || (parts.length === 2 && parts[1].length === 3)) str = str.replace(/\./g, '');
+      }
+      str = str.replace(/[^\d.]/g, '');
+      const n = parseFloat(str);
+      return isFinite(n) ? Math.round(n) : 0;
+    }
+
+    function formatNumberInput(value) {
+      const digits = String(value || '').replace(/[^\d]/g, '');
+      if (!digits) return '';
+      const num = parseInt(digits, 10);
+      if (!isFinite(num)) return '';
+      return num.toLocaleString('id-ID');
+    }
+
+    function formatAngsuranText(raw) {
+      if (!raw) return '';
+      const s = String(raw).trim();
+      if (!s) return '';
+      if (/Rp\s*[\d.]*\.\d{3}/i.test(s)) return s;
+      const m = s.match(/(\d[\d.,]*)/);
+      if (!m) return s;
+      const rawNum = m[1];
+      const num = parseNumber(rawNum);
+      if (num <= 0) return s;
+      const formatted = 'Rp ' + num.toLocaleString('id-ID');
+      const before = s.slice(0, m.index).trim();
+      const after = s.slice(m.index + rawNum.length).trim();
+      let result = '';
+      if (before) result += before + ' ';
+      result += formatted;
+      if (after) result += after;
+      else if (!before) result += '/bln';
+      return result;
+    }
+
+    function slugify(str) {
+      return String(str || '').toLowerCase().trim().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+    }
+
+    function isSoldOut(status) {
+      const s = (status || '').toLowerCase();
+      return s.includes('sold') || s.includes('terjual') || s.includes('habis') || s.includes('booked');
+    }
+
+    function isPropertyProduct(unit) {
+      const k = (unit.kategori || '').trim();
+      if (!k) return false;
+      return PROPERTY_REGEX.test(k);
+    }
+
+    function getBrandInitial(name) {
+      const n = String(name || '').trim();
+      if (!n) return 'U';
+      return n.charAt(0).toUpperCase();
+    }
+
+    function getFacilityIcon(name) {
+      const n = String(name || '').toLowerCase();
+
+      if (n.includes('masjid') || n.includes('musholla') || n.includes('mushola')) return '<i class="fa-solid fa-mosque text-emerald-600"></i>';
+      if (n.includes('rs') || n.includes('rumah sakit') || n.includes('klinik')) return '<i class="fa-solid fa-hospital text-red-500"></i>';
+      if (n.includes('spbu') || n.includes('bensin')) return '<i class="fa-solid fa-gas-pump text-amber-600"></i>';
+      if (n.includes('jalan') || n.includes('akses') || n.includes('tol')) return '<i class="fa-solid fa-road text-slate-700"></i>';
+      if (n.includes('pasar') || n.includes('mall') || n.includes('swalayan') || n.includes('supermarket')) return '<i class="fa-solid fa-cart-shopping text-blue-600"></i>';
+      if (n.includes('terminal') || n.includes('stasiun')) return '<i class="fa-solid fa-bus text-indigo-600"></i>';
+      if (n.includes('sumur') || n.includes('pdam') || n.includes('air')) return '<i class="fa-solid fa-droplet text-sky-500"></i>';
+      if (n.includes('sekolah') || n.includes('kampus') || n.includes('universitas')) return '<i class="fa-solid fa-school text-orange-600"></i>';
+      if (n.includes('taman') || n.includes('park')) return '<i class="fa-solid fa-tree text-lime-600"></i>';
+      if (n.includes('kolam') || n.includes('renang')) return '<i class="fa-solid fa-water-ladder text-cyan-500"></i>';
+      if (n.includes('olahraga') || n.includes('lapangan')) return '<i class="fa-solid fa-futbol text-green-600"></i>';
+      if (n.includes('keamanan') || n.includes('security') || n.includes('cctv')) return '<i class="fa-solid fa-shield-halved text-slate-600"></i>';
+      if (n.includes('listrik') || n.includes('pln')) return '<i class="fa-solid fa-bolt text-yellow-500"></i>';
+      if (n.includes('wifi') || n.includes('internet')) return '<i class="fa-solid fa-wifi text-violet-500"></i>';
+
+      return '<i class="fa-solid fa-location-dot text-stone-500"></i>';
+    }
+
+    function renderFasilitasGrid(fasilitasRaw) {
+      if (!fasilitasRaw) return '';
+      const items = String(fasilitasRaw).split('|').map(s => s.trim()).filter(Boolean);
+      if (!items.length) return '';
+
+      const gridHTML = items.map(item => {
+        const parts = item.split(':');
+        const nama = (parts[0] || '').trim();
+        const jarak = (parts[1] || '').trim();
+        if (!nama) return '';
+        const iconHTML = getFacilityIcon(nama);
+
+        return `
+          <div class="facility-item">
+            <div class="facility-icon">${iconHTML}</div>
+            <div class="facility-text">
+              <div class="facility-name">${escapeHtml(nama)}</div>
+              <div class="facility-distance">${escapeHtml(jarak || 'Tersedia')}</div>
+            </div>
+          </div>
+        `;
+      }).filter(Boolean).join('');
+
+      if (!gridHTML) return '';
+
+      return `
+        <div class="mt-4">
+          <div class="mb-2 flex items-center gap-1.5">
+            <i class="fa-solid fa-location-dot text-[10px] text-gold_dark"></i>
+            <p class="text-[10px] font-bold uppercase tracking-wider text-brown/60">Fasilitas & Akses Terdekat</p>
+          </div>
+          <div class="grid grid-cols-2 gap-2">
+            ${gridHTML}
+          </div>
+        </div>
+      `;
+    }
+
+    function parseConfigCSV(text) {
+      const rows = parseCSV(text);
+      if (!rows.length) return {};
+      const headers = rows[0].map(h => h.trim().toLowerCase());
+      const keyIdx = headers.indexOf('key');
+      const valIdx = headers.indexOf('value');
+      if (keyIdx === -1 || valIdx === -1) return {};
+      const cfg = {};
+      for (let i = 1; i < rows.length; i++) {
+        const key = (rows[i][keyIdx] || '').trim();
+        const value = (rows[i][valIdx] || '').trim();
+        if (key) cfg[key] = value;
+      }
+      return cfg;
+    }
+
+    function parseUnitCSV(text) {
+      const rows = parseCSV(text);
+      if (rows.length < 2) return [];
+      const headers = rows[0].map(h => h.trim().toLowerCase());
+      const units = [];
+      for (let i = 1; i < rows.length; i++) {
+        const obj = {};
+        headers.forEach((h, idx) => { obj[h] = (rows[i][idx] || '').trim(); });
+        if (obj.nama_unit || obj.id) units.push(obj);
+      }
+      return units;
+    }
+
+    function getHoldingSales() {
+      const sales = [];
+      for (let i = 1; i <= 4; i++) {
+        const nama = (CONFIG[`sales_${i}_nama`] || '').trim();
+        const wa = normalizePhone(CONFIG[`sales_${i}_wa`]);
+        if (!wa) continue;
+        sales.push({ nama: nama || `Sales ${i}`, wa, index: i });
+      }
+      if (!sales.length && CONFIG.wa_utama) {
+        const waUtama = normalizePhone(CONFIG.wa_utama);
+        if (waUtama) sales.push({ nama: 'Marketing', wa: waUtama, index: 1 });
+      }
+      return sales;
+    }
+
+    function getDivisionSales(divisionName) {
+      if (!divisionName) return [];
+      const units = UNITS.filter(u => (u.nama_divisi || '').trim() === divisionName);
+      const first = units[0];
+      if (!first) return [];
+      const sales = [];
+      for (let i = 1; i <= 4; i++) {
+        const nama = (first[`sales_divisi_${i}_nama`] || '').trim();
+        const wa = normalizePhone(first[`sales_divisi_${i}_wa`]);
+        if (!wa) continue;
+        sales.push({ nama: nama || `Sales Divisi ${i}`, wa, index: i, isDivision: true });
+      }
+      return sales;
+    }
+
+    function getAnyUnitWA() {
+      for (const u of UNITS) {
+        for (let i = 1; i <= 4; i++) {
+          const wa = normalizePhone(u[`sales_divisi_${i}_wa`]);
+          if (wa) return wa;
+        }
+      }
+      return '';
+    }
+
+    function hasGlobalWA() {
+      if (HOLDING_SALES.length > 0) return true;
+      return Boolean(getAnyUnitWA());
+    }
+
+    function hasStage2WA(divName) {
+      if (getDivisionSales(divName).length > 0) return true;
+      return HOLDING_SALES.length > 0;
+    }
+
+    function updateWAVisibility() {
+      let show = false;
+      if (CURRENT_STAGE === 1) {
+        show = hasGlobalWA();
+      } else if (CURRENT_STAGE === 2 && CURRENT_DIVISION_NAME) {
+        show = hasStage2WA(CURRENT_DIVISION_NAME);
+      }
+
+      const navbarWa = document.getElementById('navbar-wa');
+      const floatingWa = document.getElementById('floating-wa');
+      const waUtamaBtn = document.getElementById('wa-utama-btn');
+
+      if (navbarWa) navbarWa.style.display = show ? '' : 'none';
+      if (floatingWa) floatingWa.style.display = show ? '' : 'none';
+      if (waUtamaBtn) waUtamaBtn.style.display = show ? '' : 'none';
+    }
+
+    function getSalesMode() {
+      const m = String(CONFIG.mode_wa || 'rotasi').toLowerCase().trim();
+      return m === 'pilihan' ? 'pilihan' : 'rotasi';
+    }
+
+    function parseStatsFromObject(obj) {
+      const keys = ['stat_1', 'stat_2', 'stat_3'];
+      const parsed = [];
+      keys.forEach((key, idx) => {
+        const raw = ((obj && obj[key]) || '').trim();
+        if (!raw) return;
+        const parts = raw.split('|');
+        const valuePart = (parts[0] || '').trim();
+        const labelPart = (parts[1] || '').trim();
+        if (!valuePart && !labelPart) return;
+        const m = valuePart.match(/^([\d.,\s]+)\s*(.*)$/);
+        let numberPart = valuePart;
+        let unitPart = '';
+        if (m && m[1].trim()) {
+          numberPart = m[1].trim();
+          unitPart = (m[2] || '').trim();
+        }
+        parsed.push({
+          number: numberPart,
+          unit: unitPart,
+          label: labelPart || `Statistik ${idx + 1}`
+        });
+      });
+      return parsed;
+    }
+
+    function getDivisionStats(divisionName) {
+      const divisionUnits = UNITS.filter(u => (u.nama_divisi || '').trim() === divisionName);
+      for (const unit of divisionUnits) {
+        const stats = parseStatsFromObject(unit);
+        if (stats.length) return stats;
+      }
+      return parseStatsFromObject(CONFIG);
+    }
+
+    function groupByDivision() {
+      const map = new Map();
+      UNITS.forEach(u => {
+        const div = (u.nama_divisi || '').trim();
+        if (!div) return;
+        if (!map.has(div)) map.set(div, []);
+        map.get(div).push(u);
+      });
+      return map;
+    }
+
+    function getDivisionContactInfo(divisionName) {
+      const units = UNITS.filter(u => (u.nama_divisi || '').trim() === divisionName);
+      const first = units[0] || {};
+      const igDiv = (first.instagram_divisi || '').trim();
+      const ttDiv = (first.tiktok_divisi || '').trim();
+      const taglineDiv = (first.tagline_divisi || '').trim();
+      const deskDiv = (first.deskripsi_divisi || '').trim();
+      const pesanUnit = (first.pesan_wa_unit || '').trim();
+
+      return {
+        pesan: pesanUnit || (CONFIG.pesan_wa_utama || 'Halo, saya ingin bertanya.'),
+        instagram: igDiv || (CONFIG.instagram || ''),
+        tiktok: ttDiv || (CONFIG.tiktok || ''),
+        facebook: CONFIG.facebook || '',
+        tagline: taglineDiv,
+        deskripsi: deskDiv
+      };
+    }
+
+    function getDivisionDenah(divisionName) {
+      const units = UNITS.filter(u => (u.nama_divisi || '').trim() === divisionName);
+      for (const u of units) {
+        const d = parseDriveUrl(u.gambar_denah);
+        if (d) return d;
+      }
+      return '';
+    }
+
+    function getDivisionCoverImage(divisionName) {
+      const units = UNITS.filter(u => (u.nama_divisi || '').trim() === divisionName);
+      if (!units.length) return FALLBACK_IMG;
+
+      for (const u of units) {
+        const d = parseDriveUrl(u.gambar_divisi);
+        if (d) return d;
+      }
+      for (const u of units) {
+        const d = parseDriveUrl(u.gambar_denah);
+        if (d) return d;
+      }
+      const first = units[0];
+      const render = parseDriveUrl(first.foto_render);
+      if (render) return render;
+      const lahan = parseDriveUrl(first.foto_lahan);
+      if (lahan) return lahan;
+      return FALLBACK_IMG;
+    }
+
+    function getDivisionFacilities(divisionName) {
+      const units = UNITS.filter(u => (u.nama_divisi || '').trim() === divisionName);
+      for (const u of units) {
+        const f = (u.fasilitas_divisi || '').trim();
+        if (f) return f;
+      }
+      return '';
+    }
+
+    async function fetchCSV(url) {
+      const res = await fetch(url, { cache: 'no-store' });
+      if (!res.ok) throw new Error(`HTTP ${res.status} — ${res.statusText}`);
+      const text = await res.text();
+      if (!text || text.trim() === '') throw new Error('CSV kosong / tidak valid.');
+      return text;
+    }
+
+    function buildWAUrl(wa, message) {
+      return `https://wa.me/${wa}?text=${encodeURIComponent(message || '')}`;
+    }
+
+    function pickNextSalesRoundRobin(arr) {
+      if (!arr.length) return null;
+      const s = arr[ROTATION_INDEX % arr.length];
+      ROTATION_INDEX = (ROTATION_INDEX + 1) % arr.length;
+      return s;
+    }
+
+    function handleWAClick(message) {
+      const msg = message || (CURRENT_WA_OVERRIDE && CURRENT_WA_OVERRIDE.pesan) || CONFIG.pesan_wa_utama || 'Halo.';
+
+      if (CURRENT_STAGE === 2 && CURRENT_DIVISION_NAME) {
+        const divSales = getDivisionSales(CURRENT_DIVISION_NAME);
+        if (divSales.length) {
+          showSalesModal(msg, divSales);
+          return;
+        }
+        if (HOLDING_SALES.length) {
+          const mode = getSalesMode();
+          if (mode === 'pilihan') {
+            showSalesModal(msg, HOLDING_SALES);
+            return;
+          }
+          const sales = pickNextSalesRoundRobin(HOLDING_SALES);
+          if (sales) window.open(buildWAUrl(sales.wa, msg), '_blank');
+          return;
+        }
+        return;
+      }
+
+      if (HOLDING_SALES.length) {
+        const mode = getSalesMode();
+        if (mode === 'pilihan') {
+          showSalesModal(msg, HOLDING_SALES);
+          return;
+        }
+        const sales = pickNextSalesRoundRobin(HOLDING_SALES);
+        if (sales) window.open(buildWAUrl(sales.wa, msg), '_blank');
+        return;
+      }
+      const anyUnitWA = getAnyUnitWA();
+      if (anyUnitWA) {
+        window.open(buildWAUrl(anyUnitWA, msg), '_blank');
+        return;
+      }
+    }
+
+    function pushModalHistory() {
+      if (!MODAL_HISTORY_PUSHED) {
+        MODAL_HISTORY_PUSHED = true;
+        const state = { stage: CURRENT_STAGE, modal: true };
+        if (CURRENT_STAGE === 2) state.division = CURRENT_DIVISION;
+        try {
+          const hashSuffix = CURRENT_STAGE === 2 && CURRENT_DIVISION ? '#' + CURRENT_DIVISION : location.hash || '';
+          history.pushState(state, '', hashSuffix || location.pathname);
+        } catch (e) {}
+      }
+    }
+
+    function closeAllModalsViaHistory() {
+      if (MODAL_HISTORY_PUSHED) {
+        history.back();
+      } else {
+        hideAllModalsDOM();
+        document.body.classList.remove('modal-open');
+      }
+    }
+
+    function hideAllModalsDOM() {
+      hideSalesModal();
+      hideKPRModal();
+      hideLightbox();
+      hideDenahModal();
+      document.body.classList.remove('modal-open');
+    }
+
+    function isAnyModalOpen() {
+      return (
+        !document.getElementById('sales-modal').classList.contains('hidden') ||
+        !document.getElementById('kpr-modal').classList.contains('hidden') ||
+        !document.getElementById('lightbox').classList.contains('hidden') ||
+        !document.getElementById('denah-modal').classList.contains('hidden')
+      );
+    }
+
+    function showSalesModal(message, salesArr) {
+      const modal = document.getElementById('sales-modal');
+      const list = document.getElementById('sales-list');
+      if (!modal || !list) return;
+
+      const sales = salesArr || HOLDING_SALES;
+      if (!sales.length) return;
+
+      list.innerHTML = sales.map((s, idx) => `
+        <button type="button" data-sales-wa="${escapeHtml(s.wa)}" data-sales-message="${escapeHtml(message)}"
+                class="flex w-full items-center justify-between gap-3 rounded-xl border border-brown/10 bg-beige p-3 text-left transition hover:border-gold hover:bg-gold/5 active:scale-[0.99]">
+          <div class="flex items-center gap-3">
+            <div class="grid h-10 w-10 place-items-center rounded-full bg-gradient-to-br from-gold to-gold_dark text-white shadow-md">
+              <i class="fa-solid fa-user-tie"></i>
+            </div>
+            <div>
+              <p class="text-sm font-bold text-brown">${escapeHtml(s.nama)}</p>
+              <p class="text-[11px] text-brown/50">${s.isDivision ? 'Sales Divisi' : 'Sales Marketing'} ${idx + 1}</p>
+            </div>
+          </div>
+          <i class="fa-brands fa-whatsapp text-xl text-wa"></i>
+        </button>
+      `).join('');
+
+      modal.classList.remove('hidden');
+      document.body.classList.add('modal-open');
+      pushModalHistory();
+    }
+
+    function hideSalesModal() {
+      const modal = document.getElementById('sales-modal');
+      if (modal) modal.classList.add('hidden');
+    }
+
+    function calculateAllTenors(harga, dp) {
+      const pokokKredit = Math.max(0, harga - dp);
+      const bungaPerTahunRp = pokokKredit * BUNGA_FLAT;
+      return TENORS.map(tenorBulan => {
+        const tahun = tenorBulan / 12;
+        const totalBunga = bungaPerTahunRp * tahun;
+        const totalHutang = pokokKredit + totalBunga;
+        const cicilanPerBulan = totalHutang / tenorBulan;
+        return { tenorBulan, tenorTahun: tahun, pokokKredit, totalBunga, totalHutang, cicilanPerBulan };
+      });
+    }
+
+    function updateKPRResults() {
+      if (!ACTIVE_KPR_UNIT) return;
+      const harga = parseNumber(ACTIVE_KPR_UNIT.harga);
+      const dp = Math.max(MIN_DP, Math.min(ACTIVE_DP || MIN_DP, harga - 1));
+      const results = calculateAllTenors(harga, dp);
+      const container = document.getElementById('kpr-results');
+      if (!container) return;
+
+      container.innerHTML = results.map((r, i) => `
+        <div class="tenor-card" style="animation-delay: ${i * 0.05}s">
+          <p class="text-[11px] font-bold uppercase tracking-wider text-gold_dark">${r.tenorTahun} Tahun</p>
+          <p class="mt-1 text-base font-extrabold text-brown">
+            ${formatRupiah(r.cicilanPerBulan)}
+            <span class="text-[10px] font-medium text-brown/50">/bln</span>
+          </p>
+          <p class="mt-0.5 text-[10px] text-brown/50">Total ${formatRupiah(r.totalHutang)}</p>
+        </div>
+      `).join('');
+
+      const percent = harga > 0 ? ((dp / harga) * 100).toFixed(1) : 0;
+      const percentEl = document.getElementById('kpr-dp-percent');
+      if (percentEl) percentEl.textContent = `${percent}% dari harga`;
+
+      const pokokEl = document.getElementById('kpr-pokok-hutang');
+      if (pokokEl) pokokEl.textContent = formatRupiah(Math.max(0, harga - dp));
+
+      document.querySelectorAll('.dp-quick-btn').forEach(btn => {
+        const p = parseFloat(btn.dataset.dpPercent);
+        const targetDP = Math.round(harga * (p / 100));
+        btn.classList.toggle('active', Math.abs(targetDP - dp) < 1000);
+      });
+    }
+
+    function openKPRModal(unit) {
+      const modal = document.getElementById('kpr-modal');
+      if (!modal) return;
+      if (!isPropertyProduct(unit)) return;
+
+      ACTIVE_KPR_UNIT = unit;
+      const harga = parseNumber(unit.harga);
+      const defaultDP = Math.max(MIN_DP, Math.round(harga * 0.2));
+      ACTIVE_DP = Math.min(defaultDP, Math.max(MIN_DP, harga - 1));
+
+      const nameEl = document.getElementById('kpr-unit-name');
+      if (nameEl) nameEl.textContent = unit.nama_unit || 'Unit';
+
+      const priceEl = document.getElementById('kpr-unit-price');
+      if (priceEl) priceEl.textContent = formatRupiah(harga);
+
+      const dpInput = document.getElementById('kpr-dp-input');
+      if (dpInput) dpInput.value = formatNumberInput(ACTIVE_DP);
+
+      updateKPRResults();
+      modal.classList.remove('hidden');
+      document.body.classList.add('modal-open');
+      pushModalHistory();
+    }
+
+    function hideKPRModal() {
+      const modal = document.getElementById('kpr-modal');
+      if (modal) modal.classList.add('hidden');
+      ACTIVE_KPR_UNIT = null;
+    }
+
+    function buildKPRWAMessage() {
+      if (!ACTIVE_KPR_UNIT) return '';
+      const harga = parseNumber(ACTIVE_KPR_UNIT.harga);
+      const dp = Math.max(MIN_DP, Math.min(ACTIVE_DP || MIN_DP, harga - 1));
+      const results = calculateAllTenors(harga, dp);
+      const percent = harga > 0 ? ((dp / harga) * 100).toFixed(1) : 0;
+      const tenorLines = results.map(r =>
+        `• ${r.tenorTahun} Tahun (${r.tenorBulan}x): ${formatRupiah(r.cicilanPerBulan)}/bulan`
+      ).join('\n');
+
+      return [
+        `Assalamu'alaikum, saya tertarik dengan unit *${ACTIVE_KPR_UNIT.nama_unit || 'ini'}*.`,
+        '',
+        `📋 *Rincian Simulasi Angsuran:*`,
+        `Harga Unit: ${formatRupiah(harga)}`,
+        `Uang Muka (DP): ${formatRupiah(dp)} (${percent}%)`,
+        `Sisa Pokok: ${formatRupiah(Math.max(0, harga - dp))}`,
+        `Bunga Flat: 5%/tahun`,
+        '',
+        `💰 *Estimasi Cicilan:*`,
+        tenorLines,
+        '',
+        `Mohon informasi lebih lanjut. Terima kasih 🙏`
+      ].join('\n');
+    }
+
+    function openLightbox(images, startIndex, title) {
+      if (!images || !images.length) return;
+      LB_IMAGES = images;
+      LB_INDEX = Math.max(0, Math.min(startIndex || 0, images.length - 1));
+      LB_ZOOMED = false;
+
+      const lb = document.getElementById('lightbox');
+      const img = document.getElementById('lightbox-img');
+      if (!lb || !img) return;
+
+      lb.classList.remove('hidden');
+      lb.classList.add('flex');
+      document.body.classList.add('modal-open');
+
+      const titleEl = document.getElementById('lightbox-title');
+      if (titleEl) titleEl.textContent = title || 'Foto';
+
+      renderLightboxImage();
+      pushModalHistory();
+    }
+
+    function renderLightboxImage() {
+      const img = document.getElementById('lightbox-img');
+      const counter = document.getElementById('lightbox-counter');
+      const prevBtn = document.getElementById('lightbox-prev');
+      const nextBtn = document.getElementById('lightbox-next');
+      const zoomBtn = document.getElementById('lightbox-zoom-toggle');
+      if (!img || !LB_IMAGES[LB_INDEX]) return;
+
+      LB_ZOOMED = false;
+      img.classList.remove('lightbox-zoomed');
+      img.style.transform = '';
+      updateZoomIcon(zoomBtn);
+
+      img.dataset.fallbackApplied = '';
+      img.onerror = function () { window.__imgFail(this); };
+      img.style.opacity = '0';
+      setTimeout(() => {
+        img.src = LB_IMAGES[LB_INDEX].src;
+        img.alt = LB_IMAGES[LB_INDEX].alt || '';
+        img.style.opacity = '1';
+      }, 120);
+
+      if (counter) counter.textContent = `${LB_INDEX + 1} / ${LB_IMAGES.length}`;
+      if (prevBtn) { prevBtn.classList.toggle('hidden', LB_IMAGES.length <= 1); prevBtn.classList.toggle('grid', LB_IMAGES.length > 1); }
+      if (nextBtn) { nextBtn.classList.toggle('hidden', LB_IMAGES.length <= 1); nextBtn.classList.toggle('grid', LB_IMAGES.length > 1); }
+    }
+
+    function hideLightbox() {
+      const lb = document.getElementById('lightbox');
+      const img = document.getElementById('lightbox-img');
+      if (lb) { lb.classList.add('hidden'); lb.classList.remove('flex'); }
+      if (img) { img.style.transform = ''; img.classList.remove('lightbox-zoomed'); }
+      LB_ZOOMED = false;
+      LB_IMAGES = [];
+      LB_INDEX = 0;
+    }
+
+    function lightboxNext() {
+      if (LB_IMAGES.length <= 1) return;
+      LB_INDEX = (LB_INDEX + 1) % LB_IMAGES.length;
+      renderLightboxImage();
+    }
+
+    function lightboxPrev() {
+      if (LB_IMAGES.length <= 1) return;
+      LB_INDEX = (LB_INDEX - 1 + LB_IMAGES.length) % LB_IMAGES.length;
+      renderLightboxImage();
+    }
+
+    function updateZoomIcon(btn) {
+      if (!btn) return;
+      const icon = btn.querySelector('i');
+      if (!icon) return;
+      icon.className = LB_ZOOMED ? 'fa-solid fa-magnifying-glass-minus text-sm' : 'fa-solid fa-magnifying-glass-plus text-sm';
+    }
+
+    function toggleLightboxZoom() {
+      const img = document.getElementById('lightbox-img');
+      const btn = document.getElementById('lightbox-zoom-toggle');
+      if (!img) return;
+      LB_ZOOMED = !LB_ZOOMED;
+      if (LB_ZOOMED) { img.classList.add('lightbox-zoomed'); img.style.transform = 'scale(2)'; }
+      else { img.classList.remove('lightbox-zoomed'); img.style.transform = 'scale(1)'; }
+      updateZoomIcon(btn);
+    }
+
+    /* ================================================================
+       DENAH MODAL — STRICT: HANYA BUKA JIKA ADA URL DENAH
+    ================================================================ */
+    function openDenahModal(gambarDenahUrl, unitName) {
+      const modal = document.getElementById('denah-modal');
+      const modalImg = document.getElementById('denah-modal-img');
+      const titleEl = document.getElementById('denah-modal-title');
+      const subtitleEl = document.getElementById('denah-modal-subtitle');
+      if (!modal || !modalImg) return;
+
+      // STRICT: Tombol hanya dirender saat unit punya denah sendiri.
+      // Guard tambahan: jika URL kosong → jangan buka modal sama sekali.
+      if (!gambarDenahUrl || String(gambarDenahUrl).trim() === '') return;
+
+      modalImg.dataset.fallbackApplied = '';
+      modalImg.onerror = function () { window.__imgFail(this); };
+      modalImg.src = gambarDenahUrl;
+      modalImg.alt = `Denah Kawasan${unitName ? ' - ' + unitName : ''}`;
+
+      if (titleEl) titleEl.textContent = unitName ? `Denah: ${unitName}` : 'Denah Kawasan';
+      if (subtitleEl) {
+        const divLabel = CURRENT_DIVISION_NAME || 'Kawasan';
+        subtitleEl.textContent = `${divLabel} · Master Plan`;
+      }
+
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+      document.body.classList.add('modal-open');
+      pushModalHistory();
+    }
+
+    function hideDenahModal() {
+      const modal = document.getElementById('denah-modal');
+      const modalImg = document.getElementById('denah-modal-img');
+      if (modal) { modal.classList.add('hidden'); modal.classList.remove('flex'); }
+      if (modalImg) modalImg.src = '';
+    }
+
+    // Global exposure untuk compatibility
+    window.openDenahModal = openDenahModal;
+    window.closeDenahModal = function () { closeAllModalsViaHistory(); };
+
+    function setupSwipeDown(modalEl, contentSelector, onClose) {
+      if (!modalEl) return;
+      let startY = 0, startX = 0, dragging = false;
+
+      modalEl.addEventListener('touchstart', e => {
+        if (e.touches.length !== 1) return;
+        const target = e.target.closest(contentSelector);
+        if (!target) return;
+        const innerScroll = target.querySelector('.overflow-y-auto');
+        if (innerScroll && innerScroll.scrollTop > 0) return;
+        startY = e.touches[0].clientY;
+        startX = e.touches[0].clientX;
+        dragging = true;
+      }, { passive: true });
+
+      modalEl.addEventListener('touchmove', e => {
+        if (!dragging) return;
+        const dy = e.touches[0].clientY - startY;
+        const dx = e.touches[0].clientX - startX;
+        if (dy > 0 && Math.abs(dy) > Math.abs(dx)) {
+          const content = modalEl.querySelector(contentSelector);
+          if (content) { content.style.transform = `translateY(${dy}px)`; content.style.transition = 'none'; }
+          if (e.cancelable) e.preventDefault();
+        }
+      }, { passive: false });
+
+      modalEl.addEventListener('touchend', e => {
+        if (!dragging) return;
+        dragging = false;
+        const dy = e.changedTouches[0].clientY - startY;
+        const content = modalEl.querySelector(contentSelector);
+        if (content) { content.style.transform = ''; content.style.transition = 'transform 0.2s ease'; }
+        if (dy > 100) onClose();
+      });
+
+      modalEl.addEventListener('touchcancel', () => {
+        dragging = false;
+        const content = modalEl.querySelector(contentSelector);
+        if (content) { content.style.transform = ''; content.style.transition = ''; }
+      });
+    }
+
+    function setMetaAttr(selector, attr, value) {
+      const el = document.querySelector(selector);
+      if (el && value) el.setAttribute(attr, value);
+    }
+
+    function updateDynamicMeta(brandName, tagline, deskripsi) {
+      const nama = brandName || CONFIG.nama_brand || 'Portal Unit Usaha';
+      const desc = deskripsi || CONFIG.hero_deskripsi || 'Portal resmi unit usaha & katalog produk.';
+      const logoRaw = parseDriveUrl(CONFIG.logo);
+      const bannerRaw = parseDriveUrl(CONFIG.banner_hero);
+      const ogImage = bannerRaw || logoRaw || 'https://picsum.photos/seed/portal-og/1200/630';
+
+      document.title = nama;
+      setMetaAttr('meta[name="description"]', 'content', desc);
+      setMetaAttr('meta[property="og:title"]', 'content', nama);
+      setMetaAttr('meta[property="og:description"]', 'content', desc);
+      setMetaAttr('meta[property="og:image"]', 'content', ogImage);
+      setMetaAttr('meta[property="og:site_name"]', 'content', nama);
+      setMetaAttr('meta[property="og:url"]', 'content', location.href);
+      setMetaAttr('meta[name="twitter:title"]', 'content', nama);
+      setMetaAttr('meta[name="twitter:description"]', 'content', desc);
+      setMetaAttr('meta[name="twitter:image"]', 'content', ogImage);
+
+      const canonical = document.querySelector('link[rel="canonical"]');
+      if (canonical) canonical.setAttribute('href', location.href);
+    }
+
+    function generateCrownFaviconSvg(initial) {
+      const safe = escapeHtml(initial || 'U');
+      return `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'>
+        <rect width='100' height='100' rx='24' fill='#2C221E'/>
+        <text x='50' y='48' font-size='34' font-family='Georgia,serif' font-weight='bold' fill='#D4A373' text-anchor='middle'>${safe}</text>
+        <path d='M 32 74 L 36 64 L 41 71 L 50 60 L 59 71 L 64 64 L 68 74 L 68 82 L 32 82 Z' fill='#D4A373'/>
+      </svg>`;
+    }
+
+    function updateFavicon(brandName, logoUrl) {
+      const favicon = document.getElementById('dynamic-favicon');
+      if (!favicon) return;
+      if (logoUrl) {
+        favicon.href = logoUrl;
+      } else {
+        const initial = getBrandInitial(brandName);
+        favicon.href = 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(generateCrownFaviconSvg(initial));
+      }
+    }
+
+    function updateLogoElement(initialId, imgId, crownId, brandName, logoUrl) {
+      const initialEl = document.getElementById(initialId);
+      const imgEl = document.getElementById(imgId);
+      const crownEl = crownId ? document.getElementById(crownId) : null;
+      if (!initialEl || !imgEl) return;
+      if (logoUrl) {
+        imgEl.src = logoUrl;
+        imgEl.classList.remove('hidden');
+        initialEl.classList.add('hidden');
+        if (crownEl) crownEl.classList.add('hidden');
+      } else {
+        initialEl.textContent = getBrandInitial(brandName);
+        initialEl.classList.remove('hidden');
+        imgEl.classList.add('hidden');
+        if (crownEl) crownEl.classList.remove('hidden');
+      }
+    }
+
+    function updateBrandDisplay(brandName, subText, logoUrl) {
+      const logoFinal = logoUrl || parseDriveUrl(CONFIG.logo);
+      const brandFinal = brandName || CONFIG.nama_brand || 'Portal Unit Usaha';
+      const subFinal = subText || 'Official Website';
+
+      document.querySelectorAll('[data-brand-name]').forEach(el => { el.textContent = brandFinal; });
+      document.querySelectorAll('[data-brand-official]').forEach(el => { el.textContent = subFinal; });
+
+      updateLogoElement('header-logo-initial', 'header-logo-img', 'header-logo-crown', brandFinal, logoFinal);
+      updateLogoElement('hero-logo-initial', 'hero-logo-img', 'hero-logo-crown', brandFinal, logoFinal);
+      updateLogoElement('footer-logo-initial', 'footer-logo-img', 'footer-logo-crown', brandFinal, logoFinal);
+
+      updateFavicon(brandFinal, logoFinal);
+    }
+
+    function applyContacts(contacts) {
+      CURRENT_WA_OVERRIDE = contacts;
+
+      ['wa-utama-btn', 'navbar-wa', 'floating-wa'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.setAttribute('data-wa-message', contacts.pesan || 'Halo.');
+      });
+
+      ['sosmed-instagram', 'footer-sosmed-instagram'].forEach(id => {
+        const el = document.getElementById(id);
+        if (!el) return;
+        const url = (contacts.instagram || '').trim();
+        if (url) { el.href = url; el.classList.remove('hidden'); el.classList.add('grid'); }
+        else { el.classList.add('hidden'); el.classList.remove('grid'); }
+      });
+
+      ['sosmed-tiktok', 'footer-sosmed-tiktok'].forEach(id => {
+        const el = document.getElementById(id);
+        if (!el) return;
+        const url = (contacts.tiktok || '').trim();
+        if (url) { el.href = url; el.classList.remove('hidden'); el.classList.add('grid'); }
+        else { el.classList.add('hidden'); el.classList.remove('grid'); }
+      });
+
+      ['sosmed-facebook', 'footer-sosmed-facebook'].forEach(id => {
+        const el = document.getElementById(id);
+        if (!el) return;
+        const url = (contacts.facebook || '').trim();
+        if (url) { el.href = url; el.classList.remove('hidden'); el.classList.add('grid'); }
+        else { el.classList.add('hidden'); el.classList.remove('grid'); }
+      });
+    }
+
+    function getGlobalContacts() {
+      return {
+        pesan: CONFIG.pesan_wa_utama || 'Halo, saya ingin bertanya.',
+        instagram: CONFIG.instagram || '',
+        tiktok: CONFIG.tiktok || '',
+        facebook: CONFIG.facebook || '',
+        tagline: '',
+        deskripsi: ''
+      };
+    }
+
+    function updateHeroLogoPosition(hasBanner) {
+      const wrap = document.getElementById('hero-logo-wrap');
+      if (!wrap) return;
+      if (hasBanner) wrap.classList.add('has-banner');
+      else wrap.classList.remove('has-banner');
+    }
+
+    function renderHeaderAndHero() {
+      const c = CONFIG;
+      const nama = c.nama_brand || 'Portal Unit Usaha';
+      updateBrandDisplay(nama, 'Official Website', parseDriveUrl(c.logo));
+
+      const bannerUrl = parseDriveUrl(c.banner_hero);
+      const bannerWrap = document.getElementById('banner-hero-wrap');
+      const bannerImg = document.getElementById('banner-hero');
+      if (bannerWrap && bannerImg) {
+        if (bannerUrl) {
+          bannerImg.src = bannerUrl;
+          bannerWrap.classList.remove('hidden');
+          bannerWrap.classList.add('mb-8', 'sm:mb-10');
+          updateHeroLogoPosition(true);
+        } else {
+          bannerWrap.classList.add('hidden');
+          bannerWrap.classList.remove('mb-8', 'sm:mb-10');
+          updateHeroLogoPosition(false);
+        }
+      }
+
+      const badgeWrap = document.getElementById('hero-badge-wrap');
+      const badgeEl = document.getElementById('hero-badge');
+      if (badgeWrap && badgeEl) {
+        const badgeText = (c.hero_badge || '').trim();
+        if (badgeText) {
+          badgeEl.textContent = badgeText;
+          badgeWrap.classList.remove('hidden');
+          badgeWrap.classList.add('inline-flex');
+        } else {
+          badgeWrap.classList.add('hidden');
+          badgeWrap.classList.remove('inline-flex');
+        }
+      }
+
+      const titleEl = document.getElementById('hero-title');
+      if (titleEl) {
+        const t = (c.hero_title || '').trim();
+        if (t) { titleEl.textContent = t; titleEl.classList.remove('hidden'); }
+        else { titleEl.textContent = ''; titleEl.classList.add('hidden'); }
+      }
+
+      const subtitleEl = document.getElementById('hero-subtitle');
+      if (subtitleEl) {
+        const s = (c.hero_subtitle || '').trim();
+        if (s) { subtitleEl.textContent = s; subtitleEl.classList.remove('hidden'); }
+        else { subtitleEl.textContent = ''; subtitleEl.classList.add('hidden'); }
+      }
+
+      const descEl = document.getElementById('hero-deskripsi');
+      if (descEl) {
+        const d = (c.hero_deskripsi || '').trim();
+        if (d) { descEl.textContent = d; descEl.classList.remove('hidden'); }
+        else { descEl.textContent = ''; descEl.classList.add('hidden'); }
+      }
+
+      const gmapsUrl = (c.gmaps_lokasi || '').trim();
+      const gmapsBtn = document.getElementById('gmaps-btn');
+      if (gmapsBtn) {
+        if (gmapsUrl) { gmapsBtn.href = gmapsUrl; gmapsBtn.classList.remove('hidden'); }
+        else gmapsBtn.classList.add('hidden');
+      }
+
+      applyContacts(getGlobalContacts());
+    }
+
+    function renderScrollText() {
+      const bar = document.getElementById('scroll-text-bar');
+      const content = document.getElementById('scroll-text-content');
+      const text = (CONFIG.hero_scroll_text || '').trim();
+      if (!text) { bar.classList.add('hidden'); return; }
+      content.innerHTML = `<span class="px-8">${escapeHtml(text)}</span><span class="px-8">${escapeHtml(text)}</span>`;
+      bar.classList.remove('hidden');
+    }
+
+    function renderVideo() {
+      const section = document.getElementById('video-section');
+      const iframe = document.getElementById('video-iframe');
+      if (!section || !iframe) return;
+      const embedUrl = getYouTubeEmbed(CONFIG.video_promo || '');
+      if (embedUrl) { iframe.src = embedUrl; section.classList.remove('hidden'); }
+      else { iframe.src = ''; section.classList.add('hidden'); }
+    }
+
+    function renderPromoBanners() {
+      const section = document.getElementById('promo-banners');
+      const grid = document.getElementById('promo-banner-grid');
+      if (!section || !grid) return;
+
+      const banners = [];
+      for (let i = 1; i <= 3; i++) {
+        const img = (CONFIG[`promo_banner_${i}`] || '').trim();
+        const link = (CONFIG[`promo_link_${i}`] || '').trim();
+        if (img) banners.push({ img: parseDriveUrl(img), link: link || '#' });
+      }
+
+      if (!banners.length) { section.classList.add('hidden'); return; }
+
+      grid.className = 'grid gap-4 ' + (banners.length === 1 ? 'grid-cols-1' : banners.length === 2 ? 'grid-cols-1 sm:grid-cols-2' : 'grid-cols-1 sm:grid-cols-3');
+      grid.innerHTML = banners.map(b => `
+        <a href="${escapeHtml(b.link)}" target="_blank" rel="noopener"
+           class="block overflow-hidden rounded-2xl border border-brown/10 bg-white shadow-soft transition hover:-translate-y-1 hover:shadow-card">
+          <img src="${escapeHtml(b.img)}" alt="Promo" loading="lazy" decoding="async" onerror="__imgFail(this)" class="aspect-[16/9] w-full object-cover" />
+        </a>
+      `).join('');
+      section.classList.remove('hidden');
+    }
+
+    function renderStatsInto(gridId, wrapperId, stats) {
+      const grid = document.getElementById(gridId);
+      const wrapper = document.getElementById(wrapperId);
+      if (!grid || !wrapper) return;
+
+      if (!stats || !stats.length) {
+        grid.innerHTML = '';
+        wrapper.classList.add('hidden');
+        return;
+      }
+
+      const cols = stats.length === 1 ? 1 : stats.length === 2 ? 2 : 3;
+      grid.style.gridTemplateColumns = `repeat(${cols}, minmax(0, 1fr))`;
+
+      grid.innerHTML = stats.map((s, i) => `
+        <div class="stat-fade-in flex flex-col items-center justify-center rounded-2xl border border-brown/10 bg-white px-3 py-4 text-center shadow-soft sm:py-5" style="animation-delay: ${i * 0.1}s">
+          <p class="font-serif-display text-2xl font-bold leading-tight text-brown sm:text-3xl">
+            ${escapeHtml(s.number)}${s.unit ? `<span class="ml-1 text-sm font-semibold text-gold_dark sm:text-base">${escapeHtml(s.unit)}</span>` : ''}
+          </p>
+          <p class="mt-1 text-[10px] font-bold uppercase tracking-wider text-brown/60 sm:text-[11px]">${escapeHtml(s.label)}</p>
+        </div>
+      `).join('');
+      wrapper.classList.remove('hidden');
+    }
+
+    function renderDivisions() {
+      const grid = document.getElementById('divisions-grid');
+      if (!grid) return;
+
+      const divisions = groupByDivision();
+      if (!divisions.size) {
+        grid.innerHTML = `
+          <div class="col-span-full rounded-2xl border-2 border-dashed border-brown/20 bg-white/60 p-10 text-center">
+            <i class="fa-solid fa-house-circle-xmark text-3xl text-brown/30"></i>
+            <p class="mt-3 text-sm font-bold text-brown/70">Belum ada divisi tersedia.</p>
+          </div>`;
+        return;
+      }
+
+      let html = '';
+      divisions.forEach((units, divName) => {
+        const firstUnit = units[0];
+        const slug = slugify(divName);
+        const coverImg = getDivisionCoverImage(divName);
+        const mapsLink = firstUnit.link_gmaps || CONFIG.gmaps_lokasi || '#';
+        const count = units.length;
+        const tagline = (firstUnit.tagline_divisi || '').trim();
+        const hasDenah = Boolean(parseDriveUrl(firstUnit.gambar_denah));
+        const facilities = getDivisionFacilities(divName);
+        const facilityGridHTML = renderFasilitasGrid(facilities);
+
+        html += `
+          <div class="division-card card-fade-in overflow-hidden rounded-2xl border border-brown/10 bg-white shadow-card">
+            <div class="relative aspect-[4/3] w-full overflow-hidden bg-beige_dark">
+              <img src="${escapeHtml(coverImg)}" alt="${escapeHtml(divName)}" loading="lazy" decoding="async" onerror="__imgFail(this)" class="h-full w-full object-cover" />
+              <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-brown/60 via-transparent to-transparent"></div>
+              <div class="absolute bottom-3 left-3 inline-flex items-center gap-1.5 rounded-full bg-white/95 px-3 py-1 text-[10px] font-extrabold uppercase tracking-wide text-brown shadow">
+                <i class="fa-solid fa-crown text-[9px] text-gold"></i>
+                ${count} Produk
+              </div>
+              ${hasDenah ? `<div class="absolute top-3 right-3 inline-flex items-center gap-1.5 rounded-full bg-gold/95 px-2.5 py-1 text-[9px] font-extrabold uppercase tracking-wide text-white shadow">
+                <i class="fa-solid fa-map text-[8px]"></i>
+                Master Plan
+              </div>` : ''}
+            </div>
+            <div class="p-5">
+              <h3 class="font-serif-display text-lg font-bold leading-tight text-brown">${escapeHtml(divName)}</h3>
+              ${tagline ? `<p class="mt-1 text-[12px] font-medium text-brown/60">${escapeHtml(tagline)}</p>` : ''}
+              <p class="mt-1 text-[11px] text-brown/50">${count} produk tersedia</p>
+              ${facilityGridHTML}
+              <div class="mt-4 flex gap-2">
+                <button type="button" data-division-link="${escapeHtml(slug)}"
+                        class="flex flex-1 items-center justify-center gap-2 rounded-xl bg-brown px-3 py-2.5 text-xs font-bold text-beige shadow-soft transition hover:bg-brown_light active:scale-[0.98]">
+                  <i class="fa-solid fa-store text-[10px]"></i>
+                  <span>Lihat Katalog</span>
+                </button>
+                <a href="${escapeHtml(mapsLink)}" target="_blank" rel="noopener"
+                   class="flex items-center justify-center gap-1.5 rounded-xl border border-brown/15 bg-white px-3 py-2.5 text-[11px] font-bold text-brown/70 transition hover:border-gold hover:bg-gold/10 hover:text-gold_dark active:scale-[0.98]">
+                  <i class="fa-solid fa-location-dot text-[10px]"></i>
+                  <span class="hidden sm:inline">Maps</span>
+                </a>
+              </div>
+            </div>
+          </div>`;
+      });
+
+      grid.innerHTML = html;
+      grid.querySelectorAll('[data-division-link]').forEach(btn => {
+        btn.addEventListener('click', () => { navigateToDivision(btn.dataset.divisionLink); });
+      });
+    }
+
+    function renderStatusFilterTabs(units) {
+      const wrap = document.getElementById('filter-status-tabs');
+      const outerWrap = document.getElementById('filter-status-wrap');
+      if (!wrap) return;
+
+      if (!units.length) { outerWrap.classList.add('hidden'); return; }
+      outerWrap.classList.remove('hidden');
+
+      const total = units.length;
+      const readyCount = units.filter(u => !isSoldOut(u.status)).length;
+      const soldCount = units.filter(u => isSoldOut(u.status)).length;
+
+      wrap.innerHTML = `
+        <button type="button" data-status-filter="all" class="status-tab ${ACTIVE_STATUS_FILTER === 'all' ? 'active' : ''}">
+          <i class="fa-solid fa-layer-group text-[10px]"></i>
+          <span>Semua Unit</span>
+          <span class="tab-count">${total}</span>
+        </button>
+        <button type="button" data-status-filter="ready" class="status-tab ${ACTIVE_STATUS_FILTER === 'ready' ? 'active' : ''}">
+          <i class="fa-solid fa-circle-check text-[10px]"></i>
+          <span>Ready Stock</span>
+          <span class="tab-count">${readyCount}</span>
+        </button>
+        <button type="button" data-status-filter="sold" class="status-tab ${ACTIVE_STATUS_FILTER === 'sold' ? 'active' : ''}">
+          <i class="fa-solid fa-ban text-[10px]"></i>
+          <span>Terjual / Booked</span>
+          <span class="tab-count">${soldCount}</span>
+        </button>
+      `;
+    }
+
+    function applyStatusFilter(filter) {
+      ACTIVE_STATUS_FILTER = filter;
+      document.querySelectorAll('[data-status-filter]').forEach(tab => {
+        tab.classList.toggle('active', tab.dataset.statusFilter === filter);
+      });
+
+      const cards = document.querySelectorAll('#catalog-grid > article');
+      cards.forEach(card => {
+        const isSold = card.dataset.isSold === '1';
+        let show = true;
+        if (filter === 'ready') show = !isSold;
+        else if (filter === 'sold') show = isSold;
+
+        card.classList.toggle('hidden', !show);
+        if (show) {
+          card.classList.add('card-fade-in');
+          setTimeout(() => card.classList.remove('card-fade-in'), 400);
+        }
+      });
+    }
+
+    function renderDenahBanner(divisionName) {
+      const wrap = document.getElementById('denah-banner-wrap');
+      const img = document.getElementById('denah-img');
+      const denahEl = document.getElementById('denah-banner');
+      if (!wrap || !img || !denahEl) return;
+
+      const denahUrl = getDivisionDenah(divisionName);
+      CURRENT_DIVISION_DENAH = denahUrl;
+
+      if (!denahUrl) {
+        wrap.classList.add('hidden');
+        return;
+      }
+
+      img.src = denahUrl;
+      wrap.classList.remove('hidden');
+
+      const newDenahEl = denahEl.cloneNode(true);
+      denahEl.parentNode.replaceChild(newDenahEl, denahEl);
+
+      newDenahEl.addEventListener('click', () => {
+        const grid = document.getElementById('catalog-grid');
+        if (grid) {
+          const y = grid.getBoundingClientRect().top + window.pageYOffset - 100;
+          window.scrollTo({ top: y, behavior: 'smooth' });
+        }
+      });
+
+      const zoomBtn = document.getElementById('denah-zoom-btn');
+      if (zoomBtn) {
+        const newZoomBtn = zoomBtn.cloneNode(true);
+        zoomBtn.parentNode.replaceChild(newZoomBtn, zoomBtn);
+        newZoomBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          openLightbox([{ src: denahUrl, alt: 'Master Plan - Denah Kawasan' }], 0, 'Master Plan / Denah Kawasan');
+        });
+      }
+    }
+
+    /* ================================================================
+       UNIT CARD — Tombol "Lihat Layout" STRICT (Sesi 26)
+       HANYA muncul jika kolom gambar_denah pada unit tersebut terisi.
+    ================================================================ */
+    function createUnitCard(unit, unitIndex) {
+      const renderImgRaw = parseDriveUrl(unit.foto_render);
+      const lahanImgRaw = parseDriveUrl(unit.foto_lahan);
+      const renderImg = renderImgRaw || FALLBACK_IMG;
+      const lahanImg = lahanImgRaw || '';
+      const hasRender = Boolean(renderImgRaw);
+      const hasLahan = Boolean(lahanImgRaw);
+      const hasSwitcher = hasRender && hasLahan;
+
+      const defaultImg = hasLahan ? lahanImg : renderImg;
+      const defaultView = hasLahan ? 'lahan' : 'render';
+
+      const status = (unit.status || '').trim();
+      const soldOut = isSoldOut(status);
+
+      const harga = parseNumber(unit.harga);
+      const hargaLama = parseNumber(unit.harga_lama);
+      const hasHargaLama = hargaLama > harga && harga > 0;
+
+      const labelPromo = (unit.label_promo || '').trim();
+      const hasPromoLabel = Boolean(labelPromo) || hasHargaLama;
+
+      const namaUnit = unit.nama_unit || 'Unit';
+      const kategori = (unit.kategori || '').trim();
+      const cabang = (unit.cabang || '').trim();
+      const deskripsi = (unit.deskripsi || '').trim();
+      const angsuranText = (unit.angsuran || '').trim();
+      const labelSpesifikasi = (unit.label_spesifikasi || '').trim();
+      const isProperty = isPropertyProduct(unit);
+      const divName = unit.nama_divisi || '';
+
+      const showWA = hasStage2WA(divName);
+
+      /* ==================================================
+         STRICT DENAH BUTTON (Sesi 26)
+         - HANYA render tombol jika unit punya gambar_denah sendiri
+         - TIDAK ADA fallback ke denah divisi untuk tombol ini
+         - Jika kosong → tombol hilang total ('' string kosong)
+      ================================================== */
+      const unitDenahOwn = parseDriveUrl(unit.gambar_denah);
+      const denahForButton = unitDenahOwn; // strict: hanya denah unit sendiri
+      const showDenahBtn = Boolean(unitDenahOwn);
+
+      const tombolDenahHTML = showDenahBtn ? `
+        <button type="button"
+                data-denah-trigger
+                data-denah-url="${escapeHtml(denahForButton)}"
+                data-denah-unit="${escapeHtml(namaUnit)}"
+                class="flex items-center justify-center gap-1.5 rounded-xl border border-brown/15 bg-stone-100 px-3 py-2.5 text-[11px] font-bold text-brown/70 transition hover:border-gold hover:bg-gold/10 hover:text-gold_dark active:scale-[0.98]">
+          <i class="fa-solid fa-map-location-dot text-xs"></i>
+          <span>Lihat Layout</span>
+        </button>
+      ` : '';
+
+      const mapsHref = unit.link_gmaps || CONFIG.gmaps_lokasi || '#';
+      const waMessage = unit.pesan_wa_unit || `Assalamu'alaikum, saya ingin bertanya mengenai ${namaUnit}.`;
+
+      const lbImages = [];
+      if (hasLahan) lbImages.push({ src: lahanImg, alt: `${namaUnit} - Foto Lahan` });
+      if (hasRender) lbImages.push({ src: renderImg, alt: `${namaUnit} - Foto Produk` });
+      const lbJSON = escapeHtml(JSON.stringify(lbImages));
+
+      let statusClass = 'bg-brown text-beige';
+      let statusIcon = 'fa-tag';
+      if (soldOut) { statusClass = 'bg-brown/70 text-beige'; statusIcon = 'fa-ban'; }
+      else if (status.toLowerCase().includes('ready') || status.toLowerCase().includes('siap')) { statusClass = 'bg-wa text-white'; statusIcon = 'fa-circle-check'; }
+      else if (status.toLowerCase().includes('indent')) { statusClass = 'bg-gold text-white'; statusIcon = 'fa-hammer'; }
+
+      const contentIdSuffix = `exp-${unitIndex}-${Math.random().toString(36).slice(2, 8)}`;
+      const descId = `desc-${contentIdSuffix}`;
+      const specId = `spec-${contentIdSuffix}`;
+
+      let switcherHtml = '';
+      if (hasSwitcher) {
+        const isLahanActive = defaultView === 'lahan';
+        const label1 = isProperty ? 'Foto Lahan' : 'Foto Asli';
+        const label2 = isProperty ? 'Render 3D' : 'Foto Kedua';
+        const icon1 = isProperty ? 'fa-camera' : 'fa-image';
+        const icon2 = isProperty ? 'fa-cube' : 'fa-images';
+        switcherHtml = `
+          <div class="absolute bottom-3 left-1/2 z-20 flex -translate-x-1/2 items-center gap-1 rounded-full bg-brown/70 p-1 ring-1 ring-white/20 backdrop-blur-md">
+            <button type="button" data-view-btn="lahan" class="rounded-full px-3 py-1.5 text-[11px] font-bold transition-colors ${isLahanActive ? 'bg-white text-brown shadow-sm' : 'text-white/80 hover:text-white'}">
+              <i class="fa-solid ${icon1} mr-1"></i>${escapeHtml(label1)}
+            </button>
+            <button type="button" data-view-btn="render" class="rounded-full px-3 py-1.5 text-[11px] font-bold transition-colors ${!isLahanActive ? 'bg-white text-brown shadow-sm' : 'text-white/80 hover:text-white'}">
+              <i class="fa-solid ${icon2} mr-1"></i>${escapeHtml(label2)}
+            </button>
+          </div>`;
+      }
+
+      const promoBadgeHtml = hasPromoLabel ? `
+        <div class="promo-badge-pulse absolute right-3 top-3 z-20 inline-flex items-center gap-1 rounded-full bg-gradient-to-r from-rose-500 to-red-600 px-2.5 py-1 text-[10px] font-extrabold uppercase tracking-wide text-white shadow-lg">
+          <i class="fa-solid ${labelPromo ? 'fa-fire' : 'fa-tag'}"></i>
+          <span>${escapeHtml(labelPromo || 'Promo')}</span>
+        </div>` : '';
+
+      const mediaHtml = `
+        <div data-media data-view="${defaultView}" data-lb-images="${lbJSON}" data-lb-title="${escapeHtml(namaUnit)}" class="relative">
+          ${status ? `<div class="absolute left-3 top-3 z-20 inline-flex items-center gap-1.5 rounded-full ${statusClass} px-3 py-1 text-[10px] font-extrabold uppercase tracking-wide shadow-md">
+            <i class="fa-solid ${statusIcon}"></i><span>${escapeHtml(status)}</span>
+          </div>` : ''}
+          ${promoBadgeHtml}
+          <div class="relative aspect-[4/3] w-full overflow-hidden bg-beige_dark">
+            <img data-img="${defaultView}" data-lb-index="${defaultView === 'lahan' ? 0 : (hasLahan ? 1 : 0)}" src="${escapeHtml(defaultImg)}" alt="${escapeHtml(namaUnit)}" loading="lazy" decoding="async" onerror="__imgFail(this)" class="absolute inset-0 h-full w-full cursor-zoom-in object-cover transition-opacity duration-500" />
+            ${hasSwitcher ? `<img data-img="${defaultView === 'lahan' ? 'render' : 'lahan'}" data-lb-index="${defaultView === 'lahan' ? 1 : 0}" src="${escapeHtml(defaultView === 'lahan' ? renderImg : lahanImg)}" alt="${escapeHtml(namaUnit)}" loading="lazy" decoding="async" onerror="__imgFail(this)" class="absolute inset-0 h-full w-full cursor-zoom-in object-cover opacity-0 transition-opacity duration-500" />` : ''}
+            <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-brown/50 via-transparent to-transparent"></div>
+            <div class="pointer-events-none absolute right-3 bottom-3 z-20 grid h-8 w-8 place-items-center rounded-full bg-brown/50 text-white backdrop-blur-sm">
+              <i class="fa-solid fa-expand text-[11px]"></i>
+            </div>
+          </div>
+          ${switcherHtml}
+        </div>`;
+
+      const metaBadges = [];
+      if (kategori) {
+        const katIcon = isProperty ? 'fa-house' : 'fa-box';
+        metaBadges.push(`<span class="rounded-md bg-gold/15 px-2 py-1 text-[10px] font-bold uppercase tracking-wide text-gold_dark"><i class="fa-solid ${katIcon} mr-1 text-[8px]"></i>${escapeHtml(kategori)}</span>`);
+      }
+      if (cabang) {
+        metaBadges.push(`<span class="inline-flex items-center gap-1 rounded-md bg-brown/5 px-2 py-1 text-[10px] font-bold uppercase tracking-wide text-brown/70"><i class="fa-solid fa-location-dot text-[9px]"></i>${escapeHtml(cabang)}</span>`);
+      }
+
+      let angsuranPreview = '';
+      if (isProperty && angsuranText) {
+        const formatted = formatAngsuranText(angsuranText);
+        angsuranPreview = `
+          <div class="mt-3 flex items-center gap-2 rounded-xl bg-wa/10 px-3 py-2 ring-1 ring-wa/20">
+            <i class="fa-solid fa-calculator text-wa"></i>
+            <p class="text-[11px] font-semibold text-brown/80">
+              <span class="font-bold text-wa_dark">${escapeHtml(formatted)}</span>
+            </p>
+          </div>`;
+      }
+
+      let deskripsiHtml = '';
+      if (deskripsi) {
+        const isLong = deskripsi.length > 80;
+        deskripsiHtml = `
+          <div class="mt-3">
+            <p class="text-[10px] font-bold uppercase tracking-wider text-brown/50 mb-1">Deskripsi</p>
+            <div id="${descId}" class="expandable-text text-[12px] leading-relaxed text-brown/70 ${isLong ? 'collapsed' : ''}" style="${isLong ? 'max-height: 3.2em;' : ''}">
+              ${escapeHtml(deskripsi)}
+            </div>
+            ${isLong ? `<button type="button" class="expand-toggle-btn" data-expand-target="${descId}"><i class="fa-solid fa-chevron-down"></i><span>Selengkapnya</span></button>` : ''}
+          </div>`;
+      }
+
+      let spesifikasiHtml = '';
+      if (labelSpesifikasi) {
+        const isLong = labelSpesifikasi.length > 60;
+        spesifikasiHtml = `
+          <div class="mt-2">
+            <p class="text-[10px] font-bold uppercase tracking-wider text-brown/50 mb-1"><i class="fa-solid fa-list-check mr-1 text-gold_dark"></i>Spesifikasi</p>
+            <div id="${specId}" class="expandable-text text-[11px] leading-relaxed font-semibold text-brown/70 ${isLong ? 'collapsed' : ''}" style="${isLong ? 'max-height: 3.2em;' : ''}">
+              ${escapeHtml(labelSpesifikasi)}
+            </div>
+            ${isLong ? `<button type="button" class="expand-toggle-btn" data-expand-target="${specId}"><i class="fa-solid fa-chevron-down"></i><span>Selengkapnya</span></button>` : ''}
+          </div>`;
+      }
+
+      let kprButtonHtml = '';
+      if (isProperty) {
+        if (soldOut) {
+          kprButtonHtml = `<button disabled class="flex w-full cursor-not-allowed items-center justify-center gap-2 rounded-xl bg-brown/15 px-4 py-3 text-xs font-bold text-brown/40">
+            <i class="fa-solid fa-ban"></i><span>Unit Terjual</span>
+          </button>`;
+        } else {
+          kprButtonHtml = `<button type="button" data-kpr-trigger data-unit-id="${escapeHtml(unit.id || '')}"
+            class="flex w-full items-center justify-center gap-2 rounded-xl bg-gold px-4 py-3 text-xs font-bold text-white shadow-lg shadow-gold/30 transition hover:bg-gold_dark active:scale-[0.99]">
+            <i class="fa-solid fa-calculator text-sm"></i><span>Simulasi Angsuran</span>
+          </button>`;
+        }
+      }
+
+      let waButtonHtml = '';
+      if (showWA) {
+        if (soldOut) {
+          waButtonHtml = `<button disabled class="flex w-full cursor-not-allowed items-center justify-center gap-2 rounded-xl bg-brown/15 px-4 py-3 text-xs font-bold text-brown/40">
+            <i class="fa-solid fa-ban"></i><span>Tidak Tersedia</span>
+          </button>`;
+        } else {
+          waButtonHtml = `<button type="button" data-wa-trigger data-wa-message="${escapeHtml(waMessage)}"
+            class="flex w-full items-center justify-center gap-2 rounded-xl bg-wa px-4 py-3 text-xs font-bold text-white shadow-lg shadow-wa/25 transition hover:bg-wa_dark active:scale-[0.99]">
+            <i class="fa-brands fa-whatsapp text-base"></i><span>${isProperty ? 'Tanya via WA' : 'Pesan Sekarang'}</span>
+          </button>`;
+        }
+      }
+
+      const hargaDisplayHtml = hasHargaLama
+        ? `<div class="flex flex-wrap items-baseline gap-2">
+             <p class="font-serif-display text-2xl font-bold text-brown">${formatRupiah(harga)}</p>
+             <p class="text-sm font-semibold text-rose-500 line-through">${formatRupiah(hargaLama)}</p>
+           </div>
+           <span class="mt-1 inline-block rounded-md bg-rose-50 px-1.5 py-0.5 text-[10px] font-bold uppercase text-rose-600">Hemat ${formatRupiah(hargaLama - harga)}</span>`
+        : `<p class="font-serif-display text-2xl font-bold text-brown">${formatRupiah(harga)}</p>`;
+
+      return `
+        <article data-status="${escapeHtml(status)}" data-is-sold="${soldOut ? '1' : '0'}" data-is-property="${isProperty ? '1' : '0'}"
+                 class="card-fade-in group flex flex-col overflow-hidden rounded-2xl border border-brown/10 bg-white shadow-card transition duration-300 hover:-translate-y-1 hover:shadow-xl">
+          ${mediaHtml}
+          <div class="flex flex-1 flex-col p-5">
+            ${metaBadges.length ? `<div class="mb-2 flex flex-wrap gap-1.5">${metaBadges.join('')}</div>` : ''}
+            <h3 class="font-serif-display text-xl font-bold leading-tight tracking-tight text-brown">${escapeHtml(namaUnit)}</h3>
+            <div class="mt-3">
+              <p class="text-[10px] font-semibold uppercase tracking-wider text-brown/50">Harga</p>
+              ${hargaDisplayHtml}
+            </div>
+            ${angsuranPreview}
+            ${deskripsiHtml}
+            ${spesifikasiHtml}
+            <div class="mt-auto space-y-2 pt-4">
+              ${kprButtonHtml}
+              ${waButtonHtml}
+              <div class="grid ${showDenahBtn ? 'grid-cols-2' : 'grid-cols-1'} gap-2">
+                ${tombolDenahHTML}
+                <a href="${escapeHtml(mapsHref)}" target="_blank" rel="noopener"
+                   class="flex items-center justify-center gap-1.5 rounded-xl border border-brown/15 bg-transparent px-3 py-2.5 text-[11px] font-bold text-brown/70 transition hover:border-brown hover:bg-brown hover:text-beige active:scale-[0.98]">
+                  <i class="fa-solid fa-location-dot text-xs"></i>
+                  <span>Petunjuk Lokasi</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </article>`;
+    }
+
+    function renderCatalog(divisionName) {
+      const grid = document.getElementById('catalog-grid');
+      const titleEl = document.getElementById('catalog-division-title');
+      const taglineEl = document.getElementById('catalog-division-tagline');
+      const deskripsiEl = document.getElementById('catalog-division-deskripsi');
+      if (!grid) return;
+
+      const info = getDivisionContactInfo(divisionName);
+      const units = UNITS.filter(u => (u.nama_divisi || '').trim() === divisionName);
+      CURRENT_DIVISION_UNITS = units;
+
+      if (titleEl) titleEl.textContent = divisionName;
+
+      if (taglineEl) {
+        if (info.tagline) { taglineEl.textContent = info.tagline; taglineEl.classList.remove('hidden'); }
+        else { taglineEl.textContent = ''; taglineEl.classList.add('hidden'); }
+      }
+
+      if (deskripsiEl) {
+        if (info.deskripsi) { deskripsiEl.textContent = info.deskripsi; deskripsiEl.classList.remove('hidden'); }
+        else { deskripsiEl.textContent = ''; deskripsiEl.classList.add('hidden'); }
+      }
+
+      renderDenahBanner(divisionName);
+
+      if (!units.length) {
+        grid.innerHTML = `
+          <div class="col-span-full rounded-2xl border-2 border-dashed border-brown/20 bg-white/60 p-10 text-center">
+            <i class="fa-solid fa-box-open text-3xl text-brown/30"></i>
+            <p class="mt-3 text-sm font-bold text-brown/70">Belum ada produk di divisi ini.</p>
+          </div>`;
+        const filterWrap = document.getElementById('filter-status-wrap');
+        if (filterWrap) filterWrap.classList.add('hidden');
+        return;
+      }
+
+      renderStatusFilterTabs(units);
+
+      grid.innerHTML = units.map((u, i) => createUnitCard(u, i)).join('');
+      attachSwitchers();
+      attachExpanders();
+
+      applyStatusFilter(ACTIVE_STATUS_FILTER);
+
+      const stats = getDivisionStats(divisionName);
+      renderStatsInto('catalog-stats-grid', 'catalog-stats-wrapper', stats);
+    }
+
+    function attachSwitchers() {
+      document.querySelectorAll('[data-media]').forEach(media => {
+        const images = media.querySelectorAll('[data-img]');
+        if (images.length < 2) return;
+        media.querySelectorAll('[data-view-btn]').forEach(btn => {
+          btn.addEventListener('click', e => {
+            e.stopPropagation();
+            const view = btn.getAttribute('data-view-btn');
+            media.querySelectorAll('[data-img]').forEach(img => {
+              const isActive = img.getAttribute('data-img') === view;
+              img.classList.toggle('opacity-0', !isActive);
+            });
+            media.querySelectorAll('[data-view-btn]').forEach(b => {
+              const active = b === btn;
+              b.classList.toggle('bg-white', active);
+              b.classList.toggle('text-brown', active);
+              b.classList.toggle('shadow-sm', active);
+              b.classList.toggle('text-white/80', !active);
+            });
+          });
+        });
+      });
+    }
+
+    function attachExpanders() {
+      document.querySelectorAll('[data-expand-target]').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const targetId = btn.dataset.expandTarget;
+          const el = document.getElementById(targetId);
+          if (!el) return;
+
+          const isExpanded = el.classList.contains('expanded');
+          if (isExpanded) {
+            el.classList.remove('expanded');
+            el.classList.add('collapsed');
+            el.style.maxHeight = '3.2em';
+            btn.classList.remove('expanded');
+            btn.innerHTML = '<i class="fa-solid fa-chevron-down"></i><span>Selengkapnya</span>';
+          } else {
+            el.classList.remove('collapsed');
+            el.classList.add('expanded');
+            el.style.maxHeight = 'none';
+            btn.classList.add('expanded');
+            btn.innerHTML = '<i class="fa-solid fa-chevron-up"></i><span>Tutup</span>';
+          }
+        });
+      });
+    }
+
+    function setStage1DOM() {
+      document.getElementById('stage-1').classList.remove('stage-hidden');
+      document.getElementById('stage-2').classList.add('stage-hidden');
+      CURRENT_STAGE = 1;
+      CURRENT_DIVISION = null;
+      CURRENT_DIVISION_NAME = '';
+      ACTIVE_STATUS_FILTER = 'all';
+
+      const brand = CONFIG.nama_brand || 'Portal Unit Usaha';
+      updateBrandDisplay(brand, 'Official Website', parseDriveUrl(CONFIG.logo));
+      updateDynamicMeta(brand, CONFIG.hero_subtitle || '', CONFIG.hero_deskripsi || '');
+      applyContacts(getGlobalContacts());
+      updateWAVisibility();
+
+      window.scrollTo(0, 0);
+    }
+
+    function setStage2DOM(divisionSlug) {
+      const divisions = groupByDivision();
+      let divisionName = null;
+      divisions.forEach((units, name) => {
+        if (slugify(name) === divisionSlug) divisionName = name;
+      });
+      if (!divisionName) return false;
+
+      CURRENT_STAGE = 2;
+      CURRENT_DIVISION = divisionSlug;
+      CURRENT_DIVISION_NAME = divisionName;
+      ACTIVE_STATUS_FILTER = 'all';
+
+      renderCatalog(divisionName);
+
+      document.getElementById('stage-1').classList.add('stage-hidden');
+      document.getElementById('stage-2').classList.remove('stage-hidden');
+
+      const info = getDivisionContactInfo(divisionName);
+      updateBrandDisplay(divisionName, 'Katalog Resmi', parseDriveUrl(CONFIG.logo));
+      updateDynamicMeta(divisionName, info.tagline || '', info.deskripsi || '');
+      applyContacts(info);
+      updateWAVisibility();
+
+      window.scrollTo(0, 0);
+      return true;
+    }
+
+    function navigateToDivision(slug) {
+      if (!setStage2DOM(slug)) return;
+      try { history.pushState({ stage: 2, division: slug }, '', '#' + slug); } catch (e) {}
+    }
+
+    function navigateBackToHub() {
+      if (window.history.length > 1 && MODAL_HISTORY_PUSHED === false) {
+        history.back();
+      } else {
+        setStage1DOM();
+        try { history.replaceState({ stage: 1 }, '', location.pathname); } catch (e) {}
+      }
+    }
+
+    function showError(err) {
+      const banner = document.getElementById('error-banner');
+      const msgEl = document.getElementById('error-message');
+      if (banner && msgEl) {
+        msgEl.textContent = (err && err.message ? err.message : 'Terjadi kesalahan tidak dikenal.') +
+          ' Pastikan link CSV publik dan tidak diblokir CORS.';
+        banner.classList.remove('hidden');
+      }
+      const grid = document.getElementById('divisions-grid');
+      if (grid) {
+        grid.innerHTML = `
+          <div class="col-span-full rounded-2xl border border-rose-200 bg-rose-50 p-10 text-center">
+            <i class="fa-solid fa-triangle-exclamation text-3xl text-rose-400"></i>
+            <p class="mt-3 text-sm font-bold text-rose-700">Data gagal dimuat.</p>
+            <p class="mt-1 text-xs text-rose-500">Periksa koneksi atau hubungi admin.</p>
+          </div>`;
+      }
+      const retryBtn = document.getElementById('retry-btn');
+      if (retryBtn) retryBtn.addEventListener('click', () => window.location.reload());
+    }
+
+    async function init() {
+      const yearEl = document.getElementById('footer-year');
+      if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+      setupGlobalListeners();
+
+      try {
+        const [configText, unitText] = await Promise.all([
+          fetchCSV(GOOGLE_SHEETS_CONFIG_URL),
+          fetchCSV(GOOGLE_SHEETS_UNIT_URL)
+        ]);
+
+        CONFIG = parseConfigCSV(configText);
+        UNITS = parseUnitCSV(unitText);
+        HOLDING_SALES = getHoldingSales();
+
+        updateDynamicMeta(CONFIG.nama_brand || 'Portal Unit Usaha', CONFIG.hero_subtitle || '', CONFIG.hero_deskripsi || '');
+        renderHeaderAndHero();
+        renderScrollText();
+        renderVideo();
+        renderPromoBanners();
+        renderStatsInto('stats-grid', 'stats-wrapper', parseStatsFromObject(CONFIG));
+        renderDivisions();
+
+        const disclaimerWrap = document.getElementById('footer-disclaimer');
+        const disclaimerText = document.getElementById('footer-disclaimer-text');
+        const disclaimer = (CONFIG.disclaimer_text || '').trim();
+        if (disclaimerWrap && disclaimerText) {
+          if (disclaimer) {
+            disclaimerText.textContent = ' ' + disclaimer;
+            disclaimerWrap.classList.remove('hidden');
+          } else {
+            disclaimerWrap.classList.add('hidden');
+          }
+        }
+
+        const divBadge = document.getElementById('divisions-badge');
+        const divBadgeText = document.getElementById('divisions-badge-text');
+        const divTitle = document.getElementById('divisions-title');
+        const divSub = document.getElementById('divisions-subtitle');
+
+        if (CONFIG.katalog_badge && divBadge && divBadgeText) {
+          divBadgeText.textContent = CONFIG.katalog_badge;
+          divBadge.classList.remove('hidden');
+        }
+        if (divTitle) {
+          const t = (CONFIG.katalog_title || '').trim();
+          if (t) { divTitle.textContent = t; divTitle.classList.remove('hidden'); }
+          else { divTitle.textContent = ''; divTitle.classList.add('hidden'); }
+        }
+        if (divSub) {
+          if (CONFIG.katalog_subtitle) {
+            divSub.textContent = CONFIG.katalog_subtitle;
+            divSub.classList.remove('hidden');
+          } else {
+            divSub.classList.add('hidden');
+          }
+        }
+
+        const hash = location.hash.replace(/^#/, '');
+
+        if (hash) {
+          const divisions = groupByDivision();
+          let validDivision = null;
+          divisions.forEach((units, name) => {
+            if (slugify(name) === hash) validDivision = name;
+          });
+
+          if (validDivision) {
+            try {
+              history.replaceState({ stage: 1 }, '', location.pathname);
+              history.pushState({ stage: 2, division: hash }, '', '#' + hash);
+            } catch (e) {}
+            setStage2DOM(hash);
+          } else {
+            try { history.replaceState({ stage: 1 }, '', location.pathname); } catch (e) {}
+            setStage1DOM();
+          }
+        } else {
+          try { history.replaceState({ stage: 1 }, '', location.pathname); } catch (e) {}
+          setStage1DOM();
+        }
+
+        const banner = document.getElementById('error-banner');
+        if (banner) banner.classList.add('hidden');
+
+      } catch (err) {
+        console.error('[App] Gagal memuat:', err);
+        showError(err);
+      }
+    }
+
+    function setupGlobalListeners() {
+
+      window.addEventListener('popstate', (e) => {
+        const state = e.state || { stage: 1 };
+        if (isAnyModalOpen()) {
+          MODAL_HISTORY_PUSHED = false;
+          hideAllModalsDOM();
+        }
+        if (state.modal) return;
+        if (state.stage === 2 && state.division) setStage2DOM(state.division);
+        else setStage1DOM();
+      });
+
+      document.addEventListener('click', (e) => {
+        const trigger = e.target.closest('[data-wa-trigger]');
+        if (trigger) {
+          e.preventDefault();
+          const msg = trigger.getAttribute('data-wa-message') || '';
+          handleWAClick(msg);
+        }
+      });
+
+      // Denah trigger — hanya ada jika tombol dirender (strict)
+      document.addEventListener('click', (e) => {
+        const denahBtn = e.target.closest('[data-denah-trigger]');
+        if (denahBtn) {
+          e.preventDefault();
+          e.stopPropagation();
+          const url = denahBtn.getAttribute('data-denah-url') || '';
+          const unitName = denahBtn.getAttribute('data-denah-unit') || '';
+          openDenahModal(url, unitName);
+        }
+      });
+
+      document.addEventListener('click', (e) => {
+        const salesBtn = e.target.closest('[data-sales-wa]');
+        if (salesBtn) {
+          e.preventDefault();
+          const wa = salesBtn.getAttribute('data-sales-wa');
+          const msg = salesBtn.getAttribute('data-sales-message') || '';
+          if (wa) window.open(buildWAUrl(wa, msg), '_blank');
+          closeAllModalsViaHistory();
+        }
+      });
+
+      document.addEventListener('click', (e) => {
+        const kprBtn = e.target.closest('[data-kpr-trigger]');
+        if (kprBtn) {
+          e.preventDefault();
+          const unitId = kprBtn.getAttribute('data-unit-id');
+          const unit = UNITS.find(u => String(u.id) === String(unitId));
+          if (unit && isPropertyProduct(unit)) openKPRModal(unit);
+        }
+      });
+
+      document.addEventListener('click', (e) => {
+        if (e.target.closest('[data-view-btn]')) return;
+        if (e.target.closest('[data-expand-target]')) return;
+        if (e.target.closest('[data-denah-trigger]')) return;
+        const media = e.target.closest('[data-media]');
+        if (!media) return;
+        const img = e.target.closest('img[data-img]');
+        if (!img || !img.src) return;
+        if (img.classList.contains('opacity-0')) return;
+        e.preventDefault();
+        try {
+          const lbJSON = media.getAttribute('data-lb-images');
+          const lbTitle = media.getAttribute('data-lb-title') || 'Foto';
+          const images = JSON.parse(lbJSON);
+          if (!images || !images.length) return;
+          let startIndex = parseInt(img.getAttribute('data-lb-index'), 10);
+          if (isNaN(startIndex) || startIndex < 0 || startIndex >= images.length) startIndex = 0;
+          openLightbox(images, startIndex, lbTitle);
+        } catch (err) { console.error('Lightbox:', err); }
+      });
+
+      document.addEventListener('click', (e) => {
+        const tab = e.target.closest('[data-status-filter]');
+        if (tab) {
+          applyStatusFilter(tab.dataset.statusFilter);
+        }
+      });
+
+      document.getElementById('back-to-hub-btn').addEventListener('click', navigateBackToHub);
+      document.getElementById('back-to-hub-btn-bottom').addEventListener('click', navigateBackToHub);
+
+      document.addEventListener('click', (e) => {
+        const dpBtn = e.target.closest('[data-dp-percent]');
+        if (dpBtn && ACTIVE_KPR_UNIT) {
+          e.preventDefault();
+          const percent = parseFloat(dpBtn.dataset.dpPercent);
+          const harga = parseNumber(ACTIVE_KPR_UNIT.harga);
+          const newDP = Math.max(MIN_DP, Math.min(Math.round(harga * (percent / 100)), harga - 1));
+          ACTIVE_DP = newDP;
+          const dpInput = document.getElementById('kpr-dp-input');
+          if (dpInput) dpInput.value = formatNumberInput(newDP);
+          updateKPRResults();
+        }
+      });
+
+      const dpInput = document.getElementById('kpr-dp-input');
+      if (dpInput) {
+        dpInput.addEventListener('input', (e) => {
+          if (!ACTIVE_KPR_UNIT) return;
+          const input = e.target;
+          const cursorStart = input.selectionStart || 0;
+          const rawValue = input.value;
+          const digitsBeforeCursor = rawValue.slice(0, cursorStart).replace(/[^\d]/g, '').length;
+          const digits = rawValue.replace(/[^\d]/g, '');
+
+          if (!digits) {
+            input.value = '';
+            ACTIVE_DP = 0;
+            updateKPRResults();
+            return;
+          }
+
+          const num = parseInt(digits, 10);
+          if (!isFinite(num)) return;
+
+          const formatted = num.toLocaleString('id-ID');
+          input.value = formatted;
+
+          let newPos = formatted.length;
+          if (digitsBeforeCursor === 0) newPos = 0;
+          else {
+            let seen = 0;
+            for (let i = 0; i < formatted.length; i++) {
+              if (/\d/.test(formatted[i])) {
+                seen++;
+                if (seen === digitsBeforeCursor) { newPos = i + 1; break; }
+              }
+            }
+          }
+          try { input.setSelectionRange(newPos, newPos); } catch (err) {}
+
+          ACTIVE_DP = num;
+          updateKPRResults();
+        });
+
+        dpInput.addEventListener('blur', (e) => {
+          if (!ACTIVE_KPR_UNIT) return;
+          const harga = parseNumber(ACTIVE_KPR_UNIT.harga);
+          let val = ACTIVE_DP || MIN_DP;
+          val = Math.max(MIN_DP, Math.min(val, harga - 1));
+          ACTIVE_DP = val;
+          e.target.value = formatNumberInput(val);
+          updateKPRResults();
+        });
+
+        dpInput.addEventListener('keydown', (e) => {
+          const allowed = ['Backspace', 'Delete', 'Tab', 'ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', 'Home', 'End'];
+          if (allowed.includes(e.key)) return;
+          if (/^[0-9]$/.test(e.key)) return;
+          if (e.ctrlKey || e.metaKey) return;
+          e.preventDefault();
+        });
+      }
+
+      const kprWaBtn = document.getElementById('kpr-wa-btn');
+      if (kprWaBtn) {
+        kprWaBtn.addEventListener('click', () => {
+          const msg = buildKPRWAMessage();
+          if (msg) {
+            hideKPRModal();
+            handleWAClick(msg);
+          }
+        });
+      }
+
+      document.getElementById('kpr-modal-close').addEventListener('click', closeAllModalsViaHistory);
+      document.getElementById('sales-modal-close').addEventListener('click', closeAllModalsViaHistory);
+      document.getElementById('lightbox-close').addEventListener('click', closeAllModalsViaHistory);
+      document.getElementById('denah-modal-close').addEventListener('click', closeAllModalsViaHistory);
+
+      document.getElementById('kpr-modal').addEventListener('click', (e) => {
+        if (e.target.id === 'kpr-modal') closeAllModalsViaHistory();
+      });
+      document.getElementById('sales-modal').addEventListener('click', (e) => {
+        if (e.target.id === 'sales-modal') closeAllModalsViaHistory();
+      });
+      document.getElementById('lightbox').addEventListener('click', (e) => {
+        if (e.target.id === 'lightbox' || e.target.id === 'lightbox-img-wrap') closeAllModalsViaHistory();
+      });
+      document.getElementById('denah-modal').addEventListener('click', (e) => {
+        if (e.target.id === 'denah-modal' || e.target.id === 'denah-modal-img-wrap') closeAllModalsViaHistory();
+      });
+
+      document.getElementById('lightbox-prev').addEventListener('click', (e) => { e.stopPropagation(); lightboxPrev(); });
+      document.getElementById('lightbox-next').addEventListener('click', (e) => { e.stopPropagation(); lightboxNext(); });
+      document.getElementById('lightbox-zoom-toggle').addEventListener('click', (e) => { e.stopPropagation(); toggleLightboxZoom(); });
+
+      const lbImg = document.getElementById('lightbox-img');
+      if (lbImg) {
+        let lastTap = 0;
+        lbImg.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const now = Date.now();
+          if (now - lastTap < 300) toggleLightboxZoom();
+          lastTap = now;
+        });
+        lbImg.addEventListener('dblclick', (e) => { e.stopPropagation(); toggleLightboxZoom(); });
+      }
+
+      document.addEventListener('keydown', (e) => {
+        if (!MODAL_HISTORY_PUSHED) return;
+        if (e.key === 'Escape') closeAllModalsViaHistory();
+        const lightboxOpen = !document.getElementById('lightbox').classList.contains('hidden');
+        if (lightboxOpen && LB_IMAGES.length > 1) {
+          if (e.key === 'ArrowRight') lightboxNext();
+          if (e.key === 'ArrowLeft') lightboxPrev();
+        }
+      });
+
+      setupSwipeDown(document.getElementById('sales-modal'), '#sales-modal > div', closeAllModalsViaHistory);
+      setupSwipeDown(document.getElementById('kpr-modal'), '#kpr-modal > div', closeAllModalsViaHistory);
+      setupSwipeDown(document.getElementById('denah-modal'), '#denah-modal-img-wrap', closeAllModalsViaHistory);
+
+      const lbImgWrap = document.getElementById('lightbox-img-wrap');
+      if (lbImgWrap) {
+        let tsY = 0, tsX = 0, td = false;
+        lbImgWrap.addEventListener('touchstart', (e) => {
+          if (e.touches.length !== 1 || LB_ZOOMED) return;
+          tsY = e.touches[0].clientY; tsX = e.touches[0].clientX; td = true;
+        }, { passive: true });
+        lbImgWrap.addEventListener('touchmove', (e) => {
+          if (!td || LB_ZOOMED) return;
+          const dy = e.touches[0].clientY - tsY;
+          const dx = e.touches[0].clientX - tsX;
+          if (dy > 0 && Math.abs(dy) > Math.abs(dx)) {
+            lbImgWrap.style.transform = `translateY(${dy}px)`;
+            lbImgWrap.style.opacity = String(Math.max(0.2, 1 - dy / 400));
+            if (e.cancelable) e.preventDefault();
+          }
+        }, { passive: false });
+        lbImgWrap.addEventListener('touchend', (e) => {
+          if (!td) return;
+          td = false;
+          const dy = e.changedTouches[0].clientY - tsY;
+          lbImgWrap.style.transform = '';
+          lbImgWrap.style.opacity = '';
+          if (dy > 100) closeAllModalsViaHistory();
+        });
+        lbImgWrap.addEventListener('touchcancel', () => {
+          td = false; lbImgWrap.style.transform = ''; lbImgWrap.style.opacity = '';
+        });
+      }
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init);
+    } else {
+      init();
+    }
+  })();
+  </script>
+
+</body>
+</html>
