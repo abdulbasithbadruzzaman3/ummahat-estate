@@ -94,6 +94,9 @@
     @keyframes lightboxZoomIn { from { opacity: 0; transform: scale(0.92); } to { opacity: 1; transform: scale(1); } }
     .lightbox-zoom-in { animation: lightboxZoomIn 0.32s cubic-bezier(0.16, 1, 0.3, 1); }
 
+    @keyframes denahPopIn { from { opacity: 0; transform: scale(0.94) translateY(10px); } to { opacity: 1; transform: scale(1) translateY(0); } }
+    .denah-pop-in { animation: denahPopIn 0.32s cubic-bezier(0.16, 1, 0.3, 1); }
+
     @keyframes skeletonShimmer { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
     .skeleton-shimmer {
       background: linear-gradient(90deg, #EBE5D9 0%, #F5F2EB 50%, #EBE5D9 100%);
@@ -116,27 +119,17 @@
     .modal-content-safe { overscroll-behavior: contain; }
 
     .dp-quick-btn {
-      flex: 1;
-      padding: 0.5rem 0.75rem;
-      border-radius: 0.75rem;
-      border: 1.5px solid #D4C9B8;
-      background: #FFFFFF;
-      font-size: 12px;
-      font-weight: 700;
-      color: #6B5D52;
-      transition: all 0.2s ease;
-      cursor: pointer;
+      flex: 1; padding: 0.5rem 0.75rem; border-radius: 0.75rem;
+      border: 1.5px solid #D4C9B8; background: #FFFFFF;
+      font-size: 12px; font-weight: 700; color: #6B5D52;
+      transition: all 0.2s ease; cursor: pointer;
     }
     .dp-quick-btn:hover { border-color: #D4A373; color: #B8885A; }
     .dp-quick-btn.active { background: #D4A373; color: #FFFFFF; border-color: #D4A373; }
 
     .tenor-card {
-      border-radius: 1rem;
-      border: 2px solid #E8E0D3;
-      background: #FFFFFF;
-      padding: 1rem;
-      text-align: center;
-      transition: all 0.25s ease;
+      border-radius: 1rem; border: 2px solid #E8E0D3; background: #FFFFFF;
+      padding: 1rem; text-align: center; transition: all 0.25s ease;
     }
     .tenor-card:hover {
       border-color: #D4A373;
@@ -148,10 +141,7 @@
 
     #lightbox-img {
       transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease;
-      will-change: transform, opacity;
-      user-select: none;
-      -webkit-user-drag: none;
-      touch-action: none;
+      will-change: transform, opacity; user-select: none; -webkit-user-drag: none; touch-action: none;
     }
     #lightbox-img.lightbox-zoomed { cursor: zoom-out; }
     #lightbox-img:not(.lightbox-zoomed) { cursor: zoom-in; }
@@ -159,113 +149,49 @@
     .lightbox-nav { transition: all 0.2s ease; opacity: 0.7; }
     .lightbox-nav:hover { opacity: 1; background: rgba(245, 242, 235, 0.25); }
 
-    .line-clamp-2 {
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-    }
-
-    /* Expandable spesifikasi */
     .expandable-text {
-      position: relative;
-      overflow: hidden;
+      position: relative; overflow: hidden;
       transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1);
     }
-    .expandable-text.collapsed {
-      max-height: 3.2em;
-    }
-    .expandable-text.expanded {
-      max-height: 5000px;
-    }
     .expand-toggle-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.25rem;
-      margin-top: 0.5rem;
-      font-size: 11px;
-      font-weight: 700;
-      color: #B8885A;
-      cursor: pointer;
-      transition: color 0.2s ease;
-      user-select: none;
+      display: inline-flex; align-items: center; gap: 0.25rem;
+      margin-top: 0.5rem; font-size: 11px; font-weight: 700;
+      color: #B8885A; cursor: pointer; transition: color 0.2s ease; user-select: none;
     }
     .expand-toggle-btn:hover { color: #2C221E; }
-    .expand-toggle-btn i {
-      transition: transform 0.25s ease;
-      font-size: 9px;
-    }
+    .expand-toggle-btn i { transition: transform 0.25s ease; font-size: 9px; }
     .expand-toggle-btn.expanded i { transform: rotate(180deg); }
 
-    /* Denah clickable */
-    .denah-banner {
-      cursor: pointer;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    .denah-banner:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 15px 40px -15px rgba(44, 34, 30, 0.3);
-    }
+    .denah-banner { cursor: pointer; transition: transform 0.3s ease, box-shadow 0.3s ease; }
+    .denah-banner:hover { transform: translateY(-2px); box-shadow: 0 15px 40px -15px rgba(44, 34, 30, 0.3); }
 
-    /* Filter status tabs */
     .status-tab {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      white-space: nowrap;
-      border-radius: 9999px;
-      border: 1.5px solid #D4C9B8;
-      background: #FFFFFF;
-      padding: 0.55rem 1rem;
-      font-size: 12px;
-      font-weight: 700;
-      color: #6B5D52;
-      transition: all 0.2s ease;
-      cursor: pointer;
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      white-space: nowrap; border-radius: 9999px;
+      border: 1.5px solid #D4C9B8; background: #FFFFFF;
+      padding: 0.55rem 1rem; font-size: 12px; font-weight: 700;
+      color: #6B5D52; transition: all 0.2s ease; cursor: pointer;
     }
     .status-tab:hover { border-color: #D4A373; color: #B8885A; }
     .status-tab.active {
-      background: #2C221E;
-      color: #F5F2EB;
-      border-color: #2C221E;
+      background: #2C221E; color: #F5F2EB; border-color: #2C221E;
       box-shadow: 0 6px 16px -8px rgba(44, 34, 30, 0.5);
     }
     .status-tab .tab-count {
-      display: inline-block;
-      min-width: 20px;
-      padding: 0 5px;
-      border-radius: 9999px;
-      background: rgba(44, 34, 30, 0.1);
-      font-size: 10px;
-      font-weight: 800;
-      line-height: 1.6;
-      text-align: center;
+      display: inline-block; min-width: 20px; padding: 0 5px;
+      border-radius: 9999px; background: rgba(44, 34, 30, 0.1);
+      font-size: 10px; font-weight: 800; line-height: 1.6; text-align: center;
     }
-    .status-tab.active .tab-count {
-      background: rgba(245, 242, 235, 0.25);
-      color: #F5F2EB;
-    }
+    .status-tab.active .tab-count { background: rgba(245, 242, 235, 0.25); color: #F5F2EB; }
 
     .video-embed-wrapper {
-      position: relative;
-      width: 100%;
-      padding-bottom: 56.25%;
-      border-radius: 1.5rem;
-      overflow: hidden;
-      background: #2C221E;
+      position: relative; width: 100%; padding-bottom: 56.25%;
+      border-radius: 1.5rem; overflow: hidden; background: #2C221E;
       box-shadow: 0 20px 40px -20px rgba(44, 34, 30, 0.35);
     }
-    .video-embed-wrapper iframe {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      border: 0;
-    }
+    .video-embed-wrapper iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
     .video-embed-frame {
-      border: 6px solid #FFFFFF;
-      border-radius: 1.75rem;
-      overflow: hidden;
+      border: 6px solid #FFFFFF; border-radius: 1.75rem; overflow: hidden;
       box-shadow: 0 20px 50px -20px rgba(44, 34, 30, 0.35);
     }
 
@@ -273,34 +199,52 @@
     .division-card:hover { transform: translateY(-4px); box-shadow: 0 20px 40px -15px rgba(44, 34, 30, 0.25); }
 
     .logo-initial {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: 'Playfair Display', Georgia, serif;
-      font-weight: 700;
-      color: #D4A373;
-      line-height: 1;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Playfair Display', Georgia, serif; font-weight: 700;
+      color: #D4A373; line-height: 1;
     }
     .logo-crown-mark {
-      position: absolute;
-      color: #D4A373;
+      position: absolute; color: #D4A373;
       filter: drop-shadow(0 1px 1px rgba(0,0,0,0.35));
-      pointer-events: none;
-      z-index: 5;
+      pointer-events: none; z-index: 5;
     }
 
-    #hero-logo-wrap {
-      margin-top: 1.5rem;
-      margin-bottom: 1rem;
-    }
-    #hero-logo-wrap.has-banner {
-      margin-top: -4rem;
-      margin-bottom: 1rem;
-    }
+    #hero-logo-wrap { margin-top: 1.5rem; margin-bottom: 1rem; }
+    #hero-logo-wrap.has-banner { margin-top: -4rem; margin-bottom: 1rem; }
     @media (min-width: 640px) {
-      #hero-logo-wrap.has-banner {
-        margin-top: -5rem;
-      }
+      #hero-logo-wrap.has-banner { margin-top: -5rem; }
+    }
+
+    .facility-item {
+      display: flex; align-items: center; gap: 0.6rem;
+      background: #F5F2EB; padding: 0.6rem 0.7rem;
+      border-radius: 0.75rem; border: 1px solid rgba(44, 34, 30, 0.08);
+      transition: all 0.2s ease;
+    }
+    .facility-item:hover {
+      background: #FFFFFF; border-color: rgba(212, 163, 115, 0.35);
+      box-shadow: 0 2px 8px -3px rgba(44, 34, 30, 0.12);
+    }
+    .facility-icon {
+      display: flex; align-items: center; justify-content: center;
+      width: 2.2rem; height: 2.2rem; border-radius: 0.5rem;
+      background: #FFFFFF; flex-shrink: 0;
+      border: 1px solid rgba(44, 34, 30, 0.06);
+      font-size: 0.9rem;
+    }
+    .facility-text { min-width: 0; flex: 1; }
+    .facility-name {
+      font-size: 10px; color: #7A6B60; font-weight: 600;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .facility-distance {
+      font-size: 12px; font-weight: 800; color: #2C221E;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+
+    #denah-modal-img {
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease;
+      user-select: none; -webkit-user-drag: none;
     }
   </style>
 </head>
@@ -321,7 +265,7 @@
     </div>
   </div>
 
-  <!-- HEADER (Clean "Official Website") -->
+  <!-- HEADER -->
   <header class="sticky top-0 z-40 border-b border-white/5 bg-brown/95 backdrop-blur-lg">
     <div class="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 sm:px-6">
       <a href="#" id="header-brand-link" class="flex items-center gap-2.5">
@@ -516,7 +460,6 @@
           <div id="catalog-stats-grid" class="grid gap-3"></div>
         </div>
 
-        <!-- Denah Banner (dengan auto-scroll ke katalog) -->
         <div id="denah-banner-wrap" class="mt-8 hidden">
           <div class="mb-3 flex items-center justify-between">
             <span class="inline-flex items-center gap-1.5 text-[10px] font-extrabold uppercase tracking-[0.24em] text-gold_dark">
@@ -541,7 +484,6 @@
           </div>
         </div>
 
-        <!-- Filter Status Tabs -->
         <div id="filter-status-wrap" class="mt-8 -mx-4 px-4 sm:mx-0 sm:px-0">
           <div class="mb-3 flex items-center gap-2">
             <span class="inline-flex items-center gap-1.5 text-[10px] font-extrabold uppercase tracking-[0.24em] text-gold_dark">
@@ -752,6 +694,39 @@
     </div>
   </div>
 
+  <!-- MODAL: DENAH KAWASAN -->
+  <div id="denah-modal" class="hidden fixed inset-0 z-[85] flex-col items-center justify-center bg-brown/95 p-0 backdrop-blur-md">
+
+    <div class="absolute inset-x-0 top-0 z-10 flex items-center justify-between bg-gradient-to-b from-brown/90 to-transparent p-4">
+      <div class="flex-1 min-w-0 pr-3">
+        <p class="text-[10px] font-bold uppercase tracking-[0.18em] text-gold/90">
+          <i class="fa-solid fa-map-location-dot mr-1"></i> Master Plan
+        </p>
+        <p id="denah-modal-title" class="truncate text-sm font-bold text-beige font-serif-display">Denah Kawasan</p>
+        <p id="denah-modal-subtitle" class="mt-0.5 truncate text-[11px] font-medium text-beige/60">—</p>
+      </div>
+      <button id="denah-modal-close" type="button" aria-label="Tutup"
+              class="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-beige/10 text-beige transition hover:bg-beige/20">
+        <i class="fa-solid fa-xmark text-lg"></i>
+      </button>
+    </div>
+
+    <div id="denah-modal-img-wrap" class="relative flex h-full w-full items-center justify-center overflow-hidden p-4 pt-20 pb-20">
+      <img id="denah-modal-img" src="" alt="Denah Kawasan"
+           draggable="false"
+           onerror="__imgFail(this)"
+           class="max-h-[80vh] max-w-[92vw] rounded-xl object-contain shadow-2xl denah-pop-in" />
+    </div>
+
+    <div class="absolute inset-x-0 bottom-0 z-10 bg-gradient-to-t from-brown/90 to-transparent p-4 text-center">
+      <p class="text-[10px] text-beige/60">
+        <i class="fa-solid fa-circle-info mr-1"></i>
+        Master Plan bersifat ilustrasi · Geser ke bawah atau klik area luar untuk menutup
+      </p>
+    </div>
+
+  </div>
+
   <script>
   (function () {
     'use strict';
@@ -786,7 +761,7 @@
     ================================================================ */
     let CONFIG = {};
     let UNITS = [];
-    let SALES = [];
+    let HOLDING_SALES = [];
     let ROTATION_INDEX = 0;
     let ACTIVE_KPR_UNIT = null;
     let ACTIVE_DP = 0;
@@ -961,9 +936,65 @@
       return n.charAt(0).toUpperCase();
     }
 
-    /* ================================================================
-       PARSER DATA
-    ================================================================ */
+    function getFacilityIcon(name) {
+      const n = String(name || '').toLowerCase();
+
+      if (n.includes('masjid') || n.includes('musholla') || n.includes('mushola')) return '<i class="fa-solid fa-mosque text-emerald-600"></i>';
+      if (n.includes('rs') || n.includes('rumah sakit') || n.includes('klinik')) return '<i class="fa-solid fa-hospital text-red-500"></i>';
+      if (n.includes('spbu') || n.includes('bensin')) return '<i class="fa-solid fa-gas-pump text-amber-600"></i>';
+      if (n.includes('jalan') || n.includes('akses') || n.includes('tol')) return '<i class="fa-solid fa-road text-slate-700"></i>';
+      if (n.includes('pasar') || n.includes('mall') || n.includes('swalayan') || n.includes('supermarket')) return '<i class="fa-solid fa-cart-shopping text-blue-600"></i>';
+      if (n.includes('terminal') || n.includes('stasiun')) return '<i class="fa-solid fa-bus text-indigo-600"></i>';
+      if (n.includes('sumur') || n.includes('pdam') || n.includes('air')) return '<i class="fa-solid fa-droplet text-sky-500"></i>';
+      if (n.includes('sekolah') || n.includes('kampus') || n.includes('universitas')) return '<i class="fa-solid fa-school text-orange-600"></i>';
+      if (n.includes('taman') || n.includes('park')) return '<i class="fa-solid fa-tree text-lime-600"></i>';
+      if (n.includes('kolam') || n.includes('renang')) return '<i class="fa-solid fa-water-ladder text-cyan-500"></i>';
+      if (n.includes('olahraga') || n.includes('lapangan')) return '<i class="fa-solid fa-futbol text-green-600"></i>';
+      if (n.includes('keamanan') || n.includes('security') || n.includes('cctv')) return '<i class="fa-solid fa-shield-halved text-slate-600"></i>';
+      if (n.includes('listrik') || n.includes('pln')) return '<i class="fa-solid fa-bolt text-yellow-500"></i>';
+      if (n.includes('wifi') || n.includes('internet')) return '<i class="fa-solid fa-wifi text-violet-500"></i>';
+
+      return '<i class="fa-solid fa-location-dot text-stone-500"></i>';
+    }
+
+    function renderFasilitasGrid(fasilitasRaw) {
+      if (!fasilitasRaw) return '';
+      const items = String(fasilitasRaw).split('|').map(s => s.trim()).filter(Boolean);
+      if (!items.length) return '';
+
+      const gridHTML = items.map(item => {
+        const parts = item.split(':');
+        const nama = (parts[0] || '').trim();
+        const jarak = (parts[1] || '').trim();
+        if (!nama) return '';
+        const iconHTML = getFacilityIcon(nama);
+
+        return `
+          <div class="facility-item">
+            <div class="facility-icon">${iconHTML}</div>
+            <div class="facility-text">
+              <div class="facility-name">${escapeHtml(nama)}</div>
+              <div class="facility-distance">${escapeHtml(jarak || 'Tersedia')}</div>
+            </div>
+          </div>
+        `;
+      }).filter(Boolean).join('');
+
+      if (!gridHTML) return '';
+
+      return `
+        <div class="mt-4">
+          <div class="mb-2 flex items-center gap-1.5">
+            <i class="fa-solid fa-location-dot text-[10px] text-gold_dark"></i>
+            <p class="text-[10px] font-bold uppercase tracking-wider text-brown/60">Fasilitas & Akses Terdekat</p>
+          </div>
+          <div class="grid grid-cols-2 gap-2">
+            ${gridHTML}
+          </div>
+        </div>
+      `;
+    }
+
     function parseConfigCSV(text) {
       const rows = parseCSV(text);
       if (!rows.length) return {};
@@ -993,21 +1024,23 @@
       return units;
     }
 
-    function parseSales(cfg) {
+    function getHoldingSales() {
       const sales = [];
       for (let i = 1; i <= 4; i++) {
-        const nama = (cfg[`sales_${i}_nama`] || '').trim();
-        const wa = normalizePhone(cfg[`sales_${i}_wa`]);
+        const nama = (CONFIG[`sales_${i}_nama`] || '').trim();
+        const wa = normalizePhone(CONFIG[`sales_${i}_wa`]);
         if (!wa) continue;
         sales.push({ nama: nama || `Sales ${i}`, wa, index: i });
       }
-      if (!sales.length && cfg.wa_utama) {
-        sales.push({ nama: 'Marketing', wa: normalizePhone(cfg.wa_utama), index: 1 });
+      if (!sales.length && CONFIG.wa_utama) {
+        const waUtama = normalizePhone(CONFIG.wa_utama);
+        if (waUtama) sales.push({ nama: 'Marketing', wa: waUtama, index: 1 });
       }
       return sales;
     }
 
     function getDivisionSales(divisionName) {
+      if (!divisionName) return [];
       const units = UNITS.filter(u => (u.nama_divisi || '').trim() === divisionName);
       const first = units[0];
       if (!first) return [];
@@ -1016,9 +1049,46 @@
         const nama = (first[`sales_divisi_${i}_nama`] || '').trim();
         const wa = normalizePhone(first[`sales_divisi_${i}_wa`]);
         if (!wa) continue;
-        sales.push({ nama: nama || `Sales ${i}`, wa, index: i, isDivision: true });
+        sales.push({ nama: nama || `Sales Divisi ${i}`, wa, index: i, isDivision: true });
       }
       return sales;
+    }
+
+    function getAnyUnitWA() {
+      for (const u of UNITS) {
+        for (let i = 1; i <= 4; i++) {
+          const wa = normalizePhone(u[`sales_divisi_${i}_wa`]);
+          if (wa) return wa;
+        }
+      }
+      return '';
+    }
+
+    function hasGlobalWA() {
+      if (HOLDING_SALES.length > 0) return true;
+      return Boolean(getAnyUnitWA());
+    }
+
+    function hasStage2WA(divName) {
+      if (getDivisionSales(divName).length > 0) return true;
+      return HOLDING_SALES.length > 0;
+    }
+
+    function updateWAVisibility() {
+      let show = false;
+      if (CURRENT_STAGE === 1) {
+        show = hasGlobalWA();
+      } else if (CURRENT_STAGE === 2 && CURRENT_DIVISION_NAME) {
+        show = hasStage2WA(CURRENT_DIVISION_NAME);
+      }
+
+      const navbarWa = document.getElementById('navbar-wa');
+      const floatingWa = document.getElementById('floating-wa');
+      const waUtamaBtn = document.getElementById('wa-utama-btn');
+
+      if (navbarWa) navbarWa.style.display = show ? '' : 'none';
+      if (floatingWa) floatingWa.style.display = show ? '' : 'none';
+      if (waUtamaBtn) waUtamaBtn.style.display = show ? '' : 'none';
     }
 
     function getSalesMode() {
@@ -1075,17 +1145,14 @@
     function getDivisionContactInfo(divisionName) {
       const units = UNITS.filter(u => (u.nama_divisi || '').trim() === divisionName);
       const first = units[0] || {};
-      const waDiv = normalizePhone(first.wa_divisi);
-      const pesanDiv = (first.pesan_wa_divisi || '').trim();
       const igDiv = (first.instagram_divisi || '').trim();
       const ttDiv = (first.tiktok_divisi || '').trim();
       const taglineDiv = (first.tagline_divisi || '').trim();
       const deskDiv = (first.deskripsi_divisi || '').trim();
+      const pesanUnit = (first.pesan_wa_unit || '').trim();
 
       return {
-        wa: waDiv || normalizePhone(CONFIG.wa_utama),
-        waIsDivision: Boolean(waDiv),
-        pesan: pesanDiv || (CONFIG.pesan_wa_utama || 'Halo, saya ingin bertanya.'),
+        pesan: pesanUnit || (CONFIG.pesan_wa_utama || 'Halo, saya ingin bertanya.'),
         instagram: igDiv || (CONFIG.instagram || ''),
         tiktok: ttDiv || (CONFIG.tiktok || ''),
         facebook: CONFIG.facebook || '',
@@ -1106,22 +1173,32 @@
     function getDivisionCoverImage(divisionName) {
       const units = UNITS.filter(u => (u.nama_divisi || '').trim() === divisionName);
       if (!units.length) return FALLBACK_IMG;
-      // PRIORITAS: gambar_denah → foto_lahan → foto_render
+
+      for (const u of units) {
+        const d = parseDriveUrl(u.gambar_divisi);
+        if (d) return d;
+      }
       for (const u of units) {
         const d = parseDriveUrl(u.gambar_denah);
         if (d) return d;
       }
       const first = units[0];
-      const lahan = parseDriveUrl(first.foto_lahan);
-      if (lahan) return lahan;
       const render = parseDriveUrl(first.foto_render);
       if (render) return render;
+      const lahan = parseDriveUrl(first.foto_lahan);
+      if (lahan) return lahan;
       return FALLBACK_IMG;
     }
 
-    /* ================================================================
-       FETCH CSV
-    ================================================================ */
+    function getDivisionFacilities(divisionName) {
+      const units = UNITS.filter(u => (u.nama_divisi || '').trim() === divisionName);
+      for (const u of units) {
+        const f = (u.fasilitas_divisi || '').trim();
+        if (f) return f;
+      }
+      return '';
+    }
+
     async function fetchCSV(url) {
       const res = await fetch(url, { cache: 'no-store' });
       if (!res.ok) throw new Error(`HTTP ${res.status} — ${res.statusText}`);
@@ -1130,15 +1207,11 @@
       return text;
     }
 
-    /* ================================================================
-       MULTI-SALES WA
-    ================================================================ */
     function buildWAUrl(wa, message) {
       return `https://wa.me/${wa}?text=${encodeURIComponent(message || '')}`;
     }
 
-    function pickNextSalesRoundRobin(salesArr) {
-      const arr = salesArr || SALES;
+    function pickNextSalesRoundRobin(arr) {
       if (!arr.length) return null;
       const s = arr[ROTATION_INDEX % arr.length];
       ROTATION_INDEX = (ROTATION_INDEX + 1) % arr.length;
@@ -1154,32 +1227,36 @@
           showSalesModal(msg, divSales);
           return;
         }
-      }
-
-      if (CURRENT_STAGE === 2 && CURRENT_WA_OVERRIDE && CURRENT_WA_OVERRIDE.waIsDivision && CURRENT_WA_OVERRIDE.wa) {
-        window.open(buildWAUrl(CURRENT_WA_OVERRIDE.wa, msg), '_blank');
+        if (HOLDING_SALES.length) {
+          const mode = getSalesMode();
+          if (mode === 'pilihan') {
+            showSalesModal(msg, HOLDING_SALES);
+            return;
+          }
+          const sales = pickNextSalesRoundRobin(HOLDING_SALES);
+          if (sales) window.open(buildWAUrl(sales.wa, msg), '_blank');
+          return;
+        }
         return;
       }
 
-      const mode = getSalesMode();
-      if (!SALES.length) {
-        const wa = normalizePhone(CONFIG.wa_utama);
-        if (wa) window.open(buildWAUrl(wa, msg), '_blank');
+      if (HOLDING_SALES.length) {
+        const mode = getSalesMode();
+        if (mode === 'pilihan') {
+          showSalesModal(msg, HOLDING_SALES);
+          return;
+        }
+        const sales = pickNextSalesRoundRobin(HOLDING_SALES);
+        if (sales) window.open(buildWAUrl(sales.wa, msg), '_blank');
         return;
       }
-
-      if (mode === 'pilihan') {
-        showSalesModal(msg, SALES);
+      const anyUnitWA = getAnyUnitWA();
+      if (anyUnitWA) {
+        window.open(buildWAUrl(anyUnitWA, msg), '_blank');
         return;
       }
-
-      const sales = pickNextSalesRoundRobin(SALES);
-      if (sales) window.open(buildWAUrl(sales.wa, msg), '_blank');
     }
 
-    /* ================================================================
-       MODAL HISTORY
-    ================================================================ */
     function pushModalHistory() {
       if (!MODAL_HISTORY_PUSHED) {
         MODAL_HISTORY_PUSHED = true;
@@ -1205,6 +1282,7 @@
       hideSalesModal();
       hideKPRModal();
       hideLightbox();
+      hideDenahModal();
       document.body.classList.remove('modal-open');
     }
 
@@ -1212,24 +1290,18 @@
       return (
         !document.getElementById('sales-modal').classList.contains('hidden') ||
         !document.getElementById('kpr-modal').classList.contains('hidden') ||
-        !document.getElementById('lightbox').classList.contains('hidden')
+        !document.getElementById('lightbox').classList.contains('hidden') ||
+        !document.getElementById('denah-modal').classList.contains('hidden')
       );
     }
 
-    /* ================================================================
-       SALES MODAL
-    ================================================================ */
     function showSalesModal(message, salesArr) {
       const modal = document.getElementById('sales-modal');
       const list = document.getElementById('sales-list');
       if (!modal || !list) return;
 
-      const sales = salesArr || SALES;
-      if (!sales.length) {
-        const wa = normalizePhone(CONFIG.wa_utama);
-        if (wa) window.open(buildWAUrl(wa, message), '_blank');
-        return;
-      }
+      const sales = salesArr || HOLDING_SALES;
+      if (!sales.length) return;
 
       list.innerHTML = sales.map((s, idx) => `
         <button type="button" data-sales-wa="${escapeHtml(s.wa)}" data-sales-message="${escapeHtml(message)}"
@@ -1257,9 +1329,6 @@
       if (modal) modal.classList.add('hidden');
     }
 
-    /* ================================================================
-       KPR CALCULATOR
-    ================================================================ */
     function calculateAllTenors(harga, dp) {
       const pokokKredit = Math.max(0, harga - dp);
       const bungaPerTahunRp = pokokKredit * BUNGA_FLAT;
@@ -1362,9 +1431,6 @@
       ].join('\n');
     }
 
-    /* ================================================================
-       LIGHTBOX
-    ================================================================ */
     function openLightbox(images, startIndex, title) {
       if (!images || !images.length) return;
       LB_IMAGES = images;
@@ -1453,8 +1519,47 @@
     }
 
     /* ================================================================
-       SWIPE DOWN
+       DENAH MODAL — STRICT: HANYA BUKA JIKA ADA URL DENAH
     ================================================================ */
+    function openDenahModal(gambarDenahUrl, unitName) {
+      const modal = document.getElementById('denah-modal');
+      const modalImg = document.getElementById('denah-modal-img');
+      const titleEl = document.getElementById('denah-modal-title');
+      const subtitleEl = document.getElementById('denah-modal-subtitle');
+      if (!modal || !modalImg) return;
+
+      // STRICT: Tombol hanya dirender saat unit punya denah sendiri.
+      // Guard tambahan: jika URL kosong → jangan buka modal sama sekali.
+      if (!gambarDenahUrl || String(gambarDenahUrl).trim() === '') return;
+
+      modalImg.dataset.fallbackApplied = '';
+      modalImg.onerror = function () { window.__imgFail(this); };
+      modalImg.src = gambarDenahUrl;
+      modalImg.alt = `Denah Kawasan${unitName ? ' - ' + unitName : ''}`;
+
+      if (titleEl) titleEl.textContent = unitName ? `Denah: ${unitName}` : 'Denah Kawasan';
+      if (subtitleEl) {
+        const divLabel = CURRENT_DIVISION_NAME || 'Kawasan';
+        subtitleEl.textContent = `${divLabel} · Master Plan`;
+      }
+
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+      document.body.classList.add('modal-open');
+      pushModalHistory();
+    }
+
+    function hideDenahModal() {
+      const modal = document.getElementById('denah-modal');
+      const modalImg = document.getElementById('denah-modal-img');
+      if (modal) { modal.classList.add('hidden'); modal.classList.remove('flex'); }
+      if (modalImg) modalImg.src = '';
+    }
+
+    // Global exposure untuk compatibility
+    window.openDenahModal = openDenahModal;
+    window.closeDenahModal = function () { closeAllModalsViaHistory(); };
+
     function setupSwipeDown(modalEl, contentSelector, onClose) {
       if (!modalEl) return;
       let startY = 0, startX = 0, dragging = false;
@@ -1497,9 +1602,6 @@
       });
     }
 
-    /* ================================================================
-       META & FAVICON
-    ================================================================ */
     function setMetaAttr(selector, attr, value) {
       const el = document.querySelector(selector);
       if (el && value) el.setAttribute(attr, value);
@@ -1580,9 +1682,6 @@
       updateFavicon(brandFinal, logoFinal);
     }
 
-    /* ================================================================
-       APPLY CONTACTS
-    ================================================================ */
     function applyContacts(contacts) {
       CURRENT_WA_OVERRIDE = contacts;
 
@@ -1618,8 +1717,6 @@
 
     function getGlobalContacts() {
       return {
-        wa: normalizePhone(CONFIG.wa_utama),
-        waIsDivision: false,
         pesan: CONFIG.pesan_wa_utama || 'Halo, saya ingin bertanya.',
         instagram: CONFIG.instagram || '',
         tiktok: CONFIG.tiktok || '',
@@ -1636,9 +1733,6 @@
       else wrap.classList.remove('has-banner');
     }
 
-    /* ================================================================
-       RENDER HEADER & HERO
-    ================================================================ */
     function renderHeaderAndHero() {
       const c = CONFIG;
       const nama = c.nama_brand || 'Portal Unit Usaha';
@@ -1772,9 +1866,6 @@
       wrapper.classList.remove('hidden');
     }
 
-    /* ================================================================
-       DIVISIONS
-    ================================================================ */
     function renderDivisions() {
       const grid = document.getElementById('divisions-grid');
       if (!grid) return;
@@ -1798,6 +1889,8 @@
         const count = units.length;
         const tagline = (firstUnit.tagline_divisi || '').trim();
         const hasDenah = Boolean(parseDriveUrl(firstUnit.gambar_denah));
+        const facilities = getDivisionFacilities(divName);
+        const facilityGridHTML = renderFasilitasGrid(facilities);
 
         html += `
           <div class="division-card card-fade-in overflow-hidden rounded-2xl border border-brown/10 bg-white shadow-card">
@@ -1817,6 +1910,7 @@
               <h3 class="font-serif-display text-lg font-bold leading-tight text-brown">${escapeHtml(divName)}</h3>
               ${tagline ? `<p class="mt-1 text-[12px] font-medium text-brown/60">${escapeHtml(tagline)}</p>` : ''}
               <p class="mt-1 text-[11px] text-brown/50">${count} produk tersedia</p>
+              ${facilityGridHTML}
               <div class="mt-4 flex gap-2">
                 <button type="button" data-division-link="${escapeHtml(slug)}"
                         class="flex flex-1 items-center justify-center gap-2 rounded-xl bg-brown px-3 py-2.5 text-xs font-bold text-beige shadow-soft transition hover:bg-brown_light active:scale-[0.98]">
@@ -1839,9 +1933,6 @@
       });
     }
 
-    /* ================================================================
-       FILTER STATUS TABS
-    ================================================================ */
     function renderStatusFilterTabs(units) {
       const wrap = document.getElementById('filter-status-tabs');
       const outerWrap = document.getElementById('filter-status-wrap');
@@ -1894,9 +1985,6 @@
       });
     }
 
-    /* ================================================================
-       DENAH BANNER
-    ================================================================ */
     function renderDenahBanner(divisionName) {
       const wrap = document.getElementById('denah-banner-wrap');
       const img = document.getElementById('denah-img');
@@ -1914,7 +2002,6 @@
       img.src = denahUrl;
       wrap.classList.remove('hidden');
 
-      // Remove old listeners by cloning
       const newDenahEl = denahEl.cloneNode(true);
       denahEl.parentNode.replaceChild(newDenahEl, denahEl);
 
@@ -1926,10 +2013,8 @@
         }
       });
 
-      // Zoom button
       const zoomBtn = document.getElementById('denah-zoom-btn');
       if (zoomBtn) {
-        // Remove old listener by cloning
         const newZoomBtn = zoomBtn.cloneNode(true);
         zoomBtn.parentNode.replaceChild(newZoomBtn, zoomBtn);
         newZoomBtn.addEventListener('click', (e) => {
@@ -1940,67 +2025,8 @@
     }
 
     /* ================================================================
-       EXPANDABLE TEXT HANDLER
-    ================================================================ */
-    function makeExpandable(el, toggleBtnId) {
-      if (!el) return;
-      const toggleBtn = document.getElementById(toggleBtnId);
-      if (!toggleBtn) return;
-
-      // Check if content overflows
-      const wasExpanded = el.classList.contains('expanded');
-      el.classList.remove('expanded', 'collapsed');
-
-      requestAnimationFrame(() => {
-        const lineHeight = parseFloat(getComputedStyle(el).lineHeight) || 20;
-        const maxCollapsedHeight = lineHeight * 2;
-
-        if (el.scrollHeight <= maxCollapsedHeight + 5) {
-          // No need to toggle
-          toggleBtn.style.display = 'none';
-          el.style.maxHeight = 'none';
-          return;
-        }
-
-        // Need toggle
-        toggleBtn.style.display = 'inline-flex';
-        if (wasExpanded) {
-          el.classList.add('expanded');
-          el.style.maxHeight = 'none';
-          toggleBtn.classList.add('expanded');
-          toggleBtn.innerHTML = '<i class="fa-solid fa-chevron-up"></i><span>Tutup</span>';
-        } else {
-          el.classList.add('collapsed');
-          el.style.maxHeight = maxCollapsedHeight + 'px';
-          toggleBtn.classList.remove('expanded');
-          toggleBtn.innerHTML = '<i class="fa-solid fa-chevron-down"></i><span>Selengkapnya</span>';
-        }
-      });
-    }
-
-    function toggleExpand(contentId, toggleBtn) {
-      const el = document.getElementById(contentId);
-      if (!el || !toggleBtn) return;
-
-      const isExpanded = el.classList.contains('expanded');
-      if (isExpanded) {
-        el.classList.remove('expanded');
-        el.classList.add('collapsed');
-        const lineHeight = parseFloat(getComputedStyle(el).lineHeight) || 20;
-        el.style.maxHeight = (lineHeight * 2) + 'px';
-        toggleBtn.classList.remove('expanded');
-        toggleBtn.innerHTML = '<i class="fa-solid fa-chevron-down"></i><span>Selengkapnya</span>';
-      } else {
-        el.classList.remove('collapsed');
-        el.classList.add('expanded');
-        el.style.maxHeight = 'none';
-        toggleBtn.classList.add('expanded');
-        toggleBtn.innerHTML = '<i class="fa-solid fa-chevron-up"></i><span>Tutup</span>';
-      }
-    }
-
-    /* ================================================================
-       UNIT CARD
+       UNIT CARD — Tombol "Lihat Layout" STRICT (Sesi 26)
+       HANYA muncul jika kolom gambar_denah pada unit tersebut terisi.
     ================================================================ */
     function createUnitCard(unit, unitIndex) {
       const renderImgRaw = parseDriveUrl(unit.foto_render);
@@ -2031,6 +2057,30 @@
       const angsuranText = (unit.angsuran || '').trim();
       const labelSpesifikasi = (unit.label_spesifikasi || '').trim();
       const isProperty = isPropertyProduct(unit);
+      const divName = unit.nama_divisi || '';
+
+      const showWA = hasStage2WA(divName);
+
+      /* ==================================================
+         STRICT DENAH BUTTON (Sesi 26)
+         - HANYA render tombol jika unit punya gambar_denah sendiri
+         - TIDAK ADA fallback ke denah divisi untuk tombol ini
+         - Jika kosong → tombol hilang total ('' string kosong)
+      ================================================== */
+      const unitDenahOwn = parseDriveUrl(unit.gambar_denah);
+      const denahForButton = unitDenahOwn; // strict: hanya denah unit sendiri
+      const showDenahBtn = Boolean(unitDenahOwn);
+
+      const tombolDenahHTML = showDenahBtn ? `
+        <button type="button"
+                data-denah-trigger
+                data-denah-url="${escapeHtml(denahForButton)}"
+                data-denah-unit="${escapeHtml(namaUnit)}"
+                class="flex items-center justify-center gap-1.5 rounded-xl border border-brown/15 bg-stone-100 px-3 py-2.5 text-[11px] font-bold text-brown/70 transition hover:border-gold hover:bg-gold/10 hover:text-gold_dark active:scale-[0.98]">
+          <i class="fa-solid fa-map-location-dot text-xs"></i>
+          <span>Lihat Layout</span>
+        </button>
+      ` : '';
 
       const mapsHref = unit.link_gmaps || CONFIG.gmaps_lokasi || '#';
       const waMessage = unit.pesan_wa_unit || `Assalamu'alaikum, saya ingin bertanya mengenai ${namaUnit}.`;
@@ -2112,7 +2162,6 @@
           </div>`;
       }
 
-      // Expandable Deskripsi
       let deskripsiHtml = '';
       if (deskripsi) {
         const isLong = deskripsi.length > 80;
@@ -2126,7 +2175,6 @@
           </div>`;
       }
 
-      // Expandable Spesifikasi
       let spesifikasiHtml = '';
       if (labelSpesifikasi) {
         const isLong = labelSpesifikasi.length > 60;
@@ -2154,14 +2202,19 @@
         }
       }
 
-      const waButtonHtml = soldOut
-        ? `<button disabled class="flex w-full cursor-not-allowed items-center justify-center gap-2 rounded-xl bg-brown/15 px-4 py-3 text-xs font-bold text-brown/40">
+      let waButtonHtml = '';
+      if (showWA) {
+        if (soldOut) {
+          waButtonHtml = `<button disabled class="flex w-full cursor-not-allowed items-center justify-center gap-2 rounded-xl bg-brown/15 px-4 py-3 text-xs font-bold text-brown/40">
             <i class="fa-solid fa-ban"></i><span>Tidak Tersedia</span>
-          </button>`
-        : `<button type="button" data-wa-trigger data-wa-message="${escapeHtml(waMessage)}"
+          </button>`;
+        } else {
+          waButtonHtml = `<button type="button" data-wa-trigger data-wa-message="${escapeHtml(waMessage)}"
             class="flex w-full items-center justify-center gap-2 rounded-xl bg-wa px-4 py-3 text-xs font-bold text-white shadow-lg shadow-wa/25 transition hover:bg-wa_dark active:scale-[0.99]">
             <i class="fa-brands fa-whatsapp text-base"></i><span>${isProperty ? 'Tanya via WA' : 'Pesan Sekarang'}</span>
           </button>`;
+        }
+      }
 
       const hargaDisplayHtml = hasHargaLama
         ? `<div class="flex flex-wrap items-baseline gap-2">
@@ -2188,10 +2241,14 @@
             <div class="mt-auto space-y-2 pt-4">
               ${kprButtonHtml}
               ${waButtonHtml}
-              <a href="${escapeHtml(mapsHref)}" target="_blank" rel="noopener"
-                 class="flex w-full items-center justify-center gap-2 rounded-xl border border-brown/15 bg-transparent px-4 py-2.5 text-[11px] font-bold text-brown/70 transition hover:border-brown hover:bg-brown hover:text-beige active:scale-[0.99]">
-                <i class="fa-solid fa-location-dot text-xs"></i><span>Petunjuk Lokasi</span>
-              </a>
+              <div class="grid ${showDenahBtn ? 'grid-cols-2' : 'grid-cols-1'} gap-2">
+                ${tombolDenahHTML}
+                <a href="${escapeHtml(mapsHref)}" target="_blank" rel="noopener"
+                   class="flex items-center justify-center gap-1.5 rounded-xl border border-brown/15 bg-transparent px-3 py-2.5 text-[11px] font-bold text-brown/70 transition hover:border-brown hover:bg-brown hover:text-beige active:scale-[0.98]">
+                  <i class="fa-solid fa-location-dot text-xs"></i>
+                  <span>Petunjuk Lokasi</span>
+                </a>
+              </div>
             </div>
           </div>
         </article>`;
@@ -2220,7 +2277,6 @@
         else { deskripsiEl.textContent = ''; deskripsiEl.classList.add('hidden'); }
       }
 
-      // Denah Banner
       renderDenahBanner(divisionName);
 
       if (!units.length) {
@@ -2234,14 +2290,12 @@
         return;
       }
 
-      // Render Filter Status
       renderStatusFilterTabs(units);
 
       grid.innerHTML = units.map((u, i) => createUnitCard(u, i)).join('');
       attachSwitchers();
       attachExpanders();
 
-      // Apply current filter
       applyStatusFilter(ACTIVE_STATUS_FILTER);
 
       const stats = getDivisionStats(divisionName);
@@ -2298,9 +2352,6 @@
       });
     }
 
-    /* ================================================================
-       STAGE NAVIGATION
-    ================================================================ */
     function setStage1DOM() {
       document.getElementById('stage-1').classList.remove('stage-hidden');
       document.getElementById('stage-2').classList.add('stage-hidden');
@@ -2313,6 +2364,7 @@
       updateBrandDisplay(brand, 'Official Website', parseDriveUrl(CONFIG.logo));
       updateDynamicMeta(brand, CONFIG.hero_subtitle || '', CONFIG.hero_deskripsi || '');
       applyContacts(getGlobalContacts());
+      updateWAVisibility();
 
       window.scrollTo(0, 0);
     }
@@ -2339,6 +2391,7 @@
       updateBrandDisplay(divisionName, 'Katalog Resmi', parseDriveUrl(CONFIG.logo));
       updateDynamicMeta(divisionName, info.tagline || '', info.deskripsi || '');
       applyContacts(info);
+      updateWAVisibility();
 
       window.scrollTo(0, 0);
       return true;
@@ -2358,9 +2411,6 @@
       }
     }
 
-    /* ================================================================
-       ERROR
-    ================================================================ */
     function showError(err) {
       const banner = document.getElementById('error-banner');
       const msgEl = document.getElementById('error-message');
@@ -2382,9 +2432,6 @@
       if (retryBtn) retryBtn.addEventListener('click', () => window.location.reload());
     }
 
-    /* ================================================================
-       INIT
-    ================================================================ */
     async function init() {
       const yearEl = document.getElementById('footer-year');
       if (yearEl) yearEl.textContent = new Date().getFullYear();
@@ -2399,7 +2446,7 @@
 
         CONFIG = parseConfigCSV(configText);
         UNITS = parseUnitCSV(unitText);
-        SALES = parseSales(CONFIG);
+        HOLDING_SALES = getHoldingSales();
 
         updateDynamicMeta(CONFIG.nama_brand || 'Portal Unit Usaha', CONFIG.hero_subtitle || '', CONFIG.hero_deskripsi || '');
         renderHeaderAndHero();
@@ -2477,9 +2524,6 @@
       }
     }
 
-    /* ================================================================
-       GLOBAL LISTENERS
-    ================================================================ */
     function setupGlobalListeners() {
 
       window.addEventListener('popstate', (e) => {
@@ -2499,6 +2543,18 @@
           e.preventDefault();
           const msg = trigger.getAttribute('data-wa-message') || '';
           handleWAClick(msg);
+        }
+      });
+
+      // Denah trigger — hanya ada jika tombol dirender (strict)
+      document.addEventListener('click', (e) => {
+        const denahBtn = e.target.closest('[data-denah-trigger]');
+        if (denahBtn) {
+          e.preventDefault();
+          e.stopPropagation();
+          const url = denahBtn.getAttribute('data-denah-url') || '';
+          const unitName = denahBtn.getAttribute('data-denah-unit') || '';
+          openDenahModal(url, unitName);
         }
       });
 
@@ -2526,6 +2582,7 @@
       document.addEventListener('click', (e) => {
         if (e.target.closest('[data-view-btn]')) return;
         if (e.target.closest('[data-expand-target]')) return;
+        if (e.target.closest('[data-denah-trigger]')) return;
         const media = e.target.closest('[data-media]');
         if (!media) return;
         const img = e.target.closest('img[data-img]');
@@ -2543,7 +2600,6 @@
         } catch (err) { console.error('Lightbox:', err); }
       });
 
-      // Status Filter Tabs
       document.addEventListener('click', (e) => {
         const tab = e.target.closest('[data-status-filter]');
         if (tab) {
@@ -2641,6 +2697,7 @@
       document.getElementById('kpr-modal-close').addEventListener('click', closeAllModalsViaHistory);
       document.getElementById('sales-modal-close').addEventListener('click', closeAllModalsViaHistory);
       document.getElementById('lightbox-close').addEventListener('click', closeAllModalsViaHistory);
+      document.getElementById('denah-modal-close').addEventListener('click', closeAllModalsViaHistory);
 
       document.getElementById('kpr-modal').addEventListener('click', (e) => {
         if (e.target.id === 'kpr-modal') closeAllModalsViaHistory();
@@ -2650,6 +2707,9 @@
       });
       document.getElementById('lightbox').addEventListener('click', (e) => {
         if (e.target.id === 'lightbox' || e.target.id === 'lightbox-img-wrap') closeAllModalsViaHistory();
+      });
+      document.getElementById('denah-modal').addEventListener('click', (e) => {
+        if (e.target.id === 'denah-modal' || e.target.id === 'denah-modal-img-wrap') closeAllModalsViaHistory();
       });
 
       document.getElementById('lightbox-prev').addEventListener('click', (e) => { e.stopPropagation(); lightboxPrev(); });
@@ -2680,6 +2740,7 @@
 
       setupSwipeDown(document.getElementById('sales-modal'), '#sales-modal > div', closeAllModalsViaHistory);
       setupSwipeDown(document.getElementById('kpr-modal'), '#kpr-modal > div', closeAllModalsViaHistory);
+      setupSwipeDown(document.getElementById('denah-modal'), '#denah-modal-img-wrap', closeAllModalsViaHistory);
 
       const lbImgWrap = document.getElementById('lightbox-img-wrap');
       if (lbImgWrap) {
