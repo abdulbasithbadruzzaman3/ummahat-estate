@@ -445,16 +445,17 @@
           </button>
         </div>
 
+        <!-- Badge "Katalog Divisi" -->
         <div class="text-center">
           <span class="inline-flex items-center gap-1.5 text-[10px] font-extrabold uppercase tracking-[0.28em] text-gold_dark">
             <span class="h-px w-6 bg-gold"></span>
             Katalog Divisi
             <span class="h-px w-6 bg-gold"></span>
           </span>
-          <h1 id="catalog-division-title" class="font-serif-display mt-3 text-3xl font-bold tracking-tight text-brown sm:text-4xl"></h1>
-          <p id="catalog-division-tagline" class="mt-2 text-base font-medium text-brown_light sm:text-lg"></p>
-          <p id="catalog-division-deskripsi" class="mx-auto mt-3 max-w-xl text-sm leading-relaxed text-brown/70"></p>
         </div>
+
+        <!-- SESI 26: Detail Header dengan SEMUA Fasilitas -->
+        <div id="catalog-detail-header" class="mt-6"></div>
 
         <div id="catalog-stats-wrapper" class="mx-auto mt-8 hidden max-w-3xl">
           <div id="catalog-stats-grid" class="grid gap-3"></div>
@@ -696,7 +697,6 @@
 
   <!-- MODAL: DENAH KAWASAN -->
   <div id="denah-modal" class="hidden fixed inset-0 z-[85] flex-col items-center justify-center bg-brown/95 p-0 backdrop-blur-md">
-
     <div class="absolute inset-x-0 top-0 z-10 flex items-center justify-between bg-gradient-to-b from-brown/90 to-transparent p-4">
       <div class="flex-1 min-w-0 pr-3">
         <p class="text-[10px] font-bold uppercase tracking-[0.18em] text-gold/90">
@@ -724,7 +724,6 @@
         Master Plan bersifat ilustrasi · Geser ke bawah atau klik area luar untuk menutup
       </p>
     </div>
-
   </div>
 
   <script>
@@ -936,33 +935,46 @@
       return n.charAt(0).toUpperCase();
     }
 
+    /* ================================================================
+       AUTO-MAPPING IKON FASILITAS
+    ================================================================ */
     function getFacilityIcon(name) {
       const n = String(name || '').toLowerCase();
 
       if (n.includes('masjid') || n.includes('musholla') || n.includes('mushola')) return '<i class="fa-solid fa-mosque text-emerald-600"></i>';
       if (n.includes('rs') || n.includes('rumah sakit') || n.includes('klinik')) return '<i class="fa-solid fa-hospital text-red-500"></i>';
       if (n.includes('spbu') || n.includes('bensin')) return '<i class="fa-solid fa-gas-pump text-amber-600"></i>';
-      if (n.includes('jalan') || n.includes('akses') || n.includes('tol')) return '<i class="fa-solid fa-road text-slate-700"></i>';
-      if (n.includes('pasar') || n.includes('mall') || n.includes('swalayan') || n.includes('supermarket')) return '<i class="fa-solid fa-cart-shopping text-blue-600"></i>';
+      if (n.includes('jalan') || n.includes('akses') || n.includes('tembusan') || n.includes('tol')) return '<i class="fa-solid fa-road text-slate-700"></i>';
+      if (n.includes('pasar') || n.includes('alfamart') || n.includes('indomaret') || n.includes('mall') || n.includes('swalayan') || n.includes('supermarket')) return '<i class="fa-solid fa-cart-shopping text-blue-600"></i>';
       if (n.includes('terminal') || n.includes('stasiun')) return '<i class="fa-solid fa-bus text-indigo-600"></i>';
       if (n.includes('sumur') || n.includes('pdam') || n.includes('air')) return '<i class="fa-solid fa-droplet text-sky-500"></i>';
-      if (n.includes('sekolah') || n.includes('kampus') || n.includes('universitas')) return '<i class="fa-solid fa-school text-orange-600"></i>';
-      if (n.includes('taman') || n.includes('park')) return '<i class="fa-solid fa-tree text-lime-600"></i>';
+      if (n.includes('sekolah') || n.includes('smk') || n.includes('smp') || n.includes('sma') || n.includes('kampus') || n.includes('universitas')) return '<i class="fa-solid fa-graduation-cap text-orange-600"></i>';
+      if (n.includes('lahan hijau') || n.includes('taman') || n.includes('lapangan') || n.includes('park')) return '<i class="fa-solid fa-tree text-green-600"></i>';
       if (n.includes('kolam') || n.includes('renang')) return '<i class="fa-solid fa-water-ladder text-cyan-500"></i>';
-      if (n.includes('olahraga') || n.includes('lapangan')) return '<i class="fa-solid fa-futbol text-green-600"></i>';
       if (n.includes('keamanan') || n.includes('security') || n.includes('cctv')) return '<i class="fa-solid fa-shield-halved text-slate-600"></i>';
       if (n.includes('listrik') || n.includes('pln')) return '<i class="fa-solid fa-bolt text-yellow-500"></i>';
       if (n.includes('wifi') || n.includes('internet')) return '<i class="fa-solid fa-wifi text-violet-500"></i>';
 
-      return '<i class="fa-solid fa-location-dot text-stone-500"></i>';
+      return '<i class="fa-solid fa-location-dot text-stone-600"></i>';
     }
 
-    function renderFasilitasGrid(fasilitasRaw) {
-      if (!fasilitasRaw) return '';
-      const items = String(fasilitasRaw).split('|').map(s => s.trim()).filter(Boolean);
-      if (!items.length) return '';
+    /* ================================================================
+       FACILITY GRID RENDERER (DUAL-MODE)
+       isOuterCard = true  → Stage 1 card, top 4, grid-cols-2
+       isOuterCard = false → Stage 2 detail header, ALL items, wider grid
+    ================================================================ */
+    function renderFasilitasGrid(fasilitasRawString, isOuterCard = false) {
+      if (!fasilitasRawString) return '';
 
-      const gridHTML = items.map(item => {
+      let listFasilitas = String(fasilitasRawString).split('|').filter(s => s.trim());
+
+      if (isOuterCard) {
+        listFasilitas = listFasilitas.slice(0, 4);
+      }
+
+      if (!listFasilitas.length) return '';
+
+      const gridItemsHTML = listFasilitas.map(item => {
         const parts = item.split(':');
         const nama = (parts[0] || '').trim();
         const jarak = (parts[1] || '').trim();
@@ -970,31 +982,57 @@
         const iconHTML = getFacilityIcon(nama);
 
         return `
-          <div class="facility-item">
-            <div class="facility-icon">${iconHTML}</div>
-            <div class="facility-text">
-              <div class="facility-name">${escapeHtml(nama)}</div>
-              <div class="facility-distance">${escapeHtml(jarak || 'Tersedia')}</div>
+          <div class="bg-stone-50 p-2.5 rounded-xl border border-stone-200/70 flex items-center gap-2.5 shadow-sm hover:shadow-md transition-all">
+            <div class="w-9 h-9 rounded-lg bg-white flex items-center justify-center text-base shrink-0 border border-stone-100 shadow-sm">
+              ${iconHTML}
+            </div>
+            <div class="min-w-0">
+              <div class="text-[11px] text-stone-500 font-medium truncate">${escapeHtml(nama)}</div>
+              <div class="text-xs font-bold text-stone-800 truncate">${escapeHtml(jarak || 'Tersedia')}</div>
             </div>
           </div>
         `;
       }).filter(Boolean).join('');
 
-      if (!gridHTML) return '';
+      if (!gridItemsHTML) return '';
 
       return `
         <div class="mt-4">
-          <div class="mb-2 flex items-center gap-1.5">
-            <i class="fa-solid fa-location-dot text-[10px] text-gold_dark"></i>
-            <p class="text-[10px] font-bold uppercase tracking-wider text-brown/60">Fasilitas & Akses Terdekat</p>
-          </div>
-          <div class="grid grid-cols-2 gap-2">
-            ${gridHTML}
+          <h4 class="text-[10px] font-bold text-stone-400 uppercase tracking-wider mb-2">
+            ${isOuterCard ? 'Akses & Fasilitas Utama' : 'Semua Fasilitas & Akses Terdekat'}
+          </h4>
+          <div class="grid grid-cols-2 ${isOuterCard ? 'sm:grid-cols-2' : 'sm:grid-cols-3 md:grid-cols-4'} gap-2.5">
+            ${gridItemsHTML}
           </div>
         </div>
       `;
     }
 
+    /* ================================================================
+       SESI 26: RENDER DETAIL KATALOG DALAM (STAGE 2)
+       Menampilkan SEMUA fasilitas (isOuterCard = false)
+    ================================================================ */
+    function renderKatalogDetailHeader(divisiData) {
+      const namaDiv = escapeHtml(divisiData.nama_divisi || 'Katalog Produk');
+      const tagline = (divisiData.tagline_divisi || '').trim();
+      const deskripsi = (divisiData.deskripsi_divisi || '').trim();
+      const facilitiesHTML = renderFasilitasGrid(divisiData.fasilitas_divisi, false);
+
+      return `
+        <div class="bg-white p-5 sm:p-6 rounded-2xl shadow-card border border-brown/10">
+          <div class="text-center">
+            <h2 class="font-serif-display text-2xl sm:text-3xl font-bold text-brown">${namaDiv}</h2>
+            ${tagline ? `<p class="mt-1.5 text-base font-medium text-brown_light">${escapeHtml(tagline)}</p>` : ''}
+            ${deskripsi ? `<p class="mt-2 text-sm leading-relaxed text-brown/70 max-w-xl mx-auto">${escapeHtml(deskripsi)}</p>` : ''}
+          </div>
+          ${facilitiesHTML}
+        </div>
+      `;
+    }
+
+    /* ================================================================
+       PARSER DATA
+    ================================================================ */
     function parseConfigCSV(text) {
       const rows = parseCSV(text);
       if (!rows.length) return {};
@@ -1180,6 +1218,10 @@
       }
       for (const u of units) {
         const d = parseDriveUrl(u.gambar_denah);
+        if (d) return d;
+      }
+      for (const u of units) {
+        const d = parseDriveUrl(u.gambar_unit);
         if (d) return d;
       }
       const first = units[0];
@@ -1518,9 +1560,6 @@
       updateZoomIcon(btn);
     }
 
-    /* ================================================================
-       DENAH MODAL — STRICT: HANYA BUKA JIKA ADA URL DENAH
-    ================================================================ */
     function openDenahModal(gambarDenahUrl, unitName) {
       const modal = document.getElementById('denah-modal');
       const modalImg = document.getElementById('denah-modal-img');
@@ -1528,13 +1567,11 @@
       const subtitleEl = document.getElementById('denah-modal-subtitle');
       if (!modal || !modalImg) return;
 
-      // STRICT: Tombol hanya dirender saat unit punya denah sendiri.
-      // Guard tambahan: jika URL kosong → jangan buka modal sama sekali.
       if (!gambarDenahUrl || String(gambarDenahUrl).trim() === '') return;
 
       modalImg.dataset.fallbackApplied = '';
       modalImg.onerror = function () { window.__imgFail(this); };
-      modalImg.src = gambarDenahUrl;
+      modalImg.src = String(gambarDenahUrl).trim();
       modalImg.alt = `Denah Kawasan${unitName ? ' - ' + unitName : ''}`;
 
       if (titleEl) titleEl.textContent = unitName ? `Denah: ${unitName}` : 'Denah Kawasan';
@@ -1556,7 +1593,6 @@
       if (modalImg) modalImg.src = '';
     }
 
-    // Global exposure untuk compatibility
     window.openDenahModal = openDenahModal;
     window.closeDenahModal = function () { closeAllModalsViaHistory(); };
 
@@ -1890,7 +1926,7 @@
         const tagline = (firstUnit.tagline_divisi || '').trim();
         const hasDenah = Boolean(parseDriveUrl(firstUnit.gambar_denah));
         const facilities = getDivisionFacilities(divName);
-        const facilityGridHTML = renderFasilitasGrid(facilities);
+        const facilityGridHTML = renderFasilitasGrid(facilities, true);
 
         html += `
           <div class="division-card card-fade-in overflow-hidden rounded-2xl border border-brown/10 bg-white shadow-card">
@@ -2024,10 +2060,6 @@
       }
     }
 
-    /* ================================================================
-       UNIT CARD — Tombol "Lihat Layout" STRICT (Sesi 26)
-       HANYA muncul jika kolom gambar_denah pada unit tersebut terisi.
-    ================================================================ */
     function createUnitCard(unit, unitIndex) {
       const renderImgRaw = parseDriveUrl(unit.foto_render);
       const lahanImgRaw = parseDriveUrl(unit.foto_lahan);
@@ -2061,26 +2093,21 @@
 
       const showWA = hasStage2WA(divName);
 
-      /* ==================================================
-         STRICT DENAH BUTTON (Sesi 26)
-         - HANYA render tombol jika unit punya gambar_denah sendiri
-         - TIDAK ADA fallback ke denah divisi untuk tombol ini
-         - Jika kosong → tombol hilang total ('' string kosong)
-      ================================================== */
       const unitDenahOwn = parseDriveUrl(unit.gambar_denah);
-      const denahForButton = unitDenahOwn; // strict: hanya denah unit sendiri
-      const showDenahBtn = Boolean(unitDenahOwn);
+      const gambarDenahKawasan = unitDenahOwn || CURRENT_DIVISION_DENAH || '';
 
-      const tombolDenahHTML = showDenahBtn ? `
+      const tombolDenahHTML = gambarDenahKawasan && gambarDenahKawasan.trim() ? `
         <button type="button"
                 data-denah-trigger
-                data-denah-url="${escapeHtml(denahForButton)}"
+                data-denah-url="${escapeHtml(gambarDenahKawasan.trim())}"
                 data-denah-unit="${escapeHtml(namaUnit)}"
                 class="flex items-center justify-center gap-1.5 rounded-xl border border-brown/15 bg-stone-100 px-3 py-2.5 text-[11px] font-bold text-brown/70 transition hover:border-gold hover:bg-gold/10 hover:text-gold_dark active:scale-[0.98]">
           <i class="fa-solid fa-map-location-dot text-xs"></i>
           <span>Lihat Layout</span>
         </button>
       ` : '';
+
+      const showDenahBtn = Boolean(gambarDenahKawasan && gambarDenahKawasan.trim());
 
       const mapsHref = unit.link_gmaps || CONFIG.gmaps_lokasi || '#';
       const waMessage = unit.pesan_wa_unit || `Assalamu'alaikum, saya ingin bertanya mengenai ${namaUnit}.`;
@@ -2254,27 +2281,27 @@
         </article>`;
     }
 
+    /* ================================================================
+       RENDER CATALOG (Stage 2) — dengan Detail Header ALL Facilities
+    ================================================================ */
     function renderCatalog(divisionName) {
       const grid = document.getElementById('catalog-grid');
-      const titleEl = document.getElementById('catalog-division-title');
-      const taglineEl = document.getElementById('catalog-division-tagline');
-      const deskripsiEl = document.getElementById('catalog-division-deskripsi');
+      const detailHeaderEl = document.getElementById('catalog-detail-header');
       if (!grid) return;
 
       const info = getDivisionContactInfo(divisionName);
       const units = UNITS.filter(u => (u.nama_divisi || '').trim() === divisionName);
       CURRENT_DIVISION_UNITS = units;
 
-      if (titleEl) titleEl.textContent = divisionName;
-
-      if (taglineEl) {
-        if (info.tagline) { taglineEl.textContent = info.tagline; taglineEl.classList.remove('hidden'); }
-        else { taglineEl.textContent = ''; taglineEl.classList.add('hidden'); }
-      }
-
-      if (deskripsiEl) {
-        if (info.deskripsi) { deskripsiEl.textContent = info.deskripsi; deskripsiEl.classList.remove('hidden'); }
-        else { deskripsiEl.textContent = ''; deskripsiEl.classList.add('hidden'); }
+      // SESI 26: Render Detail Header dengan SEMUA fasilitas
+      if (detailHeaderEl) {
+        const facilities = getDivisionFacilities(divisionName);
+        detailHeaderEl.innerHTML = renderKatalogDetailHeader({
+          nama_divisi: divisionName,
+          tagline_divisi: info.tagline || '',
+          deskripsi_divisi: info.deskripsi || '',
+          fasilitas_divisi: facilities
+        });
       }
 
       renderDenahBanner(divisionName);
@@ -2546,7 +2573,6 @@
         }
       });
 
-      // Denah trigger — hanya ada jika tombol dirender (strict)
       document.addEventListener('click', (e) => {
         const denahBtn = e.target.closest('[data-denah-trigger]');
         if (denahBtn) {
