@@ -73,7 +73,6 @@
     }
     .animate-wa-pulse { animation: waPulse 2.4s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
 
-    /* SESI 30: bounce animation for scroll-to-catalog arrow */
     @keyframes bounceSlow {
       0%, 100% { transform: translateY(0px); }
       50%      { transform: translateY(8px); }
@@ -329,7 +328,6 @@
             </a>
           </div>
 
-          <!-- Sosmed + Share (share selalu tampil) -->
           <div id="sosmed-wrapper" class="mt-8 flex justify-center gap-3">
             <a id="sosmed-instagram" href="#" target="_blank" rel="noopener" aria-label="Instagram"
                class="hidden h-10 w-10 place-items-center rounded-full border border-brown/15 bg-white text-brown transition hover:-translate-y-0.5 hover:border-gold hover:bg-gold hover:text-white">
@@ -344,14 +342,12 @@
               <i class="fa-brands fa-facebook-f text-sm"></i>
             </a>
 
-            <!-- SESI 30: Stage 1 Share Button (selalu tampil) -->
             <button id="share-stage1-btn" type="button" aria-label="Bagikan katalog"
                     class="grid h-10 w-10 place-items-center rounded-full border border-brown/15 bg-white text-brown transition hover:-translate-y-0.5 hover:border-gold hover:bg-gold hover:text-white">
               <i class="fa-solid fa-share-nodes text-sm"></i>
             </button>
           </div>
 
-          <!-- SESI 30: Lihat Katalog + panah bawah (normal flow, bukan absolute) -->
           <button id="scroll-to-catalog" type="button"
                   class="mt-12 mx-auto flex flex-col items-center gap-1.5 select-none group focus:outline-none">
             <span class="text-[10px] font-bold uppercase tracking-[0.24em] text-brown/60 group-hover:text-gold_dark transition">Lihat Katalog</span>
@@ -367,7 +363,6 @@
       </div>
     </section>
 
-    <!-- SESI 30: id stage-1-divisions untuk smooth scroll target -->
     <section id="stage-1-divisions" class="border-t border-brown/10 bg-beige py-12 sm:py-16 scroll-mt-20">
       <div class="mx-auto max-w-6xl px-4 sm:px-6">
         <div class="text-center">
@@ -434,32 +429,44 @@
 
         <div id="denah-inline-panel" class="mt-6 hidden"></div>
 
+        <!-- SESI 31: Toggle button to reveal full list (only when interactive denah active) -->
+        <div id="denah-list-toggle-wrap" class="mt-6 hidden">
+          <button id="denah-list-toggle-btn" type="button"
+                  class="w-full flex items-center justify-center gap-2 rounded-2xl border border-brown/15 bg-white px-4 py-3 text-sm font-bold text-brown shadow-soft transition hover:border-gold hover:bg-gold/5 active:scale-[0.99]">
+            <i class="fa-solid fa-chevron-down text-sm"></i>
+            <span>Lihat Daftar Lengkap &amp; Urutkan Harga</span>
+          </button>
+        </div>
+
         <div id="catalog-stats-wrapper" class="mx-auto mt-6 hidden max-w-3xl">
           <div id="catalog-stats-grid" class="grid gap-3"></div>
         </div>
 
-        <div id="filter-status-wrap" class="mt-8 -mx-4 px-4 sm:mx-0 sm:px-0">
-          <div class="mb-3 flex items-center gap-2">
-            <span class="inline-flex items-center gap-1.5 text-[10px] font-extrabold uppercase tracking-[0.24em] text-gold_dark">
-              <i class="fa-solid fa-filter text-[9px]"></i>
-              Filter Status
-            </span>
-            <span class="h-px flex-1 bg-brown/10"></span>
-          </div>
-          <div class="flex items-start gap-2">
-            <div id="filter-status-tabs" class="no-scrollbar flex flex-1 gap-2 overflow-x-auto pb-2 sm:flex-wrap"></div>
-            <div class="shrink-0 pb-2">
-              <select id="sort-price" aria-label="Urutkan harga"
-                      class="rounded-lg border border-brown/20 bg-white px-2.5 py-2 text-[11px] font-bold text-brown outline-none focus:border-gold">
-                <option value="default">Default</option>
-                <option value="asc">Termurah</option>
-                <option value="desc">Tertinggi</option>
-              </select>
+        <!-- SESI 31: Wrapper untuk hide/show filter + grid -->
+        <div id="catalog-list-wrapper">
+          <div id="filter-status-wrap" class="mt-8 -mx-4 px-4 sm:mx-0 sm:px-0">
+            <div class="mb-3 flex items-center gap-2">
+              <span class="inline-flex items-center gap-1.5 text-[10px] font-extrabold uppercase tracking-[0.24em] text-gold_dark">
+                <i class="fa-solid fa-filter text-[9px]"></i>
+                Filter Status
+              </span>
+              <span class="h-px flex-1 bg-brown/10"></span>
+            </div>
+            <div class="flex items-start gap-2">
+              <div id="filter-status-tabs" class="no-scrollbar flex flex-1 gap-2 overflow-x-auto pb-2 sm:flex-wrap"></div>
+              <div class="shrink-0 pb-2">
+                <select id="sort-price" aria-label="Urutkan harga"
+                        class="rounded-lg border border-brown/20 bg-white px-2.5 py-2 text-[11px] font-bold text-brown outline-none focus:border-gold">
+                  <option value="default">Default</option>
+                  <option value="asc">Termurah</option>
+                  <option value="desc">Tertinggi</option>
+                </select>
+              </div>
             </div>
           </div>
-        </div>
 
-        <div id="catalog-grid" class="mt-8 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3"></div>
+          <div id="catalog-grid" class="mt-8 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3"></div>
+        </div>
 
         <div class="mt-10 flex justify-center">
           <button id="back-to-hub-btn-bottom" type="button"
@@ -541,12 +548,12 @@
   </a>
 
   <!-- ============================================================
-       TOAST NOTIFICATION
+       TOAST
   ============================================================ -->
   <div id="toast" class="fixed bottom-24 left-1/2 z-[95] hidden max-w-xs -translate-x-1/2 rounded-xl bg-brown px-4 py-2.5 text-center text-xs font-bold text-beige shadow-2xl"></div>
 
   <!-- ============================================================
-       MODAL: DENAH LAYOUT
+       MODAL: DENAH
   ============================================================ -->
   <div id="denah-modal" class="fixed inset-0 bg-black/80 z-50 hidden items-center justify-center p-4">
     <div class="relative w-full max-w-4xl">
@@ -664,7 +671,7 @@
   </div>
 
   <!-- ============================================================
-       MODAL: LIGHTBOX FOTO
+       MODAL: LIGHTBOX
   ============================================================ -->
   <div id="lightbox" class="hidden fixed inset-0 z-[80] items-center justify-center bg-brown/95 p-0 backdrop-blur-sm">
     <div class="absolute inset-x-0 top-0 z-10 flex items-center justify-between bg-gradient-to-b from-brown/80 to-transparent p-4">
@@ -726,6 +733,10 @@
     let ACTIVE_SORT = 'default';
     let MODAL_HISTORY_PUSHED = false;
     let ROTATION_INDEX = 0;
+
+    /* SESI 31: Denah detail state */
+    let CURRENT_DENAH_UNITS = [];
+    let CURRENT_DENAH_IDX = 0;
 
     /* ================================================================
        HELPERS
@@ -889,7 +900,7 @@
     }
 
     /* ================================================================
-       SHARE — Universal (SESI 30: emoji 🏷️, tidak 🏠)
+       SHARE
     ================================================================ */
     async function shareContent(title, text, url) {
       if (navigator.share) {
@@ -954,53 +965,6 @@
       const divName = unit.nama_divisi || CURRENT_DIVISION_NAME || '';
       const text = `🏷️ *${nama}*${divName ? ' — ' + divName : ''}\n💰 ${harga}\n\nLihat detail selengkapnya di:\n${url}`;
       shareContent(nama, text, url);
-    }
-
-    /* ================================================================
-       SESI 30: DEEP-LINK PER UNIT
-    ================================================================ */
-    function deepLinkToUnit(divisionSlug, unitSlug) {
-      if (!divisionSlug || !unitSlug) return;
-      if (CURRENT_STAGE !== 2 || CURRENT_DIVISION_SLUG !== divisionSlug) return;
-
-      const units = UNITS.filter(u => slugify(u.nama_divisi || '') === divisionSlug);
-      const unit = units.find(u => slugify(u.nama_unit || '') === unitSlug);
-      if (!unit) return;
-
-      const unitIdx = units.indexOf(unit);
-      if (unitIdx < 0) return;
-
-      // Auto-open denah panel if collapsed
-      const denahContent = document.getElementById('denah-content');
-      if (denahContent && denahContent.classList.contains('hidden')) {
-        denahContent.classList.remove('hidden');
-        const toggleBtn = document.getElementById('denah-toggle-btn');
-        const chevron = document.getElementById('denah-toggle-chevron');
-        if (toggleBtn) {
-          const ps = toggleBtn.querySelectorAll('p');
-          if (ps[1]) ps[1].textContent = 'Klik untuk menutup panel';
-        }
-        if (chevron) chevron.style.transform = 'rotate(180deg)';
-      }
-
-      // Select pill + preview
-      document.querySelectorAll('[data-denah-pill]').forEach(p => p.classList.remove('active'));
-      const targetPill = document.querySelector(`[data-denah-pill="${unitIdx}"]`);
-      if (targetPill) {
-        targetPill.classList.add('active');
-        showDenahUnitPreview(unit);
-        try { targetPill.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' }); } catch (e) {}
-      }
-
-      // Scroll to card + ring highlight 3s
-      setTimeout(() => {
-        const targetCard = document.querySelector(`#catalog-grid > article[data-idx="${unitIdx}"]`);
-        if (targetCard) {
-          targetCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
-          targetCard.classList.add('ring-2', 'ring-gold');
-          setTimeout(() => targetCard.classList.remove('ring-2', 'ring-gold'), 3000);
-        }
-      }, 450);
     }
 
     /* ================================================================
@@ -1413,7 +1377,7 @@
     }
 
     /* ================================================================
-       SALES MODAL — FIX FLEX CLASS (SESI 30)
+       SALES MODAL
     ================================================================ */
     function showSalesModal(message, salesArr) {
       const modal = document.getElementById('sales-modal');
@@ -1438,7 +1402,6 @@
         </button>
       `).join('');
 
-      /* SESI 30 FIX: pastikan class flex ditambahkan agar modal center */
       modal.classList.remove('hidden');
       modal.classList.add('flex');
       document.body.classList.add('modal-open');
@@ -1519,7 +1482,7 @@
     }
 
     /* ================================================================
-       PILL LABEL EXTRACTION
+       SESI 31: PILL LABEL EXTRACTION — Fix regex desimal
     ================================================================ */
     function extractPillLabel(unit) {
       const nama = String(unit.nama_unit || '').trim();
@@ -1543,8 +1506,9 @@
       }
 
       let areaLabel = '';
+      /* SESI 31: [\d.,]+ agar desimal (62.9 m², 99.5 m²) tidak terpotong */
       const areaPatterns = [
-       /([\d.,]+)\s*m[²2]/i,
+        /([\d.,]+)\s*m[²2]/i,
         /Luas\s*(?:Tanah)?\s*[:=]?\s*([\d.,]+)/i,
         /LT\s*[:=]?\s*([\d.,]+)/i
       ];
@@ -1554,6 +1518,190 @@
       }
 
       return areaLabel ? `${blockLabel} (${areaLabel})` : blockLabel;
+    }
+
+    /* ================================================================
+       SESI 31: DENAH UNIT SELECTION HELPERS
+    ================================================================ */
+    function selectDenahUnit(idx) {
+      const units = CURRENT_DENAH_UNITS;
+      if (!units || idx < 0 || idx >= units.length) return;
+
+      CURRENT_DENAH_IDX = idx;
+
+      // Update pill active state
+      document.querySelectorAll('[data-denah-pill]').forEach(p => p.classList.remove('active'));
+      const pill = document.querySelector(`[data-denah-pill="${idx}"]`);
+      if (pill) {
+        pill.classList.add('active');
+        try { pill.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' }); } catch (e) {}
+      }
+
+      // Render preview card
+      showDenahUnitPreview(units[idx], units, idx);
+    }
+
+    /* ================================================================
+       SESI 31: FULL DETAIL PREVIEW CARD (dengan navigasi Prev/Next)
+    ================================================================ */
+    function showDenahUnitPreview(unit, units, currentIdx) {
+      const container = document.getElementById('denah-unit-preview');
+      if (!container) return;
+
+      const unitsArr = units || CURRENT_DENAH_UNITS || [unit];
+      const idx = typeof currentIdx === 'number' ? currentIdx : CURRENT_DENAH_IDX;
+      const total = unitsArr.length;
+
+      const renderImgRaw = parseDriveUrl(unit.foto_render);
+      const lahanImgRaw = parseDriveUrl(unit.foto_lahan);
+      const unitImgRaw = parseDriveUrl(unit.gambar_unit);
+      const defaultImg = lahanImgRaw || renderImgRaw || unitImgRaw || '';
+      const hasPhoto = Boolean(defaultImg);
+
+      const status = (unit.status || '').trim();
+      const soldOut = isSoldOut(status);
+      const harga = parseNumber(unit.harga);
+      const hargaLama = parseNumber(unit.harga_lama);
+      const hasHargaLama = hargaLama > harga && harga > 0;
+      const labelPromo = (unit.label_promo || '').trim();
+      const hasPromoLabel = Boolean(labelPromo) || hasHargaLama;
+
+      const namaUnit = unit.nama_unit || 'Unit';
+      const spec = (unit.label_spesifikasi || '').trim();
+      const desc = (unit.deskripsi || '').trim();
+      const angsuranText = (unit.angsuran || '').trim();
+      const isProperty = isPropertyProduct(unit);
+      const mapsHref = unit.link_gmaps || CONFIG.gmaps_lokasi || '#';
+      const waMessage = unit.pesan_wa_unit || `Assalamu'alaikum, saya ingin bertanya mengenai ${namaUnit}.`;
+
+      let statusClass = 'bg-stone-600 text-white';
+      if (soldOut) statusClass = 'bg-rose-500 text-white';
+      else if (status.toLowerCase().includes('ready') || status.toLowerCase().includes('siap')) statusClass = 'bg-wa text-white';
+      else if (status.toLowerCase().includes('indent')) statusClass = 'bg-gold text-white';
+
+      const uid = Math.random().toString(36).slice(2, 8);
+      const descId = `pv-desc-${uid}`;
+      const specId = `pv-spec-${uid}`;
+
+      let angsuranHtml = '';
+      if (isProperty && angsuranText) {
+        const formatted = formatAngsuranText(angsuranText);
+        angsuranHtml = `<div class="mt-2 flex items-center gap-1.5 rounded-lg bg-wa/10 px-2 py-1.5 ring-1 ring-wa/20">
+          <i class="fa-solid fa-calculator text-wa text-[10px]"></i>
+          <p class="text-[10px] font-semibold text-brown/80"><span class="font-bold text-wa_dark">${escapeHtml(formatted)}</span></p>
+        </div>`;
+      }
+
+      // Action buttons
+      const kprBtn = isProperty && !soldOut
+        ? `<button type="button" data-kpr-trigger data-unit-id="${escapeHtml(unit.id || '')}"
+                 class="flex items-center justify-center gap-1 rounded-lg bg-gold px-1.5 py-2 text-[10px] font-bold text-white shadow-sm transition hover:bg-gold_dark active:scale-[0.98]">
+             <i class="fa-solid fa-calculator text-[10px]"></i>
+             <span class="hidden sm:inline">Simulasi</span>
+           </button>`
+        : '';
+
+      const waBtn = soldOut
+        ? `<button type="button" data-wa-trigger data-wa-message="${escapeHtml(waMessage)}"
+                 class="flex items-center justify-center gap-1 rounded-lg bg-stone-500 px-1.5 py-2 text-[10px] font-bold text-white shadow-sm transition hover:bg-stone-600 active:scale-[0.98]">
+             <i class="fa-brands fa-whatsapp text-[10px]"></i>
+             <span class="hidden sm:inline">Serupa</span>
+           </button>`
+        : `<button type="button" data-wa-trigger data-wa-message="${escapeHtml(waMessage)}"
+                 class="flex items-center justify-center gap-1 rounded-lg bg-wa px-1.5 py-2 text-[10px] font-bold text-white shadow-sm transition hover:bg-wa_dark active:scale-[0.98]">
+             <i class="fa-brands fa-whatsapp text-[10px]"></i>
+             <span class="hidden sm:inline">Tanya</span>
+           </button>`;
+
+      const mapsBtn = `<a href="${escapeHtml(mapsHref)}" target="_blank" rel="noopener"
+                          class="flex items-center justify-center gap-1 rounded-lg border border-brown/15 bg-white px-1.5 py-2 text-[10px] font-bold text-brown/70 transition hover:border-brown hover:bg-brown hover:text-beige active:scale-[0.98]">
+                        <i class="fa-solid fa-location-dot text-[10px]"></i>
+                        <span class="hidden sm:inline">Lokasi</span>
+                      </a>`;
+
+      const shareBtn = `<button type="button" data-share-unit="${escapeHtml(unit.id || '')}" aria-label="Bagikan unit"
+                          class="flex items-center justify-center gap-1 rounded-lg border border-brown/15 bg-white px-1.5 py-2 text-[10px] font-bold text-brown/70 transition hover:border-gold hover:bg-gold/10 hover:text-gold_dark active:scale-[0.98]">
+                        <i class="fa-solid fa-share-nodes text-[10px]"></i>
+                        <span class="hidden sm:inline">Bagikan</span>
+                      </button>`;
+
+      const btnCols = kprBtn ? 'grid-cols-4' : 'grid-cols-3';
+
+      // Prev/Next navigation
+      const navHtml = total > 1 ? `
+        <div class="flex items-center justify-between gap-2 mb-2">
+          <button type="button" data-denah-nav="prev" ${idx <= 0 ? 'disabled' : ''}
+                  class="flex items-center gap-1 rounded-lg border border-brown/15 bg-white px-2 py-1.5 text-[10px] font-bold text-brown/70 transition hover:border-gold hover:bg-gold/10 disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:border-brown/15 disabled:hover:bg-white">
+            <i class="fa-solid fa-chevron-left text-[8px]"></i>
+            <span class="hidden sm:inline">Sebelumnya</span>
+          </button>
+          <span class="text-[10px] font-bold text-brown/60 whitespace-nowrap">Unit ${idx + 1} dari ${total}</span>
+          <button type="button" data-denah-nav="next" ${idx >= total - 1 ? 'disabled' : ''}
+                  class="flex items-center gap-1 rounded-lg border border-brown/15 bg-white px-2 py-1.5 text-[10px] font-bold text-brown/70 transition hover:border-gold hover:bg-gold/10 disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:border-brown/15 disabled:hover:bg-white">
+            <span class="hidden sm:inline">Selanjutnya</span>
+            <i class="fa-solid fa-chevron-right text-[8px]"></i>
+          </button>
+        </div>
+      ` : '';
+
+      const hargaDisplay = hasHargaLama
+        ? `<div class="flex items-baseline gap-1.5 flex-wrap">
+             <p class="text-lg font-extrabold text-brown">${formatRupiah(harga)}</p>
+             <p class="text-[11px] text-rose-500 line-through">${formatRupiah(hargaLama)}</p>
+           </div>
+           <span class="inline-block mt-0.5 rounded bg-rose-50 px-1.5 py-0.5 text-[9px] font-bold uppercase text-rose-600">Hemat ${formatRupiah(hargaLama - harga)}</span>`
+        : `<p class="text-lg font-extrabold text-brown">${formatRupiah(harga)}</p>`;
+
+      container.innerHTML = `
+        <div class="rounded-xl border border-brown/15 bg-beige/50 overflow-hidden shadow-sm">
+          ${hasPhoto ? `
+            <div class="relative aspect-[16/9] bg-beige_dark">
+              <img data-lb-trigger src="${escapeHtml(defaultImg)}" alt="${escapeHtml(namaUnit)}" onerror="__imgFail(this)" class="absolute inset-0 w-full h-full object-cover cursor-zoom-in" />
+              <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-brown/40 via-transparent to-transparent"></div>
+              <div class="absolute top-2 left-2 flex flex-wrap gap-1">
+                ${status ? `<span class="text-[9px] font-bold px-2 py-0.5 rounded-full ${statusClass} shadow-sm">${escapeHtml(status)}</span>` : ''}
+              </div>
+              ${hasPromoLabel ? `<div class="absolute top-2 right-2 rounded-full bg-gradient-to-r from-rose-500 to-red-600 px-2 py-0.5 text-[9px] font-extrabold uppercase tracking-wide text-white shadow">${escapeHtml(labelPromo || 'Promo')}</div>` : ''}
+            </div>
+          ` : `
+            <div class="px-3 py-2 flex flex-wrap gap-1 border-b border-brown/10 bg-white">
+              ${status ? `<span class="text-[9px] font-bold px-2 py-0.5 rounded-full ${statusClass}">${escapeHtml(status)}</span>` : ''}
+              ${hasPromoLabel ? `<span class="text-[9px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-gradient-to-r from-rose-500 to-red-600 text-white">${escapeHtml(labelPromo || 'Promo')}</span>` : ''}
+            </div>
+          `}
+
+          <div class="p-3">
+            ${navHtml}
+
+            <h4 class="font-bold text-brown text-sm leading-tight break-words facility-text-safe">${escapeHtml(namaUnit)}</h4>
+
+            <div class="mt-1.5">${hargaDisplay}</div>
+
+            ${angsuranHtml}
+
+            ${spec ? `
+              <div class="mt-2">
+                <div id="${specId}" class="line-clamp-2 cursor-pointer text-[11px] leading-relaxed text-brown/70" onclick="this.classList.toggle('line-clamp-2')">${escapeHtml(spec)}</div>
+                <p class="text-[8px] text-brown/40 italic mt-0.5"><i class="fa-solid fa-hand-pointer text-[7px] mr-0.5"></i>Tap untuk baca lengkap</p>
+              </div>
+            ` : ''}
+
+            ${desc ? `
+              <div class="mt-1.5">
+                <div id="${descId}" class="line-clamp-2 cursor-pointer text-[11px] leading-relaxed text-brown/60" onclick="this.classList.toggle('line-clamp-2')">${escapeHtml(desc)}</div>
+                <p class="text-[8px] text-brown/40 italic mt-0.5"><i class="fa-solid fa-hand-pointer text-[7px] mr-0.5"></i>Tap untuk baca lengkap</p>
+              </div>
+            ` : ''}
+
+            <div class="grid ${btnCols} gap-1.5 mt-3">
+              ${kprBtn}
+              ${waBtn}
+              ${mapsBtn}
+              ${shareBtn}
+            </div>
+          </div>
+        </div>
+      `;
     }
 
     /* ================================================================
@@ -1573,7 +1721,6 @@
       }
 
       const opsi = getDivisionOpsiTampilan(divisionName);
-      /* SESI 30: Default OPEN — hanya tutup jika opsi === 'denah_tutup' */
       const isAutoOpen = opsi !== 'denah_tutup';
       const isPolos = opsi === 'denah_polos';
       const units = UNITS.filter(u => (u.nama_divisi || '').trim() === divisionName);
@@ -1675,6 +1822,9 @@
       const container = document.getElementById('denah-unit-pills');
       if (!container) return;
 
+      CURRENT_DENAH_UNITS = units;
+      CURRENT_DENAH_IDX = 0;
+
       container.innerHTML = units.map((u, idx) => {
         const sold = isSoldOut(u.status);
         const label = extractPillLabel(u);
@@ -1684,61 +1834,16 @@
       container.querySelectorAll('[data-denah-pill]').forEach(btn => {
         btn.addEventListener('click', () => {
           const idx = parseInt(btn.getAttribute('data-denah-pill'), 10);
-          const unit = units[idx];
-          if (!unit) return;
-          showDenahUnitPreview(unit);
-          container.querySelectorAll('[data-denah-pill]').forEach(b => b.classList.remove('active'));
-          btn.classList.add('active');
+          selectDenahUnit(idx);
         });
       });
 
+      // Auto-select first available unit
       const firstAvailableIdx = units.findIndex(u => !isSoldOut(u.status));
       const autoIdx = firstAvailableIdx >= 0 ? firstAvailableIdx : 0;
       if (units[autoIdx]) {
-        showDenahUnitPreview(units[autoIdx]);
-        const firstPill = container.querySelector(`[data-denah-pill="${autoIdx}"]`);
-        if (firstPill) firstPill.classList.add('active');
+        selectDenahUnit(autoIdx);
       }
-    }
-
-    function showDenahUnitPreview(unit) {
-      const container = document.getElementById('denah-unit-preview');
-      if (!container) return;
-
-      const status = (unit.status || '').trim();
-      const soldOut = isSoldOut(status);
-      const harga = parseNumber(unit.harga);
-      const hargaLama = parseNumber(unit.harga_lama);
-      const hasHargaLama = hargaLama > harga && harga > 0;
-      const spec = (unit.label_spesifikasi || '').trim();
-      const waMessage = unit.pesan_wa_unit || `Assalamu'alaikum, saya ingin bertanya mengenai ${unit.nama_unit || 'unit ini'}.`;
-
-      let statusClass = 'bg-stone-600 text-white';
-      if (soldOut) statusClass = 'bg-rose-500 text-white';
-      else if (status.toLowerCase().includes('ready') || status.toLowerCase().includes('siap')) statusClass = 'bg-emerald-500 text-white';
-      else if (status.toLowerCase().includes('indent')) statusClass = 'bg-amber-500 text-white';
-
-      const waBgClass = soldOut ? 'bg-stone-500 hover:bg-stone-600' : 'bg-wa hover:bg-wa_dark';
-      const waLabel = soldOut ? 'Tanya Unit Serupa' : 'Tanya via WA';
-
-      container.innerHTML = `
-        <div class="rounded-xl border border-stone-200 bg-beige/50 p-3">
-          <div class="flex items-start justify-between gap-2 mb-1.5">
-            <h4 class="font-bold text-brown text-sm leading-tight break-words facility-text-safe">${escapeHtml(unit.nama_unit || 'Unit')}</h4>
-            ${status ? `<span class="text-[9px] font-bold px-2 py-0.5 rounded-full ${statusClass} whitespace-nowrap">${escapeHtml(status)}</span>` : ''}
-          </div>
-          ${spec ? `<p class="text-[11px] text-brown/70 mb-2 leading-tight break-words facility-text-safe">${escapeHtml(spec)}</p>` : ''}
-          <div class="flex items-baseline gap-2 mb-2.5 flex-wrap">
-            <p class="text-base font-extrabold text-brown">${formatRupiah(harga)}</p>
-            ${hasHargaLama ? `<p class="text-[11px] text-rose-500 line-through">${formatRupiah(hargaLama)}</p>` : ''}
-          </div>
-          <button type="button" data-wa-trigger data-wa-message="${escapeHtml(waMessage)}"
-                  class="w-full flex items-center justify-center gap-1.5 rounded-lg ${waBgClass} text-white text-xs font-bold py-2 transition active:scale-[0.98]">
-            <i class="fa-brands fa-whatsapp text-sm"></i>
-            <span>${waLabel}</span>
-          </button>
-        </div>
-      `;
     }
 
     /* ================================================================
@@ -1878,7 +1983,6 @@
       });
     }
 
-    /* Sort by price */
     function applySorting(sortOrder) {
       ACTIVE_SORT = sortOrder || 'default';
       const grid = document.getElementById('catalog-grid');
@@ -1932,7 +2036,6 @@
 
       const showWA = hasStage2WA(divName);
 
-      /* SESI 30: Fallback ke CURRENT_DIVISION_DENAH */
       const denahUrl = parseDriveUrl(unit.gambar_denah) || CURRENT_DIVISION_DENAH;
       const showDenahBtn = Boolean(denahUrl);
 
@@ -1951,7 +2054,6 @@
           <span>${escapeHtml(labelPromo || 'Promo')}</span>
         </div>` : '';
 
-      /* SESI 30: Skip media block if no photos at all */
       const mediaHtml = hasAnyPhoto ? `
         <div class="relative">
           ${status ? `<div class="absolute left-3 top-3 z-20 inline-flex items-center gap-1.5 rounded-full ${statusClass} px-3 py-1 text-[10px] font-extrabold uppercase tracking-wide shadow-md">
@@ -1964,7 +2066,6 @@
           </div>
         </div>` : '';
 
-      /* SESI 30: Move badges to header when no photo */
       const headerBadgesHtml = !hasAnyPhoto && (status || hasPromoLabel) ? `
         <div class="mb-2 flex flex-wrap items-center gap-1.5">
           ${status ? `<span class="inline-flex items-center gap-1 rounded-full ${statusClass} px-2.5 py-1 text-[10px] font-extrabold uppercase tracking-wide shadow-sm">
@@ -2097,7 +2198,7 @@
     }
 
     /* ================================================================
-       RENDER CATALOG
+       SESI 31: RENDER CATALOG — dengan Master-Detail anti-redundancy
     ================================================================ */
     function renderCatalog(divisionName) {
       const grid = document.getElementById('catalog-grid');
@@ -2108,6 +2209,14 @@
       renderDetailHeader(divisionName);
       renderDenahInlinePanel(divisionName);
 
+      const denahUrl = getDivisionDenah(divisionName);
+      const opsi = getDivisionOpsiTampilan(divisionName);
+      const isInteractiveDenah = Boolean(denahUrl) && opsi !== 'denah_polos';
+
+      const toggleWrap = document.getElementById('denah-list-toggle-wrap');
+      const listWrapper = document.getElementById('catalog-list-wrapper');
+      const toggleBtn = document.getElementById('denah-list-toggle-btn');
+
       if (!units.length) {
         grid.innerHTML = `
           <div class="col-span-full rounded-2xl border-2 border-dashed border-brown/20 bg-white/60 p-10 text-center">
@@ -2116,6 +2225,8 @@
           </div>`;
         const filterWrap = document.getElementById('filter-status-wrap');
         if (filterWrap) filterWrap.classList.add('hidden');
+        if (toggleWrap) toggleWrap.classList.add('hidden');
+        if (listWrapper) listWrapper.classList.remove('hidden');
         return;
       }
 
@@ -2125,6 +2236,20 @@
       const sortSel = document.getElementById('sort-price');
       if (sortSel) sortSel.value = 'default';
       ACTIVE_SORT = 'default';
+
+      /* SESI 31: Hide list by default when interactive denah active */
+      if (isInteractiveDenah) {
+        if (listWrapper) listWrapper.classList.add('hidden');
+        if (toggleWrap) toggleWrap.classList.remove('hidden');
+        if (toggleBtn) {
+          toggleBtn.dataset.expanded = '0';
+          toggleBtn.dataset.unitCount = String(units.length);
+          toggleBtn.innerHTML = `<i class="fa-solid fa-chevron-down text-sm"></i><span>Lihat Daftar Lengkap (${units.length} Unit) &amp; Urutkan Harga</span>`;
+        }
+      } else {
+        if (listWrapper) listWrapper.classList.remove('hidden');
+        if (toggleWrap) toggleWrap.classList.add('hidden');
+      }
 
       applyStatusFilter(ACTIVE_STATUS_FILTER);
       applySorting('default');
@@ -2183,6 +2308,46 @@
         setStage1DOM();
         try { history.replaceState({ stage: 1 }, '', location.pathname); } catch (e) {}
       }
+    }
+
+    /* ================================================================
+       SESI 31: DEEP-LINK PER UNIT (scroll ke detail card)
+    ================================================================ */
+    function deepLinkToUnit(divisionSlug, unitSlug) {
+      if (!divisionSlug || !unitSlug) return;
+      if (CURRENT_STAGE !== 2 || CURRENT_DIVISION_SLUG !== divisionSlug) return;
+
+      const units = UNITS.filter(u => slugify(u.nama_divisi || '') === divisionSlug);
+      const unitIdx = units.findIndex(u => slugify(u.nama_unit || '') === unitSlug);
+      if (unitIdx < 0) return;
+
+      // Auto-open denah panel if collapsed
+      const denahContent = document.getElementById('denah-content');
+      if (denahContent && denahContent.classList.contains('hidden')) {
+        denahContent.classList.remove('hidden');
+        const toggleBtn = document.getElementById('denah-toggle-btn');
+        const chevron = document.getElementById('denah-toggle-chevron');
+        if (toggleBtn) {
+          const ps = toggleBtn.querySelectorAll('p');
+          if (ps[1]) ps[1].textContent = 'Klik untuk menutup panel';
+        }
+        if (chevron) chevron.style.transform = 'rotate(180deg)';
+      }
+
+      // Select the unit (this triggers showDenahUnitPreview)
+      setTimeout(() => {
+        selectDenahUnit(unitIdx);
+
+        // Scroll to preview card + gold ring
+        setTimeout(() => {
+          const previewEl = document.getElementById('denah-unit-preview');
+          if (previewEl) {
+            previewEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            previewEl.classList.add('ring-2', 'ring-gold', 'rounded-xl');
+            setTimeout(() => previewEl.classList.remove('ring-2', 'ring-gold'), 3000);
+          }
+        }, 350);
+      }, 300);
     }
 
     /* ================================================================
@@ -2420,7 +2585,7 @@
           divSub.classList.toggle('hidden', !s);
         }
 
-        /* SESI 30: Deep-link parsing — support #divisi dan #divisi/unit */
+        // Deep-link parsing
         const hash = location.hash.replace(/^#/, '');
         if (hash) {
           const parts = hash.split('/');
@@ -2474,7 +2639,6 @@
     ================================================================ */
     function setupGlobalListeners() {
 
-      /* SESI 30: popstate handles deep-link with unit */
       window.addEventListener('popstate', (e) => {
         const state = e.state || { stage: 1 };
         if (isAnyModalOpen()) {
@@ -2502,7 +2666,7 @@
         }
       });
 
-      // Denah trigger
+      // Denah trigger (per-unit button)
       document.addEventListener('click', (e) => {
         const btn = e.target.closest('[data-denah-trigger]');
         if (btn) {
@@ -2512,6 +2676,16 @@
           const unitName = btn.getAttribute('data-denah-unit') || '';
           openDenahModal(url, unitName ? `Denah: ${unitName}` : 'Denah Kawasan');
         }
+      });
+
+      // SESI 31: Denah preview navigation (prev/next)
+      document.addEventListener('click', (e) => {
+        const navBtn = e.target.closest('[data-denah-nav]');
+        if (!navBtn || navBtn.disabled) return;
+        e.preventDefault();
+        const dir = navBtn.getAttribute('data-denah-nav');
+        const newIdx = dir === 'prev' ? CURRENT_DENAH_IDX - 1 : CURRENT_DENAH_IDX + 1;
+        selectDenahUnit(newIdx);
       });
 
       // Share unit
@@ -2530,11 +2704,11 @@
       const shareDivBtn = document.getElementById('share-division-btn');
       if (shareDivBtn) shareDivBtn.addEventListener('click', shareDivision);
 
-      // SESI 30: Share stage 1
+      // Share stage 1
       const share1Btn = document.getElementById('share-stage1-btn');
       if (share1Btn) share1Btn.addEventListener('click', shareStage1);
 
-      // SESI 30: Scroll to catalog from hero
+      // Scroll to catalog
       const scrollBtn = document.getElementById('scroll-to-catalog');
       if (scrollBtn) {
         scrollBtn.addEventListener('click', () => {
@@ -2542,6 +2716,28 @@
           if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
         });
       }
+
+      // SESI 31: Denah list toggle (open/hide full list)
+      document.addEventListener('click', (e) => {
+        const toggle = e.target.closest('#denah-list-toggle-btn');
+        if (!toggle) return;
+        e.preventDefault();
+        const wrapper = document.getElementById('catalog-list-wrapper');
+        if (!wrapper) return;
+        const isHidden = wrapper.classList.contains('hidden');
+        const count = parseInt(toggle.dataset.unitCount || '0', 10);
+        if (isHidden) {
+          wrapper.classList.remove('hidden');
+          wrapper.classList.add('card-fade-in');
+          setTimeout(() => wrapper.classList.remove('card-fade-in'), 400);
+          toggle.dataset.expanded = '1';
+          toggle.innerHTML = `<i class="fa-solid fa-chevron-up text-sm"></i><span>Sembunyikan Daftar Kartu</span>`;
+        } else {
+          wrapper.classList.add('hidden');
+          toggle.dataset.expanded = '0';
+          toggle.innerHTML = `<i class="fa-solid fa-chevron-down text-sm"></i><span>Lihat Daftar Lengkap (${count} Unit) &amp; Urutkan Harga</span>`;
+        }
+      });
 
       // Sales pick
       document.addEventListener('click', (e) => {
@@ -2588,7 +2784,7 @@
         }
       });
 
-      // Facility toggle — permanent .fac-extra-item marker
+      // Facility toggle
       document.addEventListener('click', (e) => {
         const btn = e.target.closest('[data-fac-toggle]');
         if (!btn) return;
