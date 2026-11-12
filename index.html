@@ -11,13 +11,10 @@
   <title>Memuat…</title>
   <meta name="description" content="Katalog properti & kavling syariah. Simulasi angsuran transparan." />
 
-  <!-- CDN: Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- CDN: FontAwesome 6.4.0 -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-  <!-- CDN: Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet" />
@@ -75,6 +72,13 @@
       100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
     }
     .animate-wa-pulse { animation: waPulse 2.4s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+
+    /* SESI 30: bounce animation for scroll-to-catalog arrow */
+    @keyframes bounceSlow {
+      0%, 100% { transform: translateY(0px); }
+      50%      { transform: translateY(8px); }
+    }
+    .animate-bounce-slow { animation: bounceSlow 1.8s ease-in-out infinite; }
 
     @keyframes shimmer { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
     .skeleton-shimmer {
@@ -180,7 +184,6 @@
     }
     .status-tab.active .tab-count { background: rgba(245, 242, 235, 0.25); color: #F5F2EB; }
 
-    /* Denah pills */
     .denah-pill {
       display: inline-flex;
       align-items: center;
@@ -326,6 +329,7 @@
             </a>
           </div>
 
+          <!-- Sosmed + Share (share selalu tampil) -->
           <div id="sosmed-wrapper" class="mt-8 flex justify-center gap-3">
             <a id="sosmed-instagram" href="#" target="_blank" rel="noopener" aria-label="Instagram"
                class="hidden h-10 w-10 place-items-center rounded-full border border-brown/15 bg-white text-brown transition hover:-translate-y-0.5 hover:border-gold hover:bg-gold hover:text-white">
@@ -339,7 +343,22 @@
                class="hidden h-10 w-10 place-items-center rounded-full border border-brown/15 bg-white text-brown transition hover:-translate-y-0.5 hover:border-gold hover:bg-gold hover:text-white">
               <i class="fa-brands fa-facebook-f text-sm"></i>
             </a>
+
+            <!-- SESI 30: Stage 1 Share Button (selalu tampil) -->
+            <button id="share-stage1-btn" type="button" aria-label="Bagikan katalog"
+                    class="grid h-10 w-10 place-items-center rounded-full border border-brown/15 bg-white text-brown transition hover:-translate-y-0.5 hover:border-gold hover:bg-gold hover:text-white">
+              <i class="fa-solid fa-share-nodes text-sm"></i>
+            </button>
           </div>
+
+          <!-- SESI 30: Lihat Katalog + panah bawah (normal flow, bukan absolute) -->
+          <button id="scroll-to-catalog" type="button"
+                  class="mt-12 mx-auto flex flex-col items-center gap-1.5 select-none group focus:outline-none">
+            <span class="text-[10px] font-bold uppercase tracking-[0.24em] text-brown/60 group-hover:text-gold_dark transition">Lihat Katalog</span>
+            <div class="animate-bounce-slow">
+              <i class="fa-solid fa-chevron-down text-gold text-lg"></i>
+            </div>
+          </button>
         </div>
 
         <div id="stats-wrapper" class="mx-auto mt-10 hidden max-w-3xl sm:mt-12">
@@ -348,7 +367,8 @@
       </div>
     </section>
 
-    <section class="border-t border-brown/10 bg-beige py-12 sm:py-16">
+    <!-- SESI 30: id stage-1-divisions untuk smooth scroll target -->
+    <section id="stage-1-divisions" class="border-t border-brown/10 bg-beige py-12 sm:py-16 scroll-mt-20">
       <div class="mx-auto max-w-6xl px-4 sm:px-6">
         <div class="text-center">
           <span id="divisions-badge" class="hidden inline-flex items-center gap-1.5 text-[10px] font-extrabold uppercase tracking-[0.28em] text-gold_dark">
@@ -397,7 +417,6 @@
     <section class="border-t border-brown/10 bg-beige py-8 sm:py-10">
       <div class="mx-auto max-w-6xl px-4 sm:px-6">
 
-        <!-- Nav row: back + share -->
         <div class="mb-6 flex flex-wrap items-center justify-between gap-2">
           <button id="back-to-hub-btn" type="button"
                   class="inline-flex items-center gap-2 rounded-full border border-brown/20 bg-white px-4 py-2 text-xs font-bold text-brown shadow-soft transition hover:border-gold hover:bg-gold/10 active:scale-95">
@@ -411,17 +430,14 @@
           </button>
         </div>
 
-        <!-- Detail Header -->
         <div id="catalog-detail-header"></div>
 
-        <!-- Inline Denah Panel -->
         <div id="denah-inline-panel" class="mt-6 hidden"></div>
 
         <div id="catalog-stats-wrapper" class="mx-auto mt-6 hidden max-w-3xl">
           <div id="catalog-stats-grid" class="grid gap-3"></div>
         </div>
 
-        <!-- Filter Status + Sort -->
         <div id="filter-status-wrap" class="mt-8 -mx-4 px-4 sm:mx-0 sm:px-0">
           <div class="mb-3 flex items-center gap-2">
             <span class="inline-flex items-center gap-1.5 text-[10px] font-extrabold uppercase tracking-[0.24em] text-gold_dark">
@@ -530,7 +546,7 @@
   <div id="toast" class="fixed bottom-24 left-1/2 z-[95] hidden max-w-xs -translate-x-1/2 rounded-xl bg-brown px-4 py-2.5 text-center text-xs font-bold text-beige shadow-2xl"></div>
 
   <!-- ============================================================
-       MODAL: DENAH LAYOUT (Perbesar)
+       MODAL: DENAH LAYOUT
   ============================================================ -->
   <div id="denah-modal" class="fixed inset-0 bg-black/80 z-50 hidden items-center justify-center p-4">
     <div class="relative w-full max-w-4xl">
@@ -561,7 +577,7 @@
   <!-- ============================================================
        MODAL: KPR
   ============================================================ -->
-  <div id="kpr-modal" class="hidden fixed inset-0 z-[75] flex items-end justify-center bg-brown/70 p-0 backdrop-blur-sm sm:items-center sm:p-4">
+  <div id="kpr-modal" class="hidden fixed inset-0 z-[75] items-end justify-center bg-brown/70 p-0 backdrop-blur-sm sm:items-center sm:p-4">
     <div class="modal-slide-up flex max-h-[95vh] w-full max-w-lg flex-col overflow-hidden rounded-t-3xl bg-beige shadow-2xl sm:rounded-2xl">
       <div class="flex items-start justify-between border-b border-brown/10 bg-white p-4 sm:p-5">
         <div class="flex-1 pr-3">
@@ -855,7 +871,7 @@
     }
 
     /* ================================================================
-       SESI 29: TOAST
+       TOAST
     ================================================================ */
     function showToast(message) {
       const toast = document.getElementById('toast');
@@ -863,7 +879,7 @@
       toast.textContent = message;
       toast.classList.remove('hidden');
       toast.classList.remove('toast-show');
-      void toast.offsetWidth; // force reflow
+      void toast.offsetWidth;
       toast.classList.add('toast-show');
       clearTimeout(toast._timer);
       toast._timer = setTimeout(() => {
@@ -873,7 +889,7 @@
     }
 
     /* ================================================================
-       SESI 29: SHARE
+       SHARE — Universal (SESI 30: emoji 🏷️, tidak 🏠)
     ================================================================ */
     async function shareContent(title, text, url) {
       if (navigator.share) {
@@ -904,23 +920,87 @@
       }
     }
 
-    function shareUnit(unit) {
-      if (!unit) return;
-      const baseUrl = `${location.origin}${location.pathname}`;
-      const url = CURRENT_DIVISION_SLUG ? `${baseUrl}#${CURRENT_DIVISION_SLUG}` : baseUrl;
-      const nama = unit.nama_unit || 'Unit';
-      const harga = formatRupiah(parseNumber(unit.harga));
-      const divName = unit.nama_divisi || CURRENT_DIVISION_NAME || '';
-      const text = `🏠 ${nama}${divName ? ' — ' + divName : ''}\n💰 ${harga}\n\nLihat detail di:`;
-      shareContent(nama, text, url);
+    function shareStage1() {
+      const url = `${location.origin}${location.pathname}`;
+      const brand = CONFIG.nama_brand || 'Portal Unit Usaha';
+      const desc = (CONFIG.hero_deskripsi || CONFIG.hero_subtitle || 'Katalog properti & kavling syariah').trim();
+      const text = `🏷️ *${brand}*\n${desc}\n\nLihat katalog lengkap di:\n${url}`;
+      shareContent(brand, text, url);
     }
 
     function shareDivision() {
       const baseUrl = `${location.origin}${location.pathname}`;
       const url = CURRENT_DIVISION_SLUG ? `${baseUrl}#${CURRENT_DIVISION_SLUG}` : baseUrl;
       const divName = CURRENT_DIVISION_NAME || 'Katalog';
-      const text = `Lihat katalog lengkap ${divName}`;
+      const text = `🏷️ *${divName}*\nKatalog properti & kavling pilihan\n\nLihat detail selengkapnya di:\n${url}`;
       shareContent(divName, text, url);
+    }
+
+    function shareUnit(unit) {
+      if (!unit) return;
+      const baseUrl = `${location.origin}${location.pathname}`;
+      const divSlug = slugify(unit.nama_divisi || CURRENT_DIVISION_NAME || '');
+      const unitSlug = slugify(unit.nama_unit || '');
+      let url;
+      if (divSlug && unitSlug) {
+        url = `${baseUrl}#${divSlug}/${unitSlug}`;
+      } else if (CURRENT_DIVISION_SLUG) {
+        url = `${baseUrl}#${CURRENT_DIVISION_SLUG}`;
+      } else {
+        url = baseUrl;
+      }
+      const nama = unit.nama_unit || 'Unit';
+      const harga = formatRupiah(parseNumber(unit.harga));
+      const divName = unit.nama_divisi || CURRENT_DIVISION_NAME || '';
+      const text = `🏷️ *${nama}*${divName ? ' — ' + divName : ''}\n💰 ${harga}\n\nLihat detail selengkapnya di:\n${url}`;
+      shareContent(nama, text, url);
+    }
+
+    /* ================================================================
+       SESI 30: DEEP-LINK PER UNIT
+    ================================================================ */
+    function deepLinkToUnit(divisionSlug, unitSlug) {
+      if (!divisionSlug || !unitSlug) return;
+      if (CURRENT_STAGE !== 2 || CURRENT_DIVISION_SLUG !== divisionSlug) return;
+
+      const units = UNITS.filter(u => slugify(u.nama_divisi || '') === divisionSlug);
+      const unit = units.find(u => slugify(u.nama_unit || '') === unitSlug);
+      if (!unit) return;
+
+      const unitIdx = units.indexOf(unit);
+      if (unitIdx < 0) return;
+
+      // Auto-open denah panel if collapsed
+      const denahContent = document.getElementById('denah-content');
+      if (denahContent && denahContent.classList.contains('hidden')) {
+        denahContent.classList.remove('hidden');
+        const toggleBtn = document.getElementById('denah-toggle-btn');
+        const chevron = document.getElementById('denah-toggle-chevron');
+        if (toggleBtn) {
+          const ps = toggleBtn.querySelectorAll('p');
+          if (ps[1]) ps[1].textContent = 'Klik untuk menutup panel';
+        }
+        if (chevron) chevron.style.transform = 'rotate(180deg)';
+      }
+
+      // Select pill + preview
+      document.querySelectorAll('[data-denah-pill]').forEach(p => p.classList.remove('active'));
+      const targetPill = document.querySelector(`[data-denah-pill="${unitIdx}"]`);
+      if (targetPill) {
+        targetPill.classList.add('active');
+        showDenahUnitPreview(unit);
+        try { targetPill.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' }); } catch (e) {}
+      }
+
+      // Scroll to card + ring highlight 3s
+      setTimeout(() => {
+        const targetCard = document.querySelector(`#catalog-grid > article[data-idx="${unitIdx}"]`);
+        if (targetCard) {
+          targetCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          targetCard.classList.add('ring-2', 'ring-gold');
+          setTimeout(() => targetCard.classList.remove('ring-2', 'ring-gold'), 3000);
+        }
+      }, 450);
     }
 
     /* ================================================================
@@ -942,9 +1022,6 @@
       return '<i class="fa-solid fa-location-dot text-stone-600 text-sm"></i>';
     }
 
-    /* ================================================================
-       SESI 29: FACILITY ITEM dengan permanent marker .fac-extra-item
-    ================================================================ */
     function renderFacilityItem(name, jarak, extraClass) {
       const iconHTML = getFacilityIcon(name);
       const safeName = escapeHtml(name || '');
@@ -981,7 +1058,6 @@
         return renderFacilityItem((parts[0] || '').trim(), (parts[1] || '').trim(), '');
       }).join('');
 
-      /* SESI 29: use permanent marker .fac-extra-item for toggle reliability */
       const hiddenHTML = hidden.map(item => {
         const parts = item.split(':');
         return renderFacilityItem((parts[0] || '').trim(), (parts[1] || '').trim(), 'fac-extra-item hidden');
@@ -1337,7 +1413,7 @@
     }
 
     /* ================================================================
-       SESI 29: SALES MODAL — FIX FLEX CLASS
+       SALES MODAL — FIX FLEX CLASS (SESI 30)
     ================================================================ */
     function showSalesModal(message, salesArr) {
       const modal = document.getElementById('sales-modal');
@@ -1362,7 +1438,7 @@
         </button>
       `).join('');
 
-      /* SESI 29 FIX: pastikan class flex ditambahkan agar modal center */
+      /* SESI 30 FIX: pastikan class flex ditambahkan agar modal center */
       modal.classList.remove('hidden');
       modal.classList.add('flex');
       document.body.classList.add('modal-open');
@@ -1443,7 +1519,7 @@
     }
 
     /* ================================================================
-       SESI 29: PILL LABEL EXTRACTION
+       PILL LABEL EXTRACTION
     ================================================================ */
     function extractPillLabel(unit) {
       const nama = String(unit.nama_unit || '').trim();
@@ -1481,7 +1557,7 @@
     }
 
     /* ================================================================
-       SESI 29: INLINE DENAH PANEL — AUTO OPEN BY DEFAULT
+       INLINE DENAH PANEL
     ================================================================ */
     function renderDenahInlinePanel(divisionName) {
       const container = document.getElementById('denah-inline-panel');
@@ -1497,7 +1573,7 @@
       }
 
       const opsi = getDivisionOpsiTampilan(divisionName);
-      /* SESI 29: Default OPEN, close only if explicitly 'denah_tutup' */
+      /* SESI 30: Default OPEN — hanya tutup jika opsi === 'denah_tutup' */
       const isAutoOpen = opsi !== 'denah_tutup';
       const isPolos = opsi === 'denah_polos';
       const units = UNITS.filter(u => (u.nama_divisi || '').trim() === divisionName);
@@ -1561,7 +1637,8 @@
       if (toggleBtn && content) {
         toggleBtn.addEventListener('click', () => {
           const isHidden = content.classList.contains('hidden');
-          const subtitle = toggleBtn.querySelector('p.text-\\[10px\\]') || toggleBtn.querySelectorAll('p')[1];
+          const ps = toggleBtn.querySelectorAll('p');
+          const subtitle = ps[1];
           if (isHidden) {
             content.classList.remove('hidden');
             if (subtitle) subtitle.textContent = 'Klik untuk menutup panel';
@@ -1594,9 +1671,6 @@
       }
     }
 
-    /* ================================================================
-       SESI 29: PILLS with extracted labels
-    ================================================================ */
     function renderDenahUnitPills(units) {
       const container = document.getElementById('denah-unit-pills');
       if (!container) return;
@@ -1804,7 +1878,7 @@
       });
     }
 
-    /* SESI 29: SORT by price */
+    /* Sort by price */
     function applySorting(sortOrder) {
       ACTIVE_SORT = sortOrder || 'default';
       const grid = document.getElementById('catalog-grid');
@@ -1858,20 +1932,9 @@
 
       const showWA = hasStage2WA(divName);
 
-      /* SESI 29: Fallback ke CURRENT_DIVISION_DENAH */
+      /* SESI 30: Fallback ke CURRENT_DIVISION_DENAH */
       const denahUrl = parseDriveUrl(unit.gambar_denah) || CURRENT_DIVISION_DENAH;
       const showDenahBtn = Boolean(denahUrl);
-
-      const tombolDenahHTML = showDenahBtn ? `
-        <button type="button"
-                data-denah-trigger
-                data-denah-url="${escapeHtml(denahUrl)}"
-                data-denah-unit="${escapeHtml(namaUnit)}"
-                class="flex items-center justify-center gap-1.5 rounded-xl border border-brown/15 bg-stone-100 px-3 py-2.5 text-[11px] font-bold text-brown/70 transition hover:border-gold hover:bg-gold/10 hover:text-gold_dark active:scale-[0.98]">
-          <i class="fa-solid fa-map-location-dot text-xs"></i>
-          <span>Lihat Layout</span>
-        </button>
-      ` : '';
 
       const mapsHref = unit.link_gmaps || CONFIG.gmaps_lokasi || '#';
       const waMessage = unit.pesan_wa_unit || `Assalamu'alaikum, saya ingin bertanya mengenai ${namaUnit}.`;
@@ -1888,7 +1951,7 @@
           <span>${escapeHtml(labelPromo || 'Promo')}</span>
         </div>` : '';
 
-      /* SESI 29: Skip media block if no photos */
+      /* SESI 30: Skip media block if no photos at all */
       const mediaHtml = hasAnyPhoto ? `
         <div class="relative">
           ${status ? `<div class="absolute left-3 top-3 z-20 inline-flex items-center gap-1.5 rounded-full ${statusClass} px-3 py-1 text-[10px] font-extrabold uppercase tracking-wide shadow-md">
@@ -1901,7 +1964,7 @@
           </div>
         </div>` : '';
 
-      /* SESI 29: Header badges when no photo */
+      /* SESI 30: Move badges to header when no photo */
       const headerBadgesHtml = !hasAnyPhoto && (status || hasPromoLabel) ? `
         <div class="mb-2 flex flex-wrap items-center gap-1.5">
           ${status ? `<span class="inline-flex items-center gap-1 rounded-full ${statusClass} px-2.5 py-1 text-[10px] font-extrabold uppercase tracking-wide shadow-sm">
@@ -2357,19 +2420,32 @@
           divSub.classList.toggle('hidden', !s);
         }
 
+        /* SESI 30: Deep-link parsing — support #divisi dan #divisi/unit */
         const hash = location.hash.replace(/^#/, '');
         if (hash) {
+          const parts = hash.split('/');
+          const divisionSlug = (parts[0] || '').trim();
+          const unitSlug = parts[1] ? parts[1].trim() : null;
+
           const divisions = groupByDivision();
           let validDivision = null;
           divisions.forEach((units, name) => {
-            if (slugify(name) === hash) validDivision = name;
+            if (slugify(name) === divisionSlug) validDivision = name;
           });
+
           if (validDivision) {
             try {
               history.replaceState({ stage: 1 }, '', location.pathname);
-              history.pushState({ stage: 2, division: hash }, '', '#' + hash);
+              history.pushState(
+                { stage: 2, division: divisionSlug, unit: unitSlug || undefined },
+                '',
+                '#' + hash
+              );
             } catch (e) {}
-            setStage2DOM(hash);
+            setStage2DOM(divisionSlug);
+            if (unitSlug) {
+              setTimeout(() => deepLinkToUnit(divisionSlug, unitSlug), 400);
+            }
           } else {
             try { history.replaceState({ stage: 1 }, '', location.pathname); } catch (e) {}
             setStage1DOM();
@@ -2398,6 +2474,7 @@
     ================================================================ */
     function setupGlobalListeners() {
 
+      /* SESI 30: popstate handles deep-link with unit */
       window.addEventListener('popstate', (e) => {
         const state = e.state || { stage: 1 };
         if (isAnyModalOpen()) {
@@ -2405,8 +2482,14 @@
           hideAllModalsDOM();
         }
         if (state.modal) return;
-        if (state.stage === 2 && state.division) setStage2DOM(state.division);
-        else setStage1DOM();
+        if (state.stage === 2 && state.division) {
+          setStage2DOM(state.division);
+          if (state.unit) {
+            setTimeout(() => deepLinkToUnit(state.division, state.unit), 400);
+          }
+        } else {
+          setStage1DOM();
+        }
       });
 
       // WA trigger
@@ -2445,8 +2528,19 @@
 
       // Share division
       const shareDivBtn = document.getElementById('share-division-btn');
-      if (shareDivBtn) {
-        shareDivBtn.addEventListener('click', () => shareDivision());
+      if (shareDivBtn) shareDivBtn.addEventListener('click', shareDivision);
+
+      // SESI 30: Share stage 1
+      const share1Btn = document.getElementById('share-stage1-btn');
+      if (share1Btn) share1Btn.addEventListener('click', shareStage1);
+
+      // SESI 30: Scroll to catalog from hero
+      const scrollBtn = document.getElementById('scroll-to-catalog');
+      if (scrollBtn) {
+        scrollBtn.addEventListener('click', () => {
+          const target = document.getElementById('stage-1-divisions');
+          if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
       }
 
       // Sales pick
@@ -2494,7 +2588,7 @@
         }
       });
 
-      /* SESI 29 FIX: Facility toggle uses permanent .fac-extra-item marker */
+      // Facility toggle — permanent .fac-extra-item marker
       document.addEventListener('click', (e) => {
         const btn = e.target.closest('[data-fac-toggle]');
         if (!btn) return;
