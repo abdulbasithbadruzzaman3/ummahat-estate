@@ -1544,9 +1544,9 @@
 
       let areaLabel = '';
       const areaPatterns = [
-        /(\d+)\s*m[²2]/i,
-        /Luas\s*(?:Tanah)?\s*[:=]?\s*(\d+)/i,
-        /LT\s*[:=]?\s*(\d+)/i
+       /([\d.,]+)\s*m[²2]/i,
+        /Luas\s*(?:Tanah)?\s*[:=]?\s*([\d.,]+)/i,
+        /LT\s*[:=]?\s*([\d.,]+)/i
       ];
       for (const p of areaPatterns) {
         const m = spec.match(p);
