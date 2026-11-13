@@ -53,18 +53,8 @@
     ::selection { background-color: #D4A373; color: #FFFFFF; }
     .font-serif-display { font-family: 'Playfair Display', Georgia, serif; }
 
-    .facility-text-safe {
-      word-break: break-word;
-      overflow-wrap: break-word;
-      hyphens: auto;
-    }
-
-    .line-clamp-2 {
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-    }
+    .facility-text-safe { word-break: break-word; overflow-wrap: break-word; hyphens: auto; }
+    .line-clamp-2 { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
 
     @keyframes waPulse {
       0%   { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.6); }
@@ -102,30 +92,21 @@
     .card-fade-in { animation: cardFadeIn 0.4s ease-out; }
 
     .stage { transition: opacity 0.3s ease; }
-
     .no-scrollbar::-webkit-scrollbar { display: none; }
     .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-
     body.modal-open { overflow: hidden; }
 
     .logo-initial {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: 'Playfair Display', Georgia, serif;
-      font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Playfair Display', Georgia, serif; font-weight: 700;
       color: #D4A373;
     }
 
     input[type="text"]#kpr-dp-input { font-variant-numeric: tabular-nums; }
 
     .tenor-card {
-      border-radius: 1rem;
-      border: 2px solid #E8E0D3;
-      background: #FFFFFF;
-      padding: 1rem;
-      text-align: center;
-      transition: all 0.25s ease;
+      border-radius: 1rem; border: 2px solid #E8E0D3; background: #FFFFFF;
+      padding: 1rem; text-align: center; transition: all 0.25s ease;
     }
     .tenor-card:hover {
       border-color: #D4A373;
@@ -134,116 +115,71 @@
     }
 
     .dp-quick-btn {
-      flex: 1;
-      padding: 0.5rem 0.75rem;
-      border-radius: 0.75rem;
-      border: 1.5px solid #D4C9B8;
-      background: #FFFFFF;
-      font-size: 12px;
-      font-weight: 700;
-      color: #6B5D52;
-      transition: all 0.2s ease;
-      cursor: pointer;
+      flex: 1; padding: 0.5rem 0.75rem; border-radius: 0.75rem;
+      border: 1.5px solid #D4C9B8; background: #FFFFFF;
+      font-size: 12px; font-weight: 700; color: #6B5D52;
+      transition: all 0.2s ease; cursor: pointer;
     }
     .dp-quick-btn:hover { border-color: #D4A373; color: #B8885A; }
     .dp-quick-btn.active { background: #D4A373; color: #FFFFFF; border-color: #D4A373; }
 
     .status-tab {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      white-space: nowrap;
-      border-radius: 9999px;
-      border: 1.5px solid #D4C9B8;
-      background: #FFFFFF;
-      padding: 0.55rem 1rem;
-      font-size: 12px;
-      font-weight: 700;
-      color: #6B5D52;
-      transition: all 0.2s ease;
-      cursor: pointer;
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      white-space: nowrap; border-radius: 9999px;
+      border: 1.5px solid #D4C9B8; background: #FFFFFF;
+      padding: 0.55rem 1rem; font-size: 12px; font-weight: 700;
+      color: #6B5D52; transition: all 0.2s ease; cursor: pointer;
     }
     .status-tab:hover { border-color: #D4A373; color: #B8885A; }
     .status-tab.active {
-      background: #2C221E;
-      color: #F5F2EB;
-      border-color: #2C221E;
+      background: #2C221E; color: #F5F2EB; border-color: #2C221E;
       box-shadow: 0 6px 16px -8px rgba(44, 34, 30, 0.5);
     }
     .status-tab .tab-count {
-      display: inline-block;
-      min-width: 20px;
-      padding: 0 5px;
-      border-radius: 9999px;
-      background: rgba(44, 34, 30, 0.1);
-      font-size: 10px;
-      font-weight: 800;
-      line-height: 1.6;
-      text-align: center;
+      display: inline-block; min-width: 20px; padding: 0 5px;
+      border-radius: 9999px; background: rgba(44, 34, 30, 0.1);
+      font-size: 10px; font-weight: 800; line-height: 1.6; text-align: center;
     }
     .status-tab.active .tab-count { background: rgba(245, 242, 235, 0.25); color: #F5F2EB; }
 
     .denah-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.25rem;
-      padding: 0.45rem 0.85rem;
-      border-radius: 9999px;
-      border: 1.5px solid #D4C9B8;
-      background: #FFFFFF;
-      font-size: 11px;
-      font-weight: 700;
-      color: #6B5D52;
-      transition: all 0.2s ease;
-      cursor: pointer;
-      white-space: nowrap;
-      line-height: 1.2;
+      display: inline-flex; align-items: center; gap: 0.25rem;
+      padding: 0.45rem 0.85rem; border-radius: 9999px;
+      border: 1.5px solid #D4C9B8; background: #FFFFFF;
+      font-size: 11px; font-weight: 700; color: #6B5D52;
+      transition: all 0.2s ease; cursor: pointer; white-space: nowrap; line-height: 1.2;
     }
     .denah-pill:hover { border-color: #D4A373; color: #B8885A; }
     .denah-pill.active {
-      background: #2C221E;
-      color: #FFFFFF;
-      border-color: #2C221E;
+      background: #2C221E; color: #FFFFFF; border-color: #2C221E;
       box-shadow: 0 4px 12px -4px rgba(44, 34, 30, 0.4);
     }
     .denah-pill-sold { opacity: 0.55; }
     .denah-pill-sold::after {
-      content: '●';
-      color: #f43f5e;
-      font-size: 7px;
-      margin-left: 3px;
-      vertical-align: middle;
+      content: '●'; color: #f43f5e; font-size: 7px; margin-left: 3px; vertical-align: middle;
     }
 
     .denah-zoom-wrap {
-      overflow: auto;
-      max-height: 500px;
+      overflow: auto; max-height: 500px;
       -webkit-overflow-scrolling: touch;
       touch-action: pan-x pan-y pinch-zoom;
-      cursor: zoom-in;
-      background: #F5F2EB;
+      cursor: zoom-in; background: #F5F2EB;
     }
     .denah-zoom-wrap img {
-      display: block;
-      width: 100%;
-      height: auto;
-      user-select: none;
-      -webkit-user-drag: none;
+      display: block; width: 100%; height: auto;
+      user-select: none; -webkit-user-drag: none;
     }
 
     #lightbox-img {
       transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease;
-      user-select: none;
-      -webkit-user-drag: none;
+      user-select: none; -webkit-user-drag: none;
     }
   </style>
 </head>
 
 <body class="bg-beige text-brown antialiased">
 
-  <!-- ============================================================
-       ERROR BANNER
-  ============================================================ -->
+  <!-- ERROR BANNER -->
   <div id="error-banner" class="hidden fixed inset-x-0 top-0 z-[90] p-3">
     <div class="mx-auto flex max-w-3xl items-start gap-3 rounded-2xl border border-rose-200 bg-rose-50 p-4 shadow-lg">
       <i class="fa-solid fa-triangle-exclamation mt-0.5 text-lg text-rose-600"></i>
@@ -257,9 +193,7 @@
     </div>
   </div>
 
-  <!-- ============================================================
-       HEADER
-  ============================================================ -->
+  <!-- HEADER -->
   <header class="sticky top-0 z-40 border-b border-white/5 bg-brown/95 backdrop-blur-lg">
     <div class="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 sm:px-6">
       <a href="#" id="header-brand-link" class="flex items-center gap-2.5">
@@ -282,9 +216,7 @@
     </div>
   </header>
 
-  <!-- ============================================================
-       STAGE 1 — HUB UTAMA
-  ============================================================ -->
+  <!-- STAGE 1 -->
   <div id="stage-1-hub" class="stage">
     <section class="relative overflow-hidden bg-beige">
       <div class="pointer-events-none absolute inset-0 opacity-[0.35]"
@@ -328,7 +260,8 @@
             </a>
           </div>
 
-          <div id="sosmed-wrapper" class="mt-8 flex justify-center gap-3">
+          <!-- SOSMED + YOUTUBE + SHARE -->
+          <div id="sosmed-wrapper" class="mt-8 flex flex-wrap justify-center gap-3">
             <a id="sosmed-instagram" href="#" target="_blank" rel="noopener" aria-label="Instagram"
                class="hidden h-10 w-10 place-items-center rounded-full border border-brown/15 bg-white text-brown transition hover:-translate-y-0.5 hover:border-gold hover:bg-gold hover:text-white">
               <i class="fa-brands fa-instagram text-sm"></i>
@@ -340,6 +273,10 @@
             <a id="sosmed-facebook" href="#" target="_blank" rel="noopener" aria-label="Facebook"
                class="hidden h-10 w-10 place-items-center rounded-full border border-brown/15 bg-white text-brown transition hover:-translate-y-0.5 hover:border-gold hover:bg-gold hover:text-white">
               <i class="fa-brands fa-facebook-f text-sm"></i>
+            </a>
+            <a id="sosmed-youtube" href="#" target="_blank" rel="noopener" aria-label="YouTube"
+               class="hidden h-10 w-10 place-items-center rounded-full border border-brown/15 bg-white text-brown transition hover:-translate-y-0.5 hover:border-gold hover:bg-gold hover:text-white">
+              <i class="fa-brands fa-youtube text-sm"></i>
             </a>
 
             <button id="share-stage1-btn" type="button" aria-label="Bagikan katalog"
@@ -405,9 +342,7 @@
     </section>
   </div>
 
-  <!-- ============================================================
-       STAGE 2 — KATALOG DALAM
-  ============================================================ -->
+  <!-- STAGE 2 -->
   <div id="stage-2-catalog" class="hidden stage">
     <section class="border-t border-brown/10 bg-beige py-8 sm:py-10">
       <div class="mx-auto max-w-6xl px-4 sm:px-6">
@@ -416,7 +351,7 @@
           <button id="back-to-hub-btn" type="button"
                   class="inline-flex items-center gap-2 rounded-full border border-brown/20 bg-white px-4 py-2 text-xs font-bold text-brown shadow-soft transition hover:border-gold hover:bg-gold/10 active:scale-95">
             <i class="fa-solid fa-arrow-left text-xs"></i>
-            <span>Semua Kawasan</span>
+            <span class="back-label">Semua Kawasan</span>
           </button>
           <button id="share-division-btn" type="button"
                   class="inline-flex items-center gap-2 rounded-full border border-brown/20 bg-white px-4 py-2 text-xs font-bold text-brown shadow-soft transition hover:border-gold hover:bg-gold/10 active:scale-95">
@@ -429,7 +364,6 @@
 
         <div id="denah-inline-panel" class="mt-6 hidden"></div>
 
-        <!-- SESI 31: Toggle button to reveal full list (only when interactive denah active) -->
         <div id="denah-list-toggle-wrap" class="mt-6 hidden">
           <button id="denah-list-toggle-btn" type="button"
                   class="w-full flex items-center justify-center gap-2 rounded-2xl border border-brown/15 bg-white px-4 py-3 text-sm font-bold text-brown shadow-soft transition hover:border-gold hover:bg-gold/5 active:scale-[0.99]">
@@ -442,7 +376,6 @@
           <div id="catalog-stats-grid" class="grid gap-3"></div>
         </div>
 
-        <!-- SESI 31: Wrapper untuk hide/show filter + grid -->
         <div id="catalog-list-wrapper">
           <div id="filter-status-wrap" class="mt-8 -mx-4 px-4 sm:mx-0 sm:px-0">
             <div class="mb-3 flex items-center gap-2">
@@ -472,16 +405,14 @@
           <button id="back-to-hub-btn-bottom" type="button"
                   class="inline-flex items-center gap-2 rounded-full border border-brown/20 bg-white px-6 py-3 text-sm font-bold text-brown shadow-soft transition hover:border-gold hover:bg-gold/10 active:scale-95">
             <i class="fa-solid fa-arrow-left text-xs"></i>
-            <span>Semua Kawasan</span>
+            <span class="back-label">Semua Kawasan</span>
           </button>
         </div>
       </div>
     </section>
   </div>
 
-  <!-- ============================================================
-       FOOTER
-  ============================================================ -->
+  <!-- FOOTER -->
   <footer class="bg-brown text-beige/70">
     <div class="mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-14">
       <div class="flex flex-col items-center gap-6 text-center">
@@ -508,6 +439,10 @@
           <a id="footer-sosmed-facebook" href="#" target="_blank" rel="noopener" aria-label="Facebook"
              class="hidden h-9 w-9 place-items-center rounded-full border border-beige/10 bg-beige/5 text-beige/60 transition hover:bg-gold hover:text-white">
             <i class="fa-brands fa-facebook-f text-sm"></i>
+          </a>
+          <a id="footer-sosmed-youtube" href="#" target="_blank" rel="noopener" aria-label="YouTube"
+             class="hidden h-9 w-9 place-items-center rounded-full border border-beige/10 bg-beige/5 text-beige/60 transition hover:bg-gold hover:text-white">
+            <i class="fa-brands fa-youtube text-sm"></i>
           </a>
         </div>
 
@@ -539,22 +474,16 @@
     </div>
   </footer>
 
-  <!-- ============================================================
-       FLOATING WA
-  ============================================================ -->
+  <!-- FLOATING WA -->
   <a id="floating-wa" href="#" data-wa-trigger aria-label="Chat WhatsApp Marketing"
      class="animate-wa-pulse fixed bottom-5 right-5 z-30 grid h-14 w-14 place-items-center rounded-full bg-wa text-white shadow-2xl shadow-wa/40 transition duration-200 hover:scale-110 hover:bg-wa_dark active:scale-95 sm:bottom-7 sm:right-7 sm:h-16 sm:w-16">
     <i class="fa-brands fa-whatsapp text-2xl sm:text-3xl"></i>
   </a>
 
-  <!-- ============================================================
-       TOAST
-  ============================================================ -->
+  <!-- TOAST -->
   <div id="toast" class="fixed bottom-24 left-1/2 z-[95] hidden max-w-xs -translate-x-1/2 rounded-xl bg-brown px-4 py-2.5 text-center text-xs font-bold text-beige shadow-2xl"></div>
 
-  <!-- ============================================================
-       MODAL: DENAH
-  ============================================================ -->
+  <!-- MODAL: DENAH -->
   <div id="denah-modal" class="fixed inset-0 bg-black/80 z-50 hidden items-center justify-center p-4">
     <div class="relative w-full max-w-4xl">
       <button id="denah-modal-close" type="button" aria-label="Tutup"
@@ -581,9 +510,7 @@
     </div>
   </div>
 
-  <!-- ============================================================
-       MODAL: KPR
-  ============================================================ -->
+  <!-- MODAL: KPR -->
   <div id="kpr-modal" class="hidden fixed inset-0 z-[75] items-end justify-center bg-brown/70 p-0 backdrop-blur-sm sm:items-center sm:p-4">
     <div class="modal-slide-up flex max-h-[95vh] w-full max-w-lg flex-col overflow-hidden rounded-t-3xl bg-beige shadow-2xl sm:rounded-2xl">
       <div class="flex items-start justify-between border-b border-brown/10 bg-white p-4 sm:p-5">
@@ -631,12 +558,12 @@
         <div class="p-4 sm:p-5">
           <div class="mb-3 flex items-center justify-between">
             <p class="text-[11px] font-bold uppercase tracking-wider text-brown/60">Simulasi Cicilan</p>
-            <span class="rounded-full bg-gold/15 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wide text-gold_dark">Bunga Flat 5%/tahun</span>
+            <span id="kpr-bunga-label" class="rounded-full bg-gold/15 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wide text-gold_dark">Bunga Flat 5%/tahun</span>
           </div>
           <div id="kpr-results" class="grid grid-cols-1 gap-2.5 sm:grid-cols-3"></div>
           <p class="mt-3 rounded-lg bg-brown/5 p-2.5 text-[10px] leading-relaxed text-brown/60">
             <i class="fa-solid fa-circle-info mr-1 text-gold"></i>
-            Simulasi menggunakan metode bunga flat. Angka bersifat estimasi.
+            Simulasi menggunakan metode flat. Angka bersifat estimasi.
           </p>
         </div>
       </div>
@@ -651,9 +578,7 @@
     </div>
   </div>
 
-  <!-- ============================================================
-       MODAL: SALES PICKER
-  ============================================================ -->
+  <!-- MODAL: SALES -->
   <div id="sales-modal" class="hidden fixed inset-0 z-[70] items-end justify-center bg-brown/70 p-0 backdrop-blur-sm sm:items-center sm:p-4">
     <div class="modal-slide-up w-full max-w-md overflow-hidden rounded-t-3xl bg-beige shadow-2xl sm:rounded-2xl">
       <div class="flex items-center justify-between border-b border-brown/10 bg-white p-4">
@@ -670,9 +595,7 @@
     </div>
   </div>
 
-  <!-- ============================================================
-       MODAL: LIGHTBOX
-  ============================================================ -->
+  <!-- MODAL: LIGHTBOX -->
   <div id="lightbox" class="hidden fixed inset-0 z-[80] items-center justify-center bg-brown/95 p-0 backdrop-blur-sm">
     <div class="absolute inset-x-0 top-0 z-10 flex items-center justify-between bg-gradient-to-b from-brown/80 to-transparent p-4">
       <div class="flex-1 min-w-0 pr-3">
@@ -702,8 +625,8 @@
       'https://docs.google.com/spreadsheets/d/e/2PACX-1vTXK_fROtEV0CvgC0aVzztpXIOry-mUEOVn-883bUOkhhH1uofWKtPiEPjjSOXJkKGaTgDZynZDhIWN/pub?gid=0&single=true&output=csv';
 
     const MIN_DP = 10000000;
-    const BUNGA_FLAT = 0.05;
-    const TENORS = [12, 24, 36];
+    const DEFAULT_TENORS = [12, 24, 36];
+    const DEFAULT_BUNGA = 0.05;
     const PROPERTY_REGEX = /kavling|properti|tanah|rumah/i;
 
     const FALLBACK_IMG = 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(
@@ -724,6 +647,7 @@
     let UNITS = [];
     let HOLDING_SALES = [];
     let ACTIVE_KPR_UNIT = null;
+    let ACTIVE_KPR_SETTINGS = { tenor: DEFAULT_TENORS, bunga: DEFAULT_BUNGA };
     let ACTIVE_DP = 0;
     let CURRENT_STAGE = 1;
     let CURRENT_DIVISION_SLUG = null;
@@ -733,8 +657,6 @@
     let ACTIVE_SORT = 'default';
     let MODAL_HISTORY_PUSHED = false;
     let ROTATION_INDEX = 0;
-
-    /* SESI 31: Denah detail state */
     let CURRENT_DENAH_UNITS = [];
     let CURRENT_DENAH_IDX = 0;
 
@@ -784,6 +706,23 @@
         if (m && m[1]) return `https://lh3.googleusercontent.com/d/${m[1]}`;
       }
       return u;
+    }
+
+    /* SESI 32: parseYoutubeEmbedUrl */
+    function parseYoutubeEmbedUrl(url) {
+      if (!url) return '';
+      const u = String(url).trim();
+      if (!u) return '';
+      if (/^[a-zA-Z0-9_-]{11}$/.test(u)) return `https://www.youtube-nocookie.com/embed/${u}?rel=0`;
+      const patterns = [
+        /(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/|youtube\.com\/shorts\/|youtube\.com\/live\/|youtube-nocookie\.com\/embed\/)([a-zA-Z0-9_-]{11})/,
+        /[?&]v=([a-zA-Z0-9_-]{11})/
+      ];
+      for (const p of patterns) {
+        const m = u.match(p);
+        if (m && m[1]) return `https://www.youtube-nocookie.com/embed/${m[1]}?rel=0`;
+      }
+      return '';
     }
 
     function escapeHtml(str) {
@@ -972,7 +911,6 @@
     ================================================================ */
     function getFacilityIcon(name) {
       const n = String(name || '').toLowerCase();
-
       if (n.includes('masjid') || n.includes('musholla') || n.includes('mushola')) return '<i class="fa-solid fa-mosque text-emerald-600 text-sm"></i>';
       if (n.includes('rs') || n.includes('rumah sakit') || n.includes('klinik')) return '<i class="fa-solid fa-hospital text-red-500 text-sm"></i>';
       if (n.includes('spbu') || n.includes('bensin')) return '<i class="fa-solid fa-gas-pump text-amber-600 text-sm"></i>';
@@ -982,7 +920,6 @@
       if (n.includes('sumur') || n.includes('pdam') || n.includes('air')) return '<i class="fa-solid fa-droplet text-sky-500 text-sm"></i>';
       if (n.includes('sekolah') || n.includes('smk') || n.includes('smp') || n.includes('sma') || n.includes('kampus') || n.includes('universitas')) return '<i class="fa-solid fa-graduation-cap text-orange-600 text-sm"></i>';
       if (n.includes('lahan hijau') || n.includes('taman') || n.includes('lapangan') || n.includes('park')) return '<i class="fa-solid fa-tree text-green-600 text-sm"></i>';
-
       return '<i class="fa-solid fa-location-dot text-stone-600 text-sm"></i>';
     }
 
@@ -1255,7 +1192,6 @@
       img.onerror = function () { window.__imgFail(this); };
       img.src = String(url).trim();
       img.alt = title || 'Denah Kawasan';
-
       if (titleEl) titleEl.textContent = title || 'Denah Kawasan';
 
       modal.classList.remove('hidden');
@@ -1282,12 +1218,14 @@
     }
 
     /* ================================================================
-       KPR
+       KPR — dynamic tenor & bunga
     ================================================================ */
-    function calculateAllTenors(harga, dp) {
+    function calculateAllTenors(harga, dp, tenorArr, bunga) {
+      const tenorList = (tenorArr && tenorArr.length) ? tenorArr : DEFAULT_TENORS;
+      const bungaVal = (typeof bunga === 'number' && isFinite(bunga)) ? bunga : DEFAULT_BUNGA;
       const pokok = Math.max(0, harga - dp);
-      const bungaPerTahun = pokok * BUNGA_FLAT;
-      return TENORS.map(tenorBulan => {
+      const bungaPerTahun = pokok * bungaVal;
+      return tenorList.map(tenorBulan => {
         const tahun = tenorBulan / 12;
         const totalBunga = bungaPerTahun * tahun;
         const totalHutang = pokok + totalBunga;
@@ -1300,20 +1238,27 @@
       if (!ACTIVE_KPR_UNIT) return;
       const harga = parseNumber(ACTIVE_KPR_UNIT.harga);
       const dp = Math.max(MIN_DP, Math.min(ACTIVE_DP || MIN_DP, harga - 1));
-      const results = calculateAllTenors(harga, dp);
+      const results = calculateAllTenors(harga, dp, ACTIVE_KPR_SETTINGS.tenor, ACTIVE_KPR_SETTINGS.bunga);
       const container = document.getElementById('kpr-results');
       if (!container) return;
 
-      container.innerHTML = results.map(r => `
+      // Set grid cols based on tenor count
+      const count = results.length;
+      container.className = `grid grid-cols-1 gap-2.5 ${count === 2 ? 'sm:grid-cols-2' : count >= 3 ? 'sm:grid-cols-3' : 'sm:grid-cols-1'}`;
+
+      container.innerHTML = results.map(r => {
+        const tahunStr = Number.isInteger(r.tenorTahun) ? r.tenorTahun : r.tenorTahun.toFixed(1);
+        return `
         <div class="tenor-card">
-          <p class="text-[11px] font-bold uppercase tracking-wider text-gold_dark">${r.tenorTahun} Tahun</p>
+          <p class="text-[11px] font-bold uppercase tracking-wider text-gold_dark">${tahunStr} Tahun</p>
           <p class="mt-1 text-base font-extrabold text-brown">
             ${formatRupiah(r.cicilanPerBulan)}
             <span class="text-[10px] font-medium text-brown/50">/bln</span>
           </p>
           <p class="mt-0.5 text-[10px] text-brown/50">Total ${formatRupiah(r.totalHutang)}</p>
         </div>
-      `).join('');
+      `;
+      }).join('');
 
       const percent = harga > 0 ? ((dp / harga) * 100).toFixed(1) : 0;
       const percentEl = document.getElementById('kpr-dp-percent');
@@ -1321,6 +1266,14 @@
 
       const pokokEl = document.getElementById('kpr-pokok-hutang');
       if (pokokEl) pokokEl.textContent = formatRupiah(Math.max(0, harga - dp));
+
+      // Update bunga label
+      const bungaEl = document.getElementById('kpr-bunga-label');
+      if (bungaEl) {
+        const b = ACTIVE_KPR_SETTINGS.bunga;
+        if (b === 0) bungaEl.textContent = 'Cicilan 0% Tanpa Bunga';
+        else bungaEl.textContent = `Bunga Flat ${(b * 100).toFixed(b * 100 % 1 === 0 ? 0 : 1)}%/tahun`;
+      }
 
       document.querySelectorAll('.dp-quick-btn').forEach(btn => {
         const p = parseFloat(btn.dataset.dpPercent);
@@ -1333,7 +1286,12 @@
       const modal = document.getElementById('kpr-modal');
       if (!modal || !isPropertyProduct(unit)) return;
 
+      const settings = getDivisionSettings(unit.nama_divisi || '');
+      if (settings.tanpaKpr) return;
+
       ACTIVE_KPR_UNIT = unit;
+      ACTIVE_KPR_SETTINGS = { tenor: settings.tenor, bunga: settings.bunga };
+
       const harga = parseNumber(unit.harga);
       const defaultDP = Math.max(MIN_DP, Math.round(harga * 0.2));
       ACTIVE_DP = Math.min(defaultDP, Math.max(MIN_DP, harga - 1));
@@ -1347,6 +1305,7 @@
 
       updateKPRResults();
       modal.classList.remove('hidden');
+      modal.classList.add('flex');
       document.body.classList.add('modal-open');
       pushModalHistory();
     }
@@ -1355,11 +1314,14 @@
       if (!ACTIVE_KPR_UNIT) return '';
       const harga = parseNumber(ACTIVE_KPR_UNIT.harga);
       const dp = Math.max(MIN_DP, Math.min(ACTIVE_DP || MIN_DP, harga - 1));
-      const results = calculateAllTenors(harga, dp);
+      const results = calculateAllTenors(harga, dp, ACTIVE_KPR_SETTINGS.tenor, ACTIVE_KPR_SETTINGS.bunga);
       const percent = harga > 0 ? ((dp / harga) * 100).toFixed(1) : 0;
-      const tenorLines = results.map(r =>
-        `• ${r.tenorTahun} Tahun (${r.tenorBulan}x): ${formatRupiah(r.cicilanPerBulan)}/bulan`
-      ).join('\n');
+      const tenorLines = results.map(r => {
+        const tahunStr = Number.isInteger(r.tenorTahun) ? r.tenorTahun : r.tenorTahun.toFixed(1);
+        return `• ${tahunStr} Tahun (${r.tenorBulan}x): ${formatRupiah(r.cicilanPerBulan)}/bulan`;
+      }).join('\n');
+      const b = ACTIVE_KPR_SETTINGS.bunga;
+      const bungaLabel = b === 0 ? '0% (Tanpa Bunga)' : `${(b * 100).toFixed(b * 100 % 1 === 0 ? 0 : 1)}%/tahun flat`;
       return [
         `Assalamu'alaikum, saya tertarik dengan unit *${ACTIVE_KPR_UNIT.nama_unit || 'ini'}*.`,
         '',
@@ -1367,7 +1329,7 @@
         `Harga Unit: ${formatRupiah(harga)}`,
         `Uang Muka (DP): ${formatRupiah(dp)} (${percent}%)`,
         `Sisa Pokok: ${formatRupiah(Math.max(0, harga - dp))}`,
-        `Bunga Flat: 5%/tahun`,
+        `Bunga: ${bungaLabel}`,
         '',
         `💰 *Estimasi Cicilan:*`,
         tenorLines,
@@ -1425,14 +1387,67 @@
     function getDivisionContactInfo(divisionName) {
       const units = UNITS.filter(u => (u.nama_divisi || '').trim() === divisionName);
       const first = units[0] || {};
+      let igDiv = '', ttDiv = '', fbDiv = '', ytDiv = '', tagline = '', deskripsi = '';
+      for (const u of units) {
+        if (!igDiv) igDiv = (u.instagram_divisi || '').trim();
+        if (!ttDiv) ttDiv = (u.tiktok_divisi || '').trim();
+        if (!fbDiv) fbDiv = (u.facebook_divisi || '').trim();
+        if (!ytDiv) ytDiv = (u.youtube_divisi || '').trim();
+        if (!tagline) tagline = (u.tagline_divisi || '').trim();
+        if (!deskripsi) deskripsi = (u.deskripsi_divisi || '').trim();
+      }
       return {
         pesan: (first.pesan_wa_unit || CONFIG.pesan_wa_utama || 'Halo, saya ingin bertanya.'),
-        instagram: (first.instagram_divisi || CONFIG.instagram || ''),
-        tiktok: (first.tiktok_divisi || CONFIG.tiktok || ''),
-        facebook: CONFIG.facebook || '',
-        tagline: (first.tagline_divisi || ''),
-        deskripsi: (first.deskripsi_divisi || '')
+        instagram: igDiv || (CONFIG.instagram || ''),
+        tiktok: ttDiv || (CONFIG.tiktok || ''),
+        facebook: fbDiv || (CONFIG.facebook || ''),
+        youtube: ytDiv || (CONFIG.youtube || ''),
+        tagline,
+        deskripsi
       };
+    }
+
+    /* SESI 32: getDivisionSettings */
+    function getDivisionSettings(divisionName) {
+      const units = UNITS.filter(u => (u.nama_divisi || '').trim() === divisionName);
+      const settings = {
+        tenor: DEFAULT_TENORS.slice(),
+        bunga: DEFAULT_BUNGA,
+        tanpaKpr: false,
+        labelKembali: 'Semua Kawasan',
+        labelDenah: 'Masterplan / Denah Kawasan & Pilih Kavling'
+      };
+
+      for (const u of units) {
+        const raw = (u.cicilan_tenor || '').trim();
+        if (raw) {
+          const parsed = raw.split(',').map(s => parseInt(s.trim(), 10)).filter(n => isFinite(n) && n > 0);
+          if (parsed.length) { settings.tenor = parsed; break; }
+        }
+      }
+      for (const u of units) {
+        const raw = (u.cicilan_bunga || '').trim();
+        if (raw !== '') {
+          const n = parseFloat(String(raw).replace(/[^\d.,-]/g, '').replace(',', '.'));
+          if (isFinite(n) && n >= 0) { settings.bunga = n / 100; break; }
+        }
+      }
+      for (const u of units) {
+        const opsi = String(u.opsi_tampilan || '').toLowerCase();
+        if (opsi.includes('tanpa_cicilan') || opsi.includes('tanpa_kpr')) {
+          settings.tanpaKpr = true;
+          break;
+        }
+      }
+      for (const u of units) {
+        const lbl = (u.label_kembali || '').trim();
+        if (lbl) { settings.labelKembali = lbl; break; }
+      }
+      for (const u of units) {
+        const lbl = (u.label_denah || '').trim();
+        if (lbl) { settings.labelDenah = lbl; break; }
+      }
+      return settings;
     }
 
     function getDivisionDenah(divisionName) {
@@ -1482,7 +1497,7 @@
     }
 
     /* ================================================================
-       SESI 31: PILL LABEL EXTRACTION — Fix regex desimal
+       SESI 32: PILL LABEL — regex desimal [\d.,]+
     ================================================================ */
     function extractPillLabel(unit) {
       const nama = String(unit.nama_unit || '').trim();
@@ -1506,7 +1521,7 @@
       }
 
       let areaLabel = '';
-      /* SESI 31: [\d.,]+ agar desimal (62.9 m², 99.5 m²) tidak terpotong */
+      /* SESI 32: [\d.,]+ agar 62.9 / 99.5 m² tampil utuh */
       const areaPatterns = [
         /([\d.,]+)\s*m[²2]/i,
         /Luas\s*(?:Tanah)?\s*[:=]?\s*([\d.,]+)/i,
@@ -1521,15 +1536,13 @@
     }
 
     /* ================================================================
-       SESI 31: DENAH UNIT SELECTION HELPERS
+       SESI 32: DENAH UNIT SELECTION
     ================================================================ */
     function selectDenahUnit(idx) {
       const units = CURRENT_DENAH_UNITS;
       if (!units || idx < 0 || idx >= units.length) return;
-
       CURRENT_DENAH_IDX = idx;
 
-      // Update pill active state
       document.querySelectorAll('[data-denah-pill]').forEach(p => p.classList.remove('active'));
       const pill = document.querySelector(`[data-denah-pill="${idx}"]`);
       if (pill) {
@@ -1537,12 +1550,11 @@
         try { pill.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' }); } catch (e) {}
       }
 
-      // Render preview card
       showDenahUnitPreview(units[idx], units, idx);
     }
 
     /* ================================================================
-       SESI 31: FULL DETAIL PREVIEW CARD (dengan navigasi Prev/Next)
+       SESI 32: FULL DETAIL PREVIEW CARD
     ================================================================ */
     function showDenahUnitPreview(unit, units, currentIdx) {
       const container = document.getElementById('denah-unit-preview');
@@ -1570,9 +1582,13 @@
       const spec = (unit.label_spesifikasi || '').trim();
       const desc = (unit.deskripsi || '').trim();
       const angsuranText = (unit.angsuran || '').trim();
+      const keteranganHarga = (unit.keterangan_harga || '').trim();
       const isProperty = isPropertyProduct(unit);
       const mapsHref = unit.link_gmaps || CONFIG.gmaps_lokasi || '#';
       const waMessage = unit.pesan_wa_unit || `Assalamu'alaikum, saya ingin bertanya mengenai ${namaUnit}.`;
+
+      const settings = getDivisionSettings(unit.nama_divisi || CURRENT_DIVISION_NAME || '');
+      const showKPR = isProperty && !soldOut && !settings.tanpaKpr;
 
       let statusClass = 'bg-stone-600 text-white';
       if (soldOut) statusClass = 'bg-rose-500 text-white';
@@ -1592,8 +1608,7 @@
         </div>`;
       }
 
-      // Action buttons
-      const kprBtn = isProperty && !soldOut
+      const kprBtn = showKPR
         ? `<button type="button" data-kpr-trigger data-unit-id="${escapeHtml(unit.id || '')}"
                  class="flex items-center justify-center gap-1 rounded-lg bg-gold px-1.5 py-2 text-[10px] font-bold text-white shadow-sm transition hover:bg-gold_dark active:scale-[0.98]">
              <i class="fa-solid fa-calculator text-[10px]"></i>
@@ -1627,7 +1642,6 @@
 
       const btnCols = kprBtn ? 'grid-cols-4' : 'grid-cols-3';
 
-      // Prev/Next navigation
       const navHtml = total > 1 ? `
         <div class="flex items-center justify-between gap-2 mb-2">
           <button type="button" data-denah-nav="prev" ${idx <= 0 ? 'disabled' : ''}
@@ -1651,6 +1665,10 @@
            </div>
            <span class="inline-block mt-0.5 rounded bg-rose-50 px-1.5 py-0.5 text-[9px] font-bold uppercase text-rose-600">Hemat ${formatRupiah(hargaLama - harga)}</span>`
         : `<p class="text-lg font-extrabold text-brown">${formatRupiah(harga)}</p>`;
+
+      const keteranganHtml = keteranganHarga
+        ? `<p class="text-[11px] font-medium text-brown/60 mt-1 leading-tight break-words">${escapeHtml(keteranganHarga)}</p>`
+        : '';
 
       container.innerHTML = `
         <div class="rounded-xl border border-brown/15 bg-beige/50 overflow-hidden shadow-sm">
@@ -1676,6 +1694,7 @@
             <h4 class="font-bold text-brown text-sm leading-tight break-words facility-text-safe">${escapeHtml(namaUnit)}</h4>
 
             <div class="mt-1.5">${hargaDisplay}</div>
+            ${keteranganHtml}
 
             ${angsuranHtml}
 
@@ -1721,9 +1740,11 @@
       }
 
       const opsi = getDivisionOpsiTampilan(divisionName);
-      const isAutoOpen = opsi !== 'denah_tutup';
-      const isPolos = opsi === 'denah_polos';
+      const isAutoOpen = !opsi.includes('denah_tutup');
+      const isPolos = opsi.includes('denah_polos');
       const units = UNITS.filter(u => (u.nama_divisi || '').trim() === divisionName);
+      const settings = getDivisionSettings(divisionName);
+      const panelLabel = settings.labelDenah || 'Masterplan / Denah Kawasan & Pilih Kavling';
 
       container.classList.remove('hidden');
       container.innerHTML = `
@@ -1734,7 +1755,7 @@
               <i class="fa-solid fa-map-location-dot"></i>
             </div>
             <div class="min-w-0">
-              <p class="text-sm font-bold text-brown leading-tight break-words">Masterplan / Denah Kawasan &amp; Pilih Kavling</p>
+              <p class="text-sm font-bold text-brown leading-tight break-words">${escapeHtml(panelLabel)}</p>
               <p class="text-[10px] text-brown/60 leading-tight">${isAutoOpen ? 'Klik untuk menutup panel' : 'Klik untuk membuka panel'}</p>
             </div>
           </div>
@@ -1838,12 +1859,9 @@
         });
       });
 
-      // Auto-select first available unit
       const firstAvailableIdx = units.findIndex(u => !isSoldOut(u.status));
       const autoIdx = firstAvailableIdx >= 0 ? firstAvailableIdx : 0;
-      if (units[autoIdx]) {
-        selectDenahUnit(autoIdx);
-      }
+      if (units[autoIdx]) selectDenahUnit(autoIdx);
     }
 
     /* ================================================================
@@ -1912,7 +1930,7 @@
     }
 
     /* ================================================================
-       DETAIL HEADER STAGE 2
+       SESI 32: DETAIL HEADER — socmed + youtube video
     ================================================================ */
     function renderDetailHeader(divisionName) {
       const container = document.getElementById('catalog-detail-header');
@@ -1922,13 +1940,48 @@
       const facilities = getDivisionFacilities(divisionName);
       const facilitiesHTML = renderFacilities(facilities, 'inner');
 
+      // Socmed buttons row
+      const socials = [];
+      if (info.instagram) socials.push({ platform: 'instagram', url: info.instagram, icon: 'fa-instagram', brand: true });
+      if (info.tiktok) socials.push({ platform: 'tiktok', url: info.tiktok, icon: 'fa-tiktok', brand: true });
+      if (info.facebook) socials.push({ platform: 'facebook', url: info.facebook, icon: 'fa-facebook-f', brand: true });
+
+      const socialsHTML = socials.length ? `
+        <div class="mt-4 flex justify-center gap-2 flex-wrap">
+          ${socials.map(s => `
+            <a href="${escapeHtml(s.url)}" target="_blank" rel="noopener" aria-label="${s.platform}"
+               class="grid h-9 w-9 place-items-center rounded-full border border-brown/15 bg-white text-brown transition hover:border-gold hover:bg-gold hover:text-white active:scale-95">
+              <i class="fa-${s.brand ? 'brands' : 'solid'} fa-${s.icon} text-sm"></i>
+            </a>
+          `).join('')}
+        </div>
+      ` : '';
+
+      // YouTube video
+      const ytEmbed = parseYoutubeEmbedUrl(info.youtube);
+      const ytHTML = ytEmbed ? `
+        <div class="mt-5">
+          <p class="text-[10px] font-extrabold uppercase tracking-wider text-gold_dark mb-2 text-center">
+            <i class="fa-brands fa-youtube mr-1 text-[10px]"></i>Video Promosi &amp; Review
+          </p>
+          <div class="aspect-video w-full overflow-hidden rounded-2xl border border-brown/10 shadow-card">
+            <iframe src="${escapeHtml(ytEmbed)}" title="Video Promosi ${escapeHtml(divisionName)}"
+                    class="w-full h-full" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe>
+          </div>
+        </div>
+      ` : '';
+
       container.innerHTML = `
         <div class="bg-white p-5 sm:p-6 rounded-2xl shadow-card border border-brown/10">
           <div class="text-center">
             <h2 class="font-serif-display text-2xl sm:text-3xl font-bold text-brown">${escapeHtml(divisionName)}</h2>
             ${info.tagline ? `<p class="mt-1.5 text-base font-medium text-brown_light leading-tight break-words facility-text-safe">${escapeHtml(info.tagline)}</p>` : ''}
             ${info.deskripsi ? renderExpandableText(info.deskripsi, 'mt-2 max-w-xl mx-auto text-center') : ''}
+            ${socialsHTML}
           </div>
+          ${ytHTML}
           ${facilitiesHTML}
         </div>
       `;
@@ -2014,7 +2067,6 @@
       const lahanImgRaw = parseDriveUrl(unit.foto_lahan);
       const unitImgRaw = parseDriveUrl(unit.gambar_unit);
       const hasAnyPhoto = Boolean(renderImgRaw || lahanImgRaw || unitImgRaw);
-
       const defaultImg = lahanImgRaw || renderImgRaw || unitImgRaw || '';
 
       const status = (unit.status || '').trim();
@@ -2031,9 +2083,12 @@
       const deskripsi = (unit.deskripsi || '').trim();
       const angsuranText = (unit.angsuran || '').trim();
       const labelSpesifikasi = (unit.label_spesifikasi || '').trim();
+      const keteranganHarga = (unit.keterangan_harga || '').trim();
       const isProperty = isPropertyProduct(unit);
       const divName = unit.nama_divisi || '';
 
+      const settings = getDivisionSettings(divName);
+      const showKPR = isProperty && !settings.tanpaKpr;
       const showWA = hasStage2WA(divName);
 
       const denahUrl = parseDriveUrl(unit.gambar_denah) || CURRENT_DIVISION_DENAH;
@@ -2098,9 +2153,7 @@
       }
 
       let deskripsiHtml = '';
-      if (deskripsi) {
-        deskripsiHtml = `<div class="mt-3">${renderExpandableText(deskripsi, '')}</div>`;
-      }
+      if (deskripsi) deskripsiHtml = `<div class="mt-3">${renderExpandableText(deskripsi, '')}</div>`;
 
       let spesifikasiHtml = '';
       if (labelSpesifikasi) {
@@ -2120,7 +2173,7 @@
       }
 
       let kprButtonHtml = '';
-      if (isProperty) {
+      if (showKPR) {
         if (soldOut) {
           kprButtonHtml = `<button disabled class="flex w-full cursor-not-allowed items-center justify-center gap-2 rounded-xl bg-brown/15 px-4 py-3 text-xs font-bold text-brown/40">
             <i class="fa-solid fa-ban"></i><span>Unit Terjual</span>
@@ -2156,6 +2209,10 @@
            <span class="mt-1 inline-block rounded-md bg-rose-50 px-1.5 py-0.5 text-[10px] font-bold uppercase text-rose-600">Hemat ${formatRupiah(hargaLama - harga)}</span>`
         : `<p class="font-serif-display text-2xl font-bold text-brown">${formatRupiah(harga)}</p>`;
 
+      const keteranganHtml = keteranganHarga
+        ? `<p class="text-[11px] font-medium text-brown/60 mt-1 leading-tight break-words">${escapeHtml(keteranganHarga)}</p>`
+        : '';
+
       const soldOutClass = soldOut ? 'opacity-75' : '';
 
       return `
@@ -2170,6 +2227,7 @@
             <div class="mt-3">
               <p class="text-[10px] font-semibold uppercase tracking-wider text-brown/50">Harga</p>
               ${hargaDisplayHtml}
+              ${keteranganHtml}
             </div>
             ${angsuranPreview}
             ${deskripsiHtml}
@@ -2198,20 +2256,28 @@
     }
 
     /* ================================================================
-       SESI 31: RENDER CATALOG — dengan Master-Detail anti-redundancy
+       RENDER CATALOG
     ================================================================ */
     function renderCatalog(divisionName) {
       const grid = document.getElementById('catalog-grid');
       if (!grid) return;
 
       const units = UNITS.filter(u => (u.nama_divisi || '').trim() === divisionName);
+      const settings = getDivisionSettings(divisionName);
 
       renderDetailHeader(divisionName);
       renderDenahInlinePanel(divisionName);
 
+      // Apply dynamic back labels
+      document.querySelectorAll('.back-label').forEach(el => {
+        el.textContent = settings.labelKembali;
+      });
+
       const denahUrl = getDivisionDenah(divisionName);
-      const opsi = getDivisionOpsiTampilan(divisionName);
-      const isInteractiveDenah = Boolean(denahUrl) && opsi !== 'denah_polos';
+      const opsi = getDivisionOpsiTampilan(divisionName).toLowerCase();
+      const hasDenah = Boolean(denahUrl);
+      // Interactive: has denah & NOT polos & NOT tutup
+      const isInteractiveDenah = hasDenah && !opsi.includes('denah_polos') && !opsi.includes('denah_tutup');
 
       const toggleWrap = document.getElementById('denah-list-toggle-wrap');
       const listWrapper = document.getElementById('catalog-list-wrapper');
@@ -2237,7 +2303,6 @@
       if (sortSel) sortSel.value = 'default';
       ACTIVE_SORT = 'default';
 
-      /* SESI 31: Hide list by default when interactive denah active */
       if (isInteractiveDenah) {
         if (listWrapper) listWrapper.classList.add('hidden');
         if (toggleWrap) toggleWrap.classList.remove('hidden');
@@ -2311,7 +2376,7 @@
     }
 
     /* ================================================================
-       SESI 31: DEEP-LINK PER UNIT (scroll ke detail card)
+       DEEP-LINK PER UNIT
     ================================================================ */
     function deepLinkToUnit(divisionSlug, unitSlug) {
       if (!divisionSlug || !unitSlug) return;
@@ -2321,7 +2386,6 @@
       const unitIdx = units.findIndex(u => slugify(u.nama_unit || '') === unitSlug);
       if (unitIdx < 0) return;
 
-      // Auto-open denah panel if collapsed
       const denahContent = document.getElementById('denah-content');
       if (denahContent && denahContent.classList.contains('hidden')) {
         denahContent.classList.remove('hidden');
@@ -2334,11 +2398,8 @@
         if (chevron) chevron.style.transform = 'rotate(180deg)';
       }
 
-      // Select the unit (this triggers showDenahUnitPreview)
       setTimeout(() => {
         selectDenahUnit(unitIdx);
-
-        // Scroll to preview card + gold ring
         setTimeout(() => {
           const previewEl = document.getElementById('denah-unit-preview');
           if (previewEl) {
@@ -2390,7 +2451,7 @@
     }
 
     /* ================================================================
-       APPLY CONTACTS
+       APPLY CONTACTS — dengan youtube
     ================================================================ */
     function applyContacts(contacts) {
       ['wa-utama-btn', 'navbar-wa', 'floating-wa'].forEach(id => {
@@ -2401,7 +2462,8 @@
       [
         { platform: 'instagram', url: contacts.instagram },
         { platform: 'tiktok', url: contacts.tiktok },
-        { platform: 'facebook', url: contacts.facebook }
+        { platform: 'facebook', url: contacts.facebook },
+        { platform: 'youtube', url: contacts.youtube }
       ].forEach(({ platform, url }) => {
         ['sosmed', 'footer-sosmed'].forEach(prefix => {
           const el = document.getElementById(`${prefix}-${platform}`);
@@ -2424,7 +2486,8 @@
         pesan: CONFIG.pesan_wa_utama || 'Halo.',
         instagram: CONFIG.instagram || '',
         tiktok: CONFIG.tiktok || '',
-        facebook: CONFIG.facebook || ''
+        facebook: CONFIG.facebook || '',
+        youtube: CONFIG.youtube || ''
       };
     }
 
@@ -2585,7 +2648,6 @@
           divSub.classList.toggle('hidden', !s);
         }
 
-        // Deep-link parsing
         const hash = location.hash.replace(/^#/, '');
         if (hash) {
           const parts = hash.split('/');
@@ -2603,14 +2665,11 @@
               history.replaceState({ stage: 1 }, '', location.pathname);
               history.pushState(
                 { stage: 2, division: divisionSlug, unit: unitSlug || undefined },
-                '',
-                '#' + hash
+                '', '#' + hash
               );
             } catch (e) {}
             setStage2DOM(divisionSlug);
-            if (unitSlug) {
-              setTimeout(() => deepLinkToUnit(divisionSlug, unitSlug), 400);
-            }
+            if (unitSlug) setTimeout(() => deepLinkToUnit(divisionSlug, unitSlug), 400);
           } else {
             try { history.replaceState({ stage: 1 }, '', location.pathname); } catch (e) {}
             setStage1DOM();
@@ -2638,7 +2697,6 @@
        GLOBAL LISTENERS
     ================================================================ */
     function setupGlobalListeners() {
-
       window.addEventListener('popstate', (e) => {
         const state = e.state || { stage: 1 };
         if (isAnyModalOpen()) {
@@ -2648,25 +2706,18 @@
         if (state.modal) return;
         if (state.stage === 2 && state.division) {
           setStage2DOM(state.division);
-          if (state.unit) {
-            setTimeout(() => deepLinkToUnit(state.division, state.unit), 400);
-          }
-        } else {
-          setStage1DOM();
-        }
+          if (state.unit) setTimeout(() => deepLinkToUnit(state.division, state.unit), 400);
+        } else setStage1DOM();
       });
 
-      // WA trigger
       document.addEventListener('click', (e) => {
         const trigger = e.target.closest('[data-wa-trigger]');
         if (trigger) {
           e.preventDefault();
-          const msg = trigger.getAttribute('data-wa-message') || '';
-          handleWAClick(msg);
+          handleWAClick(trigger.getAttribute('data-wa-message') || '');
         }
       });
 
-      // Denah trigger (per-unit button)
       document.addEventListener('click', (e) => {
         const btn = e.target.closest('[data-denah-trigger]');
         if (btn) {
@@ -2678,7 +2729,6 @@
         }
       });
 
-      // SESI 31: Denah preview navigation (prev/next)
       document.addEventListener('click', (e) => {
         const navBtn = e.target.closest('[data-denah-nav]');
         if (!navBtn || navBtn.disabled) return;
@@ -2688,7 +2738,6 @@
         selectDenahUnit(newIdx);
       });
 
-      // Share unit
       document.addEventListener('click', (e) => {
         const btn = e.target.closest('[data-share-unit]');
         if (btn) {
@@ -2700,15 +2749,12 @@
         }
       });
 
-      // Share division
       const shareDivBtn = document.getElementById('share-division-btn');
       if (shareDivBtn) shareDivBtn.addEventListener('click', shareDivision);
 
-      // Share stage 1
       const share1Btn = document.getElementById('share-stage1-btn');
       if (share1Btn) share1Btn.addEventListener('click', shareStage1);
 
-      // Scroll to catalog
       const scrollBtn = document.getElementById('scroll-to-catalog');
       if (scrollBtn) {
         scrollBtn.addEventListener('click', () => {
@@ -2717,7 +2763,6 @@
         });
       }
 
-      // SESI 31: Denah list toggle (open/hide full list)
       document.addEventListener('click', (e) => {
         const toggle = e.target.closest('#denah-list-toggle-btn');
         if (!toggle) return;
@@ -2739,7 +2784,6 @@
         }
       });
 
-      // Sales pick
       document.addEventListener('click', (e) => {
         const salesBtn = e.target.closest('[data-sales-wa]');
         if (salesBtn) {
@@ -2751,7 +2795,6 @@
         }
       });
 
-      // KPR trigger
       document.addEventListener('click', (e) => {
         const kprBtn = e.target.closest('[data-kpr-trigger]');
         if (kprBtn) {
@@ -2762,7 +2805,6 @@
         }
       });
 
-      // Lightbox trigger
       document.addEventListener('click', (e) => {
         const img = e.target.closest('img[data-lb-trigger]');
         if (img && img.src) {
@@ -2771,20 +2813,17 @@
         }
       });
 
-      // Filter status
       document.addEventListener('click', (e) => {
         const tab = e.target.closest('[data-status-filter]');
         if (tab) applyStatusFilter(tab.dataset.statusFilter);
       });
 
-      // Sort price
       document.addEventListener('change', (e) => {
         if (e.target && e.target.id === 'sort-price') {
           applySorting(e.target.value);
         }
       });
 
-      // Facility toggle
       document.addEventListener('click', (e) => {
         const btn = e.target.closest('[data-fac-toggle]');
         if (!btn) return;
@@ -2808,13 +2847,11 @@
         }
       });
 
-      // Back buttons
       const backBtn = document.getElementById('back-to-hub-btn');
       const backBtnBottom = document.getElementById('back-to-hub-btn-bottom');
       if (backBtn) backBtn.addEventListener('click', navigateBackToHub);
       if (backBtnBottom) backBtnBottom.addEventListener('click', navigateBackToHub);
 
-      // DP quick buttons
       document.addEventListener('click', (e) => {
         const dpBtn = e.target.closest('[data-dp-percent]');
         if (dpBtn && ACTIVE_KPR_UNIT) {
@@ -2829,7 +2866,6 @@
         }
       });
 
-      // DP input formatting
       const dpInput = document.getElementById('kpr-dp-input');
       if (dpInput) {
         dpInput.addEventListener('input', (e) => {
@@ -2839,7 +2875,6 @@
           const rawValue = input.value;
           const digitsBeforeCursor = rawValue.slice(0, cursorStart).replace(/[^\d]/g, '').length;
           const digits = rawValue.replace(/[^\d]/g, '');
-
           if (!digits) {
             input.value = '';
             ACTIVE_DP = 0;
@@ -2850,7 +2885,6 @@
           if (!isFinite(num)) return;
           const formatted = num.toLocaleString('id-ID');
           input.value = formatted;
-
           let newPos = formatted.length;
           if (digitsBeforeCursor === 0) newPos = 0;
           else {
@@ -2886,7 +2920,6 @@
         });
       }
 
-      // KPR WA
       const kprWaBtn = document.getElementById('kpr-wa-btn');
       if (kprWaBtn) {
         kprWaBtn.addEventListener('click', () => {
@@ -2900,13 +2933,11 @@
         });
       }
 
-      // Close buttons
       ['denah-modal-close', 'kpr-modal-close', 'sales-modal-close', 'lightbox-close'].forEach(id => {
         const el = document.getElementById(id);
         if (el) el.addEventListener('click', closeAllModals);
       });
 
-      // Backdrop click
       ['denah-modal', 'kpr-modal', 'sales-modal', 'lightbox'].forEach(id => {
         const modal = document.getElementById(id);
         if (modal) {
@@ -2916,19 +2947,14 @@
         }
       });
 
-      // ESC to close
       document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && MODAL_HISTORY_PUSHED) closeAllModals();
       });
 
-      // Retry
       const retryBtn = document.getElementById('retry-btn');
       if (retryBtn) retryBtn.addEventListener('click', () => window.location.reload());
     }
 
-    /* ================================================================
-       BOOT
-    ================================================================ */
     if (document.readyState === 'loading') {
       document.addEventListener('DOMContentLoaded', init);
     } else {
