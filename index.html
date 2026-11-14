@@ -260,7 +260,6 @@
             </a>
           </div>
 
-          <!-- SOSMED + YOUTUBE + SHARE -->
           <div id="sosmed-wrapper" class="mt-8 flex flex-wrap justify-center gap-3">
             <a id="sosmed-instagram" href="#" target="_blank" rel="noopener" aria-label="Instagram"
                class="hidden h-10 w-10 place-items-center rounded-full border border-brown/15 bg-white text-brown transition hover:-translate-y-0.5 hover:border-gold hover:bg-gold hover:text-white">
@@ -427,7 +426,7 @@
           </div>
         </div>
 
-        <div class="flex items-center justify-center gap-3">
+        <div class="flex flex-wrap items-center justify-center gap-3">
           <a id="footer-sosmed-instagram" href="#" target="_blank" rel="noopener" aria-label="Instagram"
              class="hidden h-9 w-9 place-items-center rounded-full border border-beige/10 bg-beige/5 text-beige/60 transition hover:bg-gold hover:text-white">
             <i class="fa-brands fa-instagram text-sm"></i>
@@ -647,12 +646,13 @@
     let UNITS = [];
     let HOLDING_SALES = [];
     let ACTIVE_KPR_UNIT = null;
-    let ACTIVE_KPR_SETTINGS = { tenor: DEFAULT_TENORS, bunga: DEFAULT_BUNGA };
+    let ACTIVE_KPR_SETTINGS = { tenor: DEFAULT_TENORS.slice(), bunga: DEFAULT_BUNGA };
     let ACTIVE_DP = 0;
     let CURRENT_STAGE = 1;
     let CURRENT_DIVISION_SLUG = null;
     let CURRENT_DIVISION_NAME = '';
     let CURRENT_DIVISION_DENAH = '';
+    let CURRENT_DIVISION_SETTINGS = null;
     let ACTIVE_STATUS_FILTER = 'all';
     let ACTIVE_SORT = 'default';
     let MODAL_HISTORY_PUSHED = false;
@@ -708,19 +708,18 @@
       return u;
     }
 
-    /* SESI 32: parseYoutubeEmbedUrl */
     function parseYoutubeEmbedUrl(url) {
       if (!url) return '';
       const u = String(url).trim();
       if (!u) return '';
-      if (/^[a-zA-Z0-9_-]{11}$/.test(u)) return `https://www.youtube-nocookie.com/embed/${u}?rel=0`;
+      if (/^[a-zA-Z0-9_-]{11}$/.test(u)) return `https://www.youtube.com/embed/${u}?rel=0`;
       const patterns = [
         /(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/|youtube\.com\/shorts\/|youtube\.com\/live\/|youtube-nocookie\.com\/embed\/)([a-zA-Z0-9_-]{11})/,
         /[?&]v=([a-zA-Z0-9_-]{11})/
       ];
       for (const p of patterns) {
         const m = u.match(p);
-        if (m && m[1]) return `https://www.youtube-nocookie.com/embed/${m[1]}?rel=0`;
+        if (m && m[1]) return `https://www.youtube.com/embed/${m[1]}?rel=0`;
       }
       return '';
     }
@@ -1242,7 +1241,6 @@
       const container = document.getElementById('kpr-results');
       if (!container) return;
 
-      // Set grid cols based on tenor count
       const count = results.length;
       container.className = `grid grid-cols-1 gap-2.5 ${count === 2 ? 'sm:grid-cols-2' : count >= 3 ? 'sm:grid-cols-3' : 'sm:grid-cols-1'}`;
 
@@ -1267,12 +1265,12 @@
       const pokokEl = document.getElementById('kpr-pokok-hutang');
       if (pokokEl) pokokEl.textContent = formatRupiah(Math.max(0, harga - dp));
 
-      // Update bunga label
       const bungaEl = document.getElementById('kpr-bunga-label');
       if (bungaEl) {
         const b = ACTIVE_KPR_SETTINGS.bunga;
-        if (b === 0) bungaEl.textContent = 'Cicilan 0% Tanpa Bunga';
-        else bungaEl.textContent = `Bunga Flat ${(b * 100).toFixed(b * 100 % 1 === 0 ? 0 : 1)}%/tahun`;
+        const pct = b * 100;
+        if (pct === 0) bungaEl.textContent = 'Skema 0% Tanpa Bunga';
+        else bungaEl.textContent = `Bunga Flat ${Number.isInteger(pct) ? pct : pct.toFixed(1)}%/tahun`;
       }
 
       document.querySelectorAll('.dp-quick-btn').forEach(btn => {
@@ -1284,11 +1282,10 @@
 
     function openKPRModal(unit) {
       const modal = document.getElementById('kpr-modal');
-      if (!modal || !isPropertyProduct(unit)) return;
+      if (!modal) return;
+      if (!canShowKPR(unit)) return;
 
       const settings = getDivisionSettings(unit.nama_divisi || '');
-      if (settings.tanpaKpr) return;
-
       ACTIVE_KPR_UNIT = unit;
       ACTIVE_KPR_SETTINGS = { tenor: settings.tenor, bunga: settings.bunga };
 
@@ -1321,7 +1318,8 @@
         return `• ${tahunStr} Tahun (${r.tenorBulan}x): ${formatRupiah(r.cicilanPerBulan)}/bulan`;
       }).join('\n');
       const b = ACTIVE_KPR_SETTINGS.bunga;
-      const bungaLabel = b === 0 ? '0% (Tanpa Bunga)' : `${(b * 100).toFixed(b * 100 % 1 === 0 ? 0 : 1)}%/tahun flat`;
+      const pct = b * 100;
+      const bungaLabel = pct === 0 ? '0% (Tanpa Bunga)' : `${Number.isInteger(pct) ? pct : pct.toFixed(1)}%/tahun flat`;
       return [
         `Assalamu'alaikum, saya tertarik dengan unit *${ACTIVE_KPR_UNIT.nama_unit || 'ini'}*.`,
         '',
@@ -1336,6 +1334,17 @@
         '',
         `Mohon informasi lebih lanjut. Terima kasih 🙏`
       ].join('\n');
+    }
+
+    /* ================================================================
+       SESI 33: Can show KPR (respect settings)
+    ================================================================ */
+    function canShowKPR(unit) {
+      if (!unit) return false;
+      const settings = getDivisionSettings(unit.nama_divisi || '');
+      if (settings.tanpaCicilan) return false;
+      if (settings.pakaiCicilan) return true;
+      return isPropertyProduct(unit);
     }
 
     /* ================================================================
@@ -1407,24 +1416,86 @@
       };
     }
 
-    /* SESI 32: getDivisionSettings */
+    /* ================================================================
+       SESI 33: getDivisionSettings — 12 switches + cicilan + label
+    ================================================================ */
+    function normalizeOpsiString(raw) {
+      if (!raw) return [];
+      return String(raw)
+        .split(/[,|]/)
+        .map(s => s.trim().toLowerCase().replace(/\s+/g, '_'))
+        .filter(Boolean);
+    }
+
     function getDivisionSettings(divisionName) {
       const units = UNITS.filter(u => (u.nama_divisi || '').trim() === divisionName);
       const settings = {
         tenor: DEFAULT_TENORS.slice(),
         bunga: DEFAULT_BUNGA,
-        tanpaKpr: false,
         labelKembali: 'Semua Kawasan',
-        labelDenah: 'Masterplan / Denah Kawasan & Pilih Kavling'
+        labelDenah: 'Masterplan / Denah Kawasan & Pilih Kavling',
+        /* 12 switches */
+        denahInteraktif: false,
+        denahPolos: false,
+        denahTutup: false,
+        tanpaDenah: false,
+        pakaiCicilan: false,
+        tanpaCicilan: false,
+        tanpaHarga: false,
+        sembunyiTerjual: false,
+        gridSaja: false,
+        tampilCompact: false,
+        fotoUtamaRender: false,
+        urutSheet: false,
+        /* raw */
+        opsi: []
       };
+      if (!units.length) return settings;
 
+      // Parse opsi_tampilan (may span multiple rows, first non-empty wins)
+      let opsiRaw = '';
+      for (const u of units) {
+        const v = (u.opsi_tampilan || '').trim();
+        if (v) { opsiRaw = v; break; }
+      }
+      const flags = normalizeOpsiString(opsiRaw);
+      settings.opsi = flags;
+
+      flags.forEach(f => {
+        switch (f) {
+          case 'denah_interaktif': settings.denahInteraktif = true; break;
+          case 'denah_polos': settings.denahPolos = true; break;
+          case 'denah_tutup': settings.denahTutup = true; break;
+          case 'tanpa_denah': settings.tanpaDenah = true; break;
+          case 'pakai_cicilan': settings.pakaiCicilan = true; break;
+          case 'tanpa_cicilan': settings.tanpaCicilan = true; break;
+          case 'tanpa_kpr': settings.tanpaCicilan = true; break;
+          case 'tanpa_harga': settings.tanpaHarga = true; break;
+          case 'sembunyi_terjual': settings.sembunyiTerjual = true; break;
+          case 'grid_saja': settings.gridSaja = true; break;
+          case 'tampil_compact': settings.tampilCompact = true; break;
+          case 'foto_utama_render': settings.fotoUtamaRender = true; break;
+          case 'urut_sheet': settings.urutSheet = true; break;
+          default: break; /* ignore unknown */
+        }
+      });
+
+      // Default interactive: if denah exists and no conflicting mode
+      const hasDenah = units.some(u => parseDriveUrl(u.gambar_denah));
+      if (hasDenah && !settings.tanpaDenah && !settings.denahPolos && !settings.denahTutup && !settings.denahInteraktif) {
+        settings.denahInteraktif = true;
+      }
+
+      // cicilan_tenor
       for (const u of units) {
         const raw = (u.cicilan_tenor || '').trim();
         if (raw) {
-          const parsed = raw.split(',').map(s => parseInt(s.trim(), 10)).filter(n => isFinite(n) && n > 0);
+          const parsed = raw.split(/[,|]/).map(s => parseInt(s.trim(), 10)).filter(n => isFinite(n) && n > 0);
           if (parsed.length) { settings.tenor = parsed; break; }
         }
       }
+
+      // cicilan_bunga
       for (const u of units) {
         const raw = (u.cicilan_bunga || '').trim();
         if (raw !== '') {
@@ -1432,21 +1503,19 @@
           if (isFinite(n) && n >= 0) { settings.bunga = n / 100; break; }
         }
       }
-      for (const u of units) {
-        const opsi = String(u.opsi_tampilan || '').toLowerCase();
-        if (opsi.includes('tanpa_cicilan') || opsi.includes('tanpa_kpr')) {
-          settings.tanpaKpr = true;
-          break;
-        }
-      }
+
+      // label_kembali
       for (const u of units) {
         const lbl = (u.label_kembali || '').trim();
         if (lbl) { settings.labelKembali = lbl; break; }
       }
+
+      // label_denah
       for (const u of units) {
         const lbl = (u.label_denah || '').trim();
         if (lbl) { settings.labelDenah = lbl; break; }
       }
+
       return settings;
     }
 
@@ -1455,15 +1524,6 @@
       for (const u of units) {
         const d = parseDriveUrl(u.gambar_denah);
         if (d) return d;
-      }
-      return '';
-    }
-
-    function getDivisionOpsiTampilan(divisionName) {
-      const units = UNITS.filter(u => (u.nama_divisi || '').trim() === divisionName);
-      for (const u of units) {
-        const opsi = (u.opsi_tampilan || '').trim().toLowerCase();
-        if (opsi) return opsi;
       }
       return '';
     }
@@ -1497,7 +1557,7 @@
     }
 
     /* ================================================================
-       SESI 32: PILL LABEL — regex desimal [\d.,]+
+       SESI 33: PILL LABEL — regex desimal [\d.,]+
     ================================================================ */
     function extractPillLabel(unit) {
       const nama = String(unit.nama_unit || '').trim();
@@ -1521,7 +1581,6 @@
       }
 
       let areaLabel = '';
-      /* SESI 32: [\d.,]+ agar 62.9 / 99.5 m² tampil utuh */
       const areaPatterns = [
         /([\d.,]+)\s*m[²2]/i,
         /Luas\s*(?:Tanah)?\s*[:=]?\s*([\d.,]+)/i,
@@ -1536,7 +1595,7 @@
     }
 
     /* ================================================================
-       SESI 32: DENAH UNIT SELECTION
+       SESI 33: DENAH UNIT SELECTION
     ================================================================ */
     function selectDenahUnit(idx) {
       const units = CURRENT_DENAH_UNITS;
@@ -1554,7 +1613,7 @@
     }
 
     /* ================================================================
-       SESI 32: FULL DETAIL PREVIEW CARD
+       SESI 33: FULL DETAIL PREVIEW CARD
     ================================================================ */
     function showDenahUnitPreview(unit, units, currentIdx) {
       const container = document.getElementById('denah-unit-preview');
@@ -1564,10 +1623,14 @@
       const idx = typeof currentIdx === 'number' ? currentIdx : CURRENT_DENAH_IDX;
       const total = unitsArr.length;
 
+      const settings = getDivisionSettings(unit.nama_divisi || CURRENT_DIVISION_NAME || '');
+
       const renderImgRaw = parseDriveUrl(unit.foto_render);
       const lahanImgRaw = parseDriveUrl(unit.foto_lahan);
       const unitImgRaw = parseDriveUrl(unit.gambar_unit);
-      const defaultImg = lahanImgRaw || renderImgRaw || unitImgRaw || '';
+      const defaultImg = settings.fotoUtamaRender
+        ? (renderImgRaw || lahanImgRaw || unitImgRaw || '')
+        : (lahanImgRaw || renderImgRaw || unitImgRaw || '');
       const hasPhoto = Boolean(defaultImg);
 
       const status = (unit.status || '').trim();
@@ -1583,12 +1646,11 @@
       const desc = (unit.deskripsi || '').trim();
       const angsuranText = (unit.angsuran || '').trim();
       const keteranganHarga = (unit.keterangan_harga || '').trim();
-      const isProperty = isPropertyProduct(unit);
       const mapsHref = unit.link_gmaps || CONFIG.gmaps_lokasi || '#';
       const waMessage = unit.pesan_wa_unit || `Assalamu'alaikum, saya ingin bertanya mengenai ${namaUnit}.`;
 
-      const settings = getDivisionSettings(unit.nama_divisi || CURRENT_DIVISION_NAME || '');
-      const showKPR = isProperty && !soldOut && !settings.tanpaKpr;
+      const showKPR = !soldOut && canShowKPR(unit);
+      const showHarga = !settings.tanpaHarga;
 
       let statusClass = 'bg-stone-600 text-white';
       if (soldOut) statusClass = 'bg-rose-500 text-white';
@@ -1600,7 +1662,7 @@
       const specId = `pv-spec-${uid}`;
 
       let angsuranHtml = '';
-      if (isProperty && angsuranText) {
+      if (angsuranText && !settings.tanpaHarga) {
         const formatted = formatAngsuranText(angsuranText);
         angsuranHtml = `<div class="mt-2 flex items-center gap-1.5 rounded-lg bg-wa/10 px-2 py-1.5 ring-1 ring-wa/20">
           <i class="fa-solid fa-calculator text-wa text-[10px]"></i>
@@ -1658,16 +1720,29 @@
         </div>
       ` : '';
 
-      const hargaDisplay = hasHargaLama
-        ? `<div class="flex items-baseline gap-1.5 flex-wrap">
-             <p class="text-lg font-extrabold text-brown">${formatRupiah(harga)}</p>
-             <p class="text-[11px] text-rose-500 line-through">${formatRupiah(hargaLama)}</p>
-           </div>
-           <span class="inline-block mt-0.5 rounded bg-rose-50 px-1.5 py-0.5 text-[9px] font-bold uppercase text-rose-600">Hemat ${formatRupiah(hargaLama - harga)}</span>`
-        : `<p class="text-lg font-extrabold text-brown">${formatRupiah(harga)}</p>`;
+      let hargaBlock;
+      if (!showHarga) {
+        hargaBlock = `
+          <div class="mt-1.5">
+            <button type="button" data-wa-trigger data-wa-message="${escapeHtml(waMessage)}"
+                    class="inline-flex items-center gap-1.5 rounded-lg bg-gold px-3 py-1.5 text-[11px] font-bold text-white shadow-sm transition hover:bg-gold_dark active:scale-[0.98]">
+              <i class="fa-brands fa-whatsapp text-xs"></i>
+              <span>Hubungi untuk Harga</span>
+            </button>
+          </div>`;
+      } else if (hasHargaLama) {
+        hargaBlock = `
+          <div class="flex items-baseline gap-1.5 flex-wrap">
+            <p class="text-lg font-extrabold text-brown">${formatRupiah(harga)}</p>
+            <p class="text-[11px] text-rose-500 line-through">${formatRupiah(hargaLama)}</p>
+          </div>
+          <span class="inline-block mt-0.5 rounded bg-rose-50 px-1.5 py-0.5 text-[9px] font-bold uppercase text-rose-600">Hemat ${formatRupiah(hargaLama - harga)}</span>`;
+      } else {
+        hargaBlock = `<p class="text-lg font-extrabold text-brown">${formatRupiah(harga)}</p>`;
+      }
 
-      const keteranganHtml = keteranganHarga
-        ? `<p class="text-[11px] font-medium text-brown/60 mt-1 leading-tight break-words">${escapeHtml(keteranganHarga)}</p>`
+      const keteranganHtml = (keteranganHarga && showHarga)
+        ? `<p class="text-[11px] font-medium text-brown/65 mt-1 leading-tight break-words">${escapeHtml(keteranganHarga)}</p>`
         : '';
 
       container.innerHTML = `
@@ -1693,7 +1768,7 @@
 
             <h4 class="font-bold text-brown text-sm leading-tight break-words facility-text-safe">${escapeHtml(namaUnit)}</h4>
 
-            <div class="mt-1.5">${hargaDisplay}</div>
+            <div class="mt-1.5">${hargaBlock}</div>
             ${keteranganHtml}
 
             ${angsuranHtml}
@@ -1724,7 +1799,7 @@
     }
 
     /* ================================================================
-       INLINE DENAH PANEL
+       INLINE DENAH PANEL — SESI 33 dengan 12 switches
     ================================================================ */
     function renderDenahInlinePanel(divisionName) {
       const container = document.getElementById('denah-inline-panel');
@@ -1733,17 +1808,26 @@
       const denahUrl = getDivisionDenah(divisionName);
       CURRENT_DIVISION_DENAH = denahUrl;
 
-      if (!denahUrl) {
+      const settings = getDivisionSettings(divisionName);
+      const hasDenah = Boolean(denahUrl);
+
+      // tanpaiDenah fully hides panel
+      if (!hasDenah || settings.tanpaDenah) {
         container.classList.add('hidden');
         container.innerHTML = '';
         return;
       }
 
-      const opsi = getDivisionOpsiTampilan(divisionName);
-      const isAutoOpen = !opsi.includes('denah_tutup');
-      const isPolos = opsi.includes('denah_polos');
-      const units = UNITS.filter(u => (u.nama_divisi || '').trim() === divisionName);
-      const settings = getDivisionSettings(divisionName);
+      // Determine open state
+      const isAutoOpen = !settings.denahTutup;
+
+      // Determine units for pills (respect sembunyi_terjual)
+      let units = UNITS.filter(u => (u.nama_divisi || '').trim() === divisionName);
+      if (settings.sembunyiTerjual) {
+        units = units.filter(u => !isSoldOut(u.status));
+      }
+
+      const showPills = !settings.denahPolos;
       const panelLabel = settings.labelDenah || 'Masterplan / Denah Kawasan & Pilih Kavling';
 
       container.classList.remove('hidden');
@@ -1764,7 +1848,7 @@
 
         <div id="denah-content" class="mt-3 ${isAutoOpen ? '' : 'hidden'}">
           <div class="bg-white rounded-2xl border border-brown/10 shadow-card p-3 sm:p-4">
-            <div class="grid grid-cols-1 ${isPolos ? '' : 'lg:grid-cols-2'} gap-4">
+            <div class="grid grid-cols-1 ${showPills ? 'lg:grid-cols-2' : ''} gap-4">
 
               <div>
                 <div class="mb-2 flex items-center justify-between">
@@ -1785,7 +1869,7 @@
                 </p>
               </div>
 
-              ${isPolos ? '' : `
+              ${showPills ? `
                 <div>
                   <p class="text-[10px] font-extrabold uppercase tracking-wider text-gold_dark mb-2">
                     <i class="fa-solid fa-th-list text-[9px] mr-1"></i>Pilih Unit untuk Pratinjau
@@ -1793,7 +1877,7 @@
                   <div id="denah-unit-pills" class="flex flex-wrap gap-1.5 mb-3"></div>
                   <div id="denah-unit-preview"></div>
                 </div>
-              `}
+              ` : ''}
             </div>
           </div>
         </div>
@@ -1834,7 +1918,7 @@
         });
       }
 
-      if (!isPolos) {
+      if (showPills) {
         renderDenahUnitPills(units);
       }
     }
@@ -1930,7 +2014,7 @@
     }
 
     /* ================================================================
-       SESI 32: DETAIL HEADER — socmed + youtube video
+       SESI 33: DETAIL HEADER — socmed + youtube video
     ================================================================ */
     function renderDetailHeader(divisionName) {
       const container = document.getElementById('catalog-detail-header');
@@ -1940,24 +2024,22 @@
       const facilities = getDivisionFacilities(divisionName);
       const facilitiesHTML = renderFacilities(facilities, 'inner');
 
-      // Socmed buttons row
       const socials = [];
-      if (info.instagram) socials.push({ platform: 'instagram', url: info.instagram, icon: 'fa-instagram', brand: true });
-      if (info.tiktok) socials.push({ platform: 'tiktok', url: info.tiktok, icon: 'fa-tiktok', brand: true });
-      if (info.facebook) socials.push({ platform: 'facebook', url: info.facebook, icon: 'fa-facebook-f', brand: true });
+      if (info.instagram) socials.push({ platform: 'instagram', url: info.instagram, icon: 'fa-instagram' });
+      if (info.tiktok) socials.push({ platform: 'tiktok', url: info.tiktok, icon: 'fa-tiktok' });
+      if (info.facebook) socials.push({ platform: 'facebook', url: info.facebook, icon: 'fa-facebook-f' });
 
       const socialsHTML = socials.length ? `
         <div class="mt-4 flex justify-center gap-2 flex-wrap">
           ${socials.map(s => `
             <a href="${escapeHtml(s.url)}" target="_blank" rel="noopener" aria-label="${s.platform}"
                class="grid h-9 w-9 place-items-center rounded-full border border-brown/15 bg-white text-brown transition hover:border-gold hover:bg-gold hover:text-white active:scale-95">
-              <i class="fa-${s.brand ? 'brands' : 'solid'} fa-${s.icon} text-sm"></i>
+              <i class="fa-brands ${s.icon} text-sm"></i>
             </a>
           `).join('')}
         </div>
       ` : '';
 
-      // YouTube video
       const ytEmbed = parseYoutubeEmbedUrl(info.youtube);
       const ytHTML = ytEmbed ? `
         <div class="mt-5">
@@ -2060,14 +2142,19 @@
     }
 
     /* ================================================================
-       UNIT CARD
+       UNIT CARD — SESI 33 dengan 12 switches
     ================================================================ */
     function createUnitCard(unit, idx) {
+      const settings = CURRENT_DIVISION_SETTINGS || getDivisionSettings(unit.nama_divisi || '');
+
       const renderImgRaw = parseDriveUrl(unit.foto_render);
       const lahanImgRaw = parseDriveUrl(unit.foto_lahan);
       const unitImgRaw = parseDriveUrl(unit.gambar_unit);
+
+      const defaultImg = settings.fotoUtamaRender
+        ? (renderImgRaw || lahanImgRaw || unitImgRaw || '')
+        : (lahanImgRaw || renderImgRaw || unitImgRaw || '');
       const hasAnyPhoto = Boolean(renderImgRaw || lahanImgRaw || unitImgRaw);
-      const defaultImg = lahanImgRaw || renderImgRaw || unitImgRaw || '';
 
       const status = (unit.status || '').trim();
       const soldOut = isSoldOut(status);
@@ -2087,12 +2174,13 @@
       const isProperty = isPropertyProduct(unit);
       const divName = unit.nama_divisi || '';
 
-      const settings = getDivisionSettings(divName);
-      const showKPR = isProperty && !settings.tanpaKpr;
+      const showKPR = !soldOut && canShowKPR(unit);
       const showWA = hasStage2WA(divName);
+      const showHarga = !settings.tanpaHarga;
+      const isCompact = settings.tampilCompact;
 
       const denahUrl = parseDriveUrl(unit.gambar_denah) || CURRENT_DIVISION_DENAH;
-      const showDenahBtn = Boolean(denahUrl);
+      const showDenahBtn = Boolean(denahUrl) && !settings.tanpaDenah;
 
       const mapsHref = unit.link_gmaps || CONFIG.gmaps_lokasi || '#';
       const waMessage = unit.pesan_wa_unit || `Assalamu'alaikum, saya ingin bertanya mengenai ${namaUnit}.`;
@@ -2109,7 +2197,8 @@
           <span>${escapeHtml(labelPromo || 'Promo')}</span>
         </div>` : '';
 
-      const mediaHtml = hasAnyPhoto ? `
+      // tampilCompact: hide photo entirely
+      const mediaHtml = (!isCompact && hasAnyPhoto) ? `
         <div class="relative">
           ${status ? `<div class="absolute left-3 top-3 z-20 inline-flex items-center gap-1.5 rounded-full ${statusClass} px-3 py-1 text-[10px] font-extrabold uppercase tracking-wide shadow-md">
             <i class="fa-solid ${statusIcon}"></i><span>${escapeHtml(status)}</span>
@@ -2121,7 +2210,7 @@
           </div>
         </div>` : '';
 
-      const headerBadgesHtml = !hasAnyPhoto && (status || hasPromoLabel) ? `
+      const headerBadgesHtml = (!isCompact && !hasAnyPhoto && (status || hasPromoLabel)) || (isCompact && (status || hasPromoLabel)) ? `
         <div class="mb-2 flex flex-wrap items-center gap-1.5">
           ${status ? `<span class="inline-flex items-center gap-1 rounded-full ${statusClass} px-2.5 py-1 text-[10px] font-extrabold uppercase tracking-wide shadow-sm">
             <i class="fa-solid ${statusIcon}"></i>${escapeHtml(status)}
@@ -2141,7 +2230,7 @@
       }
 
       let angsuranPreview = '';
-      if (isProperty && angsuranText) {
+      if (angsuranText && showHarga) {
         const formatted = formatAngsuranText(angsuranText);
         angsuranPreview = `
           <div class="mt-3 flex items-center gap-2 rounded-xl bg-wa/10 px-3 py-2 ring-1 ring-wa/20">
@@ -2174,16 +2263,10 @@
 
       let kprButtonHtml = '';
       if (showKPR) {
-        if (soldOut) {
-          kprButtonHtml = `<button disabled class="flex w-full cursor-not-allowed items-center justify-center gap-2 rounded-xl bg-brown/15 px-4 py-3 text-xs font-bold text-brown/40">
-            <i class="fa-solid fa-ban"></i><span>Unit Terjual</span>
-          </button>`;
-        } else {
-          kprButtonHtml = `<button type="button" data-kpr-trigger data-unit-id="${escapeHtml(unit.id || '')}"
-            class="flex w-full items-center justify-center gap-2 rounded-xl bg-gold px-4 py-3 text-xs font-bold text-white shadow-lg shadow-gold/30 transition hover:bg-gold_dark active:scale-[0.99]">
-            <i class="fa-solid fa-calculator text-sm"></i><span>Simulasi Angsuran</span>
-          </button>`;
-        }
+        kprButtonHtml = `<button type="button" data-kpr-trigger data-unit-id="${escapeHtml(unit.id || '')}"
+          class="flex w-full items-center justify-center gap-2 rounded-xl bg-gold px-4 py-3 text-xs font-bold text-white shadow-lg shadow-gold/30 transition hover:bg-gold_dark active:scale-[0.99]">
+          <i class="fa-solid fa-calculator text-sm"></i><span>Simulasi Angsuran</span>
+        </button>`;
       }
 
       let waButtonHtml = '';
@@ -2201,16 +2284,26 @@
         }
       }
 
-      const hargaDisplayHtml = hasHargaLama
-        ? `<div class="flex flex-wrap items-baseline gap-2">
+      let hargaDisplayHtml = '';
+      if (!showHarga) {
+        hargaDisplayHtml = `
+          <button type="button" data-wa-trigger data-wa-message="${escapeHtml(waMessage)}"
+                  class="inline-flex items-center gap-1.5 rounded-lg bg-gold px-3 py-1.5 text-[11px] font-bold text-white shadow-sm transition hover:bg-gold_dark active:scale-[0.98]">
+            <i class="fa-brands fa-whatsapp text-xs"></i>
+            <span>Hubungi untuk Harga</span>
+          </button>`;
+      } else if (hasHargaLama) {
+        hargaDisplayHtml = `<div class="flex flex-wrap items-baseline gap-2">
              <p class="font-serif-display text-2xl font-bold text-brown">${formatRupiah(harga)}</p>
              <p class="text-sm font-semibold text-rose-500 line-through">${formatRupiah(hargaLama)}</p>
            </div>
-           <span class="mt-1 inline-block rounded-md bg-rose-50 px-1.5 py-0.5 text-[10px] font-bold uppercase text-rose-600">Hemat ${formatRupiah(hargaLama - harga)}</span>`
-        : `<p class="font-serif-display text-2xl font-bold text-brown">${formatRupiah(harga)}</p>`;
+           <span class="mt-1 inline-block rounded-md bg-rose-50 px-1.5 py-0.5 text-[10px] font-bold uppercase text-rose-600">Hemat ${formatRupiah(hargaLama - harga)}</span>`;
+      } else {
+        hargaDisplayHtml = `<p class="font-serif-display text-2xl font-bold text-brown">${formatRupiah(harga)}</p>`;
+      }
 
-      const keteranganHtml = keteranganHarga
-        ? `<p class="text-[11px] font-medium text-brown/60 mt-1 leading-tight break-words">${escapeHtml(keteranganHarga)}</p>`
+      const keteranganHtml = (keteranganHarga && showHarga)
+        ? `<p class="text-[11px] font-medium text-brown/65 mt-1 leading-tight break-words">${escapeHtml(keteranganHarga)}</p>`
         : '';
 
       const soldOutClass = soldOut ? 'opacity-75' : '';
@@ -2256,14 +2349,20 @@
     }
 
     /* ================================================================
-       RENDER CATALOG
+       SESI 33: RENDER CATALOG dengan 12 switches
     ================================================================ */
     function renderCatalog(divisionName) {
       const grid = document.getElementById('catalog-grid');
       if (!grid) return;
 
-      const units = UNITS.filter(u => (u.nama_divisi || '').trim() === divisionName);
       const settings = getDivisionSettings(divisionName);
+      CURRENT_DIVISION_SETTINGS = settings;
+
+      // Filter units (respect sembunyi_terjual)
+      let units = UNITS.filter(u => (u.nama_divisi || '').trim() === divisionName);
+      if (settings.sembunyiTerjual) {
+        units = units.filter(u => !isSoldOut(u.status));
+      }
 
       renderDetailHeader(divisionName);
       renderDenahInlinePanel(divisionName);
@@ -2274,14 +2373,13 @@
       });
 
       const denahUrl = getDivisionDenah(divisionName);
-      const opsi = getDivisionOpsiTampilan(divisionName).toLowerCase();
-      const hasDenah = Boolean(denahUrl);
-      // Interactive: has denah & NOT polos & NOT tutup
-      const isInteractiveDenah = hasDenah && !opsi.includes('denah_polos') && !opsi.includes('denah_tutup');
+      const hasDenah = Boolean(denahUrl) && !settings.tanpaDenah;
+      const isInteractive = hasDenah && settings.denahInteraktif && !settings.denahPolos && !settings.denahTutup;
 
       const toggleWrap = document.getElementById('denah-list-toggle-wrap');
       const listWrapper = document.getElementById('catalog-list-wrapper');
       const toggleBtn = document.getElementById('denah-list-toggle-btn');
+      const filterWrap = document.getElementById('filter-status-wrap');
 
       if (!units.length) {
         grid.innerHTML = `
@@ -2289,7 +2387,6 @@
             <i class="fa-solid fa-box-open text-3xl text-brown/30"></i>
             <p class="mt-3 text-sm font-bold text-brown/70">Belum ada produk di divisi ini.</p>
           </div>`;
-        const filterWrap = document.getElementById('filter-status-wrap');
         if (filterWrap) filterWrap.classList.add('hidden');
         if (toggleWrap) toggleWrap.classList.add('hidden');
         if (listWrapper) listWrapper.classList.remove('hidden');
@@ -2303,7 +2400,13 @@
       if (sortSel) sortSel.value = 'default';
       ACTIVE_SORT = 'default';
 
-      if (isInteractiveDenah) {
+      // grid_saja: hide filter tabs+sort
+      if (filterWrap) {
+        if (settings.gridSaja) filterWrap.classList.add('hidden');
+        else filterWrap.classList.remove('hidden');
+      }
+
+      if (isInteractive) {
         if (listWrapper) listWrapper.classList.add('hidden');
         if (toggleWrap) toggleWrap.classList.remove('hidden');
         if (toggleBtn) {
@@ -2329,6 +2432,7 @@
       CURRENT_STAGE = 1;
       CURRENT_DIVISION_SLUG = null;
       CURRENT_DIVISION_NAME = '';
+      CURRENT_DIVISION_SETTINGS = null;
       ACTIVE_STATUS_FILTER = 'all';
 
       const brand = CONFIG.nama_brand || 'Portal Unit Usaha';
@@ -2376,7 +2480,7 @@
     }
 
     /* ================================================================
-       DEEP-LINK PER UNIT
+       DEEP-LINK
     ================================================================ */
     function deepLinkToUnit(divisionSlug, unitSlug) {
       if (!divisionSlug || !unitSlug) return;
@@ -2451,7 +2555,7 @@
     }
 
     /* ================================================================
-       APPLY CONTACTS — dengan youtube
+       APPLY CONTACTS — instagram/tiktok/facebook/youtube
     ================================================================ */
     function applyContacts(contacts) {
       ['wa-utama-btn', 'navbar-wa', 'floating-wa'].forEach(id => {
@@ -2801,7 +2905,7 @@
           e.preventDefault();
           const unitId = kprBtn.getAttribute('data-unit-id');
           const unit = UNITS.find(u => String(u.id) === String(unitId));
-          if (unit && isPropertyProduct(unit)) openKPRModal(unit);
+          if (unit && canShowKPR(unit)) openKPRModal(unit);
         }
       });
 
